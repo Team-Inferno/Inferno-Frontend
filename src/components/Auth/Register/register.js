@@ -34,7 +34,7 @@ const Register = () => {
     });
 
     axios
-      .post("http://localhost:8080/api/auth/register", data)
+      .post("https://infernolive.azurewebsites.net/api/auth/register", data)
       .then((res) => {
         if (res.data.success) {
           console.log(res.data.message);

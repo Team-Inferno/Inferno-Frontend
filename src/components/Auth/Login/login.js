@@ -26,7 +26,7 @@ const Login = (props) => {
     });
 
     axios
-      .post("htttp://localhost:8080/api/auth/login", data)
+      .post("https://infernolive.azurewebsites.net/api/auth/login", data)
       .then((res) => {
         const userData = {
           email: res.data.user.email,
