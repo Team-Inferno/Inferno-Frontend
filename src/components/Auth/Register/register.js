@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setError } from "../../../redux/error.slice";
@@ -19,6 +19,11 @@ const Register = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+   useEffect(() => {
+     dispatch(setError(null));
+     console.log("hiiii");
+   }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,13 +42,14 @@ const Register = () => {
       .post("https://infernolive.azurewebsites.net/api/auth/register", data)
       .then((res) => {
         if (res.data.success) {
-          console.log(res.data.message);
+          //console.log(res.data.message);
           history.push("/login", { message: res.data.message });
         }
         dispatch(setError(null));
       })
       .catch((error) => {
         if (error.response) {
+          //console.log(error.response);
           dispatch(setError(error.response.data.error));
         }
       });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../../redux/user.slice";
@@ -15,8 +15,14 @@ const Login = (props) => {
     return state.errorReducer.error;
   });
 
+  
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(setError(null));
+    console.log("hiiii");
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +73,9 @@ const Login = (props) => {
             value={email}
             placeholder="enter email"
           />
-          <span className="error">{error === null ? "" : error.email}</span>
+          <span className="error">
+            {error === null || error === undefined ? "" : error.email}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="">password</label>
@@ -77,7 +85,9 @@ const Login = (props) => {
             value={password}
             placeholder="enter password"
           />
-          <span className="error">{error === null ? "" : error.password}</span>
+          <span className="error">
+            {error === null || error === undefined ? "" : error.password}
+          </span>
         </div>
 
         <button
