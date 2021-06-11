@@ -61,7 +61,9 @@ const Register = () => {
             value={email}
             placeholder="enter email"
           />
-          <span className="error">{error === null ? "" : error.email}</span>
+          <span className="error">
+            {error === null || error === undefined ? "" : error.email}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="">username</label>
@@ -71,7 +73,9 @@ const Register = () => {
             value={username}
             placeholder="enter username"
           />
-          <span className="error">{error === null ? "" : error.username}</span>
+          <span className="error">
+            {error === null || error === undefined ? "" : error.username}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="">password</label>
@@ -81,7 +85,9 @@ const Register = () => {
             value={password}
             placeholder="enter password"
           />
-          <span className="error">{error === null ? "" : error.password}</span>
+          <span className="error">
+            {error === null || error === undefined ? "" : error.password}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="">Confirm password</label>
@@ -92,7 +98,7 @@ const Register = () => {
             placeholder="re-enter password"
           />
           <span className="error">
-            {error === null ? "" : error.confirmPassword}
+            {error === null || error === undefined ? "" : error.confirmPassword}
           </span>
         </div>
         <button
