@@ -1,0 +1,26 @@
+.sidebar {
+  background: rgb(47, 49, 54);
+  width: 20vw;
+
+  section.top-section {
+    padding: 1em 1em;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+
+    h3.channel-name {
+      display: inline;
+    }
+  }
+
+  section.room-section {
+    padding: 1em 1em;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      color: rgb(114,118,125);
+      font-weight:bold;
+      font-size: medium;
+    }    
+  }
+}

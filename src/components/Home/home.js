@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./css/home.css";
+import Sidebar from "./Sidebar/sidebar"
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <p>
         <Link to="/Login">Login</Link>
       </p>
+      <Sidebar/>
     </div>
   );
 };
