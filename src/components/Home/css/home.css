@@ -1,8 +1,386 @@
-link {
-  text-decoration: none;
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
 }
 
-p {
-  display: block;
+.sidebar {
+  background: #2f3136;
+  min-width: 17%;
+  max-width: 17%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidebar ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar ::-webkit-scrollbar-track {
+  background: #2f3136;
+}
+
+.sidebar ::-webkit-scrollbar-thumb {
+  background: #2f3136;
+  border-radius: 20em;
+  height: 95%;
+}
+
+.sidebar section.top-section {
+  padding: 0.8em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  border-bottom: 2px solid #26282c;
+}
+
+.sidebar section.top-section:hover {
+  cursor: pointer;
+  background: #36393f;
+}
+
+.sidebar section.top-section p.server-name {
+  display: inline;
+  margin-left: 1.2em;
+  font-weight: 600;
+}
+
+.sidebar section.top-section .server-expand-icon {
+  margin-right: 0.6em;
+}
+
+.sidebar section.room-section {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  overflow-y: auto;
+  height: 0px;
+}
+
+.sidebar section.room-section:hover::-webkit-scrollbar-thumb {
+  background: #202020;
+}
+
+.sidebar section.room-section .room-list .room {
+  margin: 1em 0.1em;
+  margin-bottom: 1em;
+}
+
+.sidebar section.room-section .room-list .room .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #72767d;
+}
+
+.sidebar section.room-section .room-list .room .header .room-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.sidebar section.room-section .room-list .room .header .room-name:hover {
+  color: white;
+}
+
+.sidebar section.room-section .room-list .room .header .room-name .expand-icon {
+  margin-top: 0.1em;
+}
+
+.sidebar section.room-section .room-list .room .header .add-channel {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 0.5em;
+}
+
+.sidebar section.room-section .room-list .room .header .add-channel:hover {
+  color: white;
+}
+
+.sidebar section.room-section .room-list .room .channel-list {
+  margin: 0.1em 0;
+}
+
+.sidebar section.room-section .room-list .room .channel-list .channel {
+  margin: 0.1em 0.2em;
+  padding: 0.3em 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #72767d;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+.sidebar section.room-section .room-list .room .channel-list .channel .text-channel-icon {
+  margin-top: 0.15em;
+}
+
+.sidebar section.room-section .room-list .room .channel-list .channel .channel-name {
+  margin-left: 0.5em;
+  font-weight: 600;
+}
+
+.sidebar section.room-section .room-list .room .channel-list .channel:hover {
+  background: #36393f;
+}
+
+.sidebar section.room-section .room-list .room .channel-list .channel:hover .channel-name {
+  color: white;
+}
+
+.sidebar section.voice-connection {
+  background: #292b2f;
+  padding: 0.5em 0.5em;
+  border-bottom: 2px solid #26282c;
+}
+
+.sidebar section.voice-connection .voice-option {
+  margin-bottom: 0.3em;
+  margin-right: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sidebar section.voice-connection .voice-option .connection-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #4fdc7c;
+  font-weight: 600;
+}
+
+.sidebar section.voice-connection .voice-option .disconnect-icon {
+  cursor: pointer;
+  padding: 0.3em 0.5em;
+  border-radius: 0.2em;
+  color: #72767d;
+}
+
+.sidebar section.voice-connection .voice-option .disconnect-icon:hover {
+  background: #36393f;
+}
+
+.sidebar section.voice-connection .stream-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.sidebar section.voice-connection .stream-option .video,
+.sidebar section.voice-connection .stream-option .screen-share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5em 1.2em;
+  border-radius: 0.2em;
+  background: #36393f;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar section.voice-connection .stream-option .video:hover,
+.sidebar section.voice-connection .stream-option .screen-share:hover {
+  background: #2d2f34;
+}
+
+.sidebar section.voice-connection .stream-option .video .icon,
+.sidebar section.voice-connection .stream-option .screen-share .icon {
+  margin-right: 0.5em;
+}
+
+.sidebar section.user-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #292b2f;
+  padding: 0.5em 0.5em;
+  color: #72767d;
+}
+
+.sidebar section.user-status .user-image {
+  background: red;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.sidebar section.user-status .username {
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar section.user-status #mic-icon,
+.sidebar section.user-status #headphone-icon,
+.sidebar section.user-status #settings-icon {
+  padding: 0.2em 0.3em;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.sidebar section.user-status #mic-icon:hover,
+.sidebar section.user-status #headphone-icon:hover,
+.sidebar section.user-status #settings-icon:hover {
+  background: #36393f;
+}
+
+.chat {
+  background: #36393f;
+  width: 100%;
+}
+
+.chat ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat ::-webkit-scrollbar-track {
+  background: #2e3338;
+}
+
+.chat ::-webkit-scrollbar-thumb {
+  background: #202225;
+  border-radius: 20em;
+  height: 2%;
+}
+
+.chat section.chat-header {
+  padding: 0.8em 0;
+  color: white;
+  border-bottom: 2px solid #26282c6b;
+}
+
+.chat section.chat-header .chat-channel-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+}
+
+.chat section.chat-header .chat-channel-name .text-channel-icon {
+  margin-left: 0.6em;
+  margin-right: 0.5em;
+}
+
+.chat section.chat-header .chat-channel-name p {
+  display: inline;
+}
+
+.chat section.messages {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  overflow-y: auto;
+  height: 80%;
+}
+
+.chat section.messages .message {
+  margin: 2em 2em;
+  /* border-top: 1px solid white;
+      border-bottom: 1px solid white;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.chat section.messages .message .owner-img {
+  background: red;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.chat section.messages .message .message-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 0.5em;
+}
+
+.chat section.messages .message .message-details .owner-name {
+  color: white;
+}
+
+.chat section.messages .message .message-details .message-date {
+  color: white;
+  font-size: smaller;
+}
+
+.chat section.messages .message .message-details .message-body {
+  color: white;
+  margin-top: 0.5em;
+}
+
+.chat section.send-message-form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.chat section.send-message-form form {
+  margin: 2em 2em;
+  width: 95%;
+}
+
+.chat section.send-message-form form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chat section.send-message-form form .form-group input {
+  width: 80%;
+  padding: 1em;
+}
+
+.chat section.send-message-form form .form-group button {
+  cursor: pointer;
+  margin-left: 1em;
+  padding: 0.5em 1em;
 }
 /*# sourceMappingURL=home.css.map */
