@@ -21,7 +21,7 @@ const Register = () => {
 
    useEffect(() => {
      dispatch(setError(null));
-     console.log("hiiii");
+     //console.log("hiiii");
    }, []);
 
 
@@ -57,7 +57,7 @@ const Register = () => {
 
   return (
     <div className="container">
-      <form>
+      <form className="auth-form">
         <h1>Register</h1>
         <div className="form-group">
           <label htmlFor="">Email</label>
@@ -65,7 +65,6 @@ const Register = () => {
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            placeholder="enter email"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.email}
@@ -77,7 +76,6 @@ const Register = () => {
             type="text"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
-            placeholder="enter username"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.username}
@@ -89,7 +87,6 @@ const Register = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="enter password"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.password}
@@ -101,7 +98,6 @@ const Register = () => {
             type="password"
             onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
-            placeholder="re-enter password"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.confirmPassword}

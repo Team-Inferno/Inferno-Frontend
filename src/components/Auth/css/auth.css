@@ -15,7 +15,7 @@
           flex-direction: column;
 }
 
-.container .message {
+.container .auth-message {
   padding: 1em 0.5em;
   width: 30%;
   background: #c3eec3;
@@ -23,63 +23,92 @@
   border-radius: 0.3em;
 }
 
-.container .message span {
+.container .auth-message span {
   text-align: center;
   font-size: small;
 }
 
-form {
+.container .auth-form {
+  padding: 2em;
+  background: #36393f;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  width: 30%;
+  width: 35%;
+  border-radius: 0.3em;
 }
 
-form h1 {
+.container .auth-form h1 {
+  color: white;
   margin-bottom: 0.5em;
 }
 
-form .form-group {
-  margin: 0.5em 0 0;
+.container .auth-form .form-group {
+  margin: 1em 0 0;
 }
 
-form .form-group label {
+.container .auth-form .form-group label {
   display: block;
-  font-size: 1em;
+  font-size: smaller;
+  font-weight: 600;
+  color: #8e9297;
+  text-transform: capitalize;
 }
 
-form .form-group input {
+.container .auth-form .form-group input {
   display: block;
-  margin-top: 5px;
+  margin-top: 0.5em;
   border-radius: 0.3em;
-  background: #e2e2e2;
-  border: none;
+  background: #303338;
+  border: 0.2px solid #212327;
   height: 3em;
   width: 100%;
-  padding: 0.5em 0.5em;
+  padding: 0.5em 0.8em;
+  color: white;
 }
 
-form .form-group span {
+.container .auth-form .form-group span {
   color: red;
   font-size: 0.8em;
 }
 
-form #submit-button {
+.container .auth-form #submit-button {
   padding: 0.5em 1.2em;
   margin: 1.5em 0 0.5em 0;
   border: none;
   background: #e2e2e2;
-  border-radius: 0.3em;
+  border-radius: 0.1em;
   font-size: 1em;
   cursor: pointer;
+  text-transform: capitalize;
+  font-size: medium;
+  color: #36393f;
 }
 
-form p.redirect {
-  font-size: 0.8em;
+.container .auth-form #submit-button:hover {
+  background: white;
+  color: black;
+  font-weight: 500;
 }
 
-form p.redirect a {
+.container .auth-form p.redirect,
+.container .auth-form p.forgot-password {
+  font-size: small;
+  color: #8e9297;
+  margin-bottom: 0.5em;
+}
+
+.container .auth-form p.redirect a,
+.container .auth-form p.forgot-password a {
+  font-size: medium;
+  color: lightgray;
   text-decoration: none;
   cursor: pointer;
+}
+
+.container .auth-form p.redirect a:hover,
+.container .auth-form p.forgot-password a:hover {
+  text-decoration: underline;
+  color: white;
 }
 /*# sourceMappingURL=auth.css.map */

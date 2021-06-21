@@ -1,3 +1,7 @@
+$primary-color: #36393f;
+$input-color: #303338;
+$text-color: #8e9297;
+
 .container {
   display: flex;
   justify-content: center;
@@ -6,60 +10,88 @@
   flex-direction: column;
 
   //only for login page
-  .message {
-    padding:1em 0.5em;
+  .auth-message {
+    padding: 1em 0.5em;
     width: 30%;
     background: rgb(195, 238, 195);
     margin-bottom: 1em;
     border-radius: 0.3em;
-    span{
-      text-align: center;
-      font-size:small;
-    }
-  }
-}
-
-form {
-  width: max-content;
-  width: 30%;
-  h1 {
-    margin-bottom: 0.5em;
-  }
-  .form-group {
-    margin: 0.5em 0 0;
-    label {
-      display: block;
-      font-size: 1em;
-    }
-    input {
-      display: block;
-      margin-top: 5px;
-      border-radius: 0.3em;
-      background: rgb(226, 226, 226);
-      border: none;
-      height: 3em;
-      width: 100%;
-      padding: 0.5em 0.5em;
-    }
     span {
-      color: red;
-      font-size: 0.8em;
+      text-align: center;
+      font-size: small;
     }
   }
-  #submit-button {
-    padding: 0.5em 1.2em;
-    margin: 1.5em 0 0.5em 0;
-    border: none;
-    background: rgb(226, 226, 226);
+
+  .auth-form {
+    padding: 2em;
+    background: $primary-color;
+    width: max-content;
+    width: 35%;
     border-radius: 0.3em;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  p.redirect {
-    font-size: 0.8em;
-    a {
-      text-decoration: none;
+    h1 {
+      color: white;
+      margin-bottom: 0.5em;
+    }
+    .form-group {
+      margin: 1em 0 0;
+      label {
+        display: block;
+        font-size: smaller;
+        font-weight: 600;
+        color: $text-color;
+        text-transform: capitalize;
+      }
+      input {
+        display: block;
+        margin-top: 0.5em;
+        border-radius: 0.3em;
+        background: $input-color;
+        border: 0.2px solid #212327;
+        height: 3em;
+        width: 100%;
+        padding: 0.5em 0.8em;
+        color: white;
+      }
+      span {
+        color: red;
+        font-size: 0.8em;
+      }
+    }
+    #submit-button {
+      padding: 0.5em 1.2em;
+      margin: 1.5em 0 0.5em 0;
+      border: none;
+      background: rgb(226, 226, 226);
+      border-radius: 0.1em;
+      font-size: 1em;
       cursor: pointer;
+      text-transform: capitalize;
+      font-size: medium;
+      color: $primary-color;
+
+      &:hover{
+        background: white;
+        color: black;
+        font-weight: 500;
+      }
+    }
+
+    p.redirect,
+    p.forgot-password {
+      font-size: small;
+      color: $text-color;
+      margin-bottom: 0.5em;
+      a {
+        font-size: medium;
+        color: lightgray;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          color: white;
+        }
+      }
     }
   }
 }

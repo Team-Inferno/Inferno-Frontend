@@ -56,47 +56,49 @@ const Login = (props) => {
     <div className="container">
       {/*if user gets registered and needs to display verification email message from the props*/}
       {props.location.state ? (
-        <div className="message">
+        <div className="auth-message">
           <span>{props.location.state.message}</span>
         </div>
       ) : (
         ""
       )}
 
-      <form>
+      <form className="auth-form">
         <h1>Login</h1>
         <div className="form-group">
-          <label htmlFor="">Email</label>
+          <label htmlFor="">EMAIL</label>
           <input
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            placeholder="enter email"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.email}
           </span>
         </div>
         <div className="form-group">
-          <label htmlFor="">password</label>
+          <label htmlFor="">PASSWORD</label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="enter password"
           />
           <span className="error">
             {error === null || error === undefined ? "" : error.password}
           </span>
         </div>
+        <p className="forgot-password">
+          Forgot password? <Link to="/Register">Reset</Link>
+        </p>
 
         <button
           id="submit-button"
           type="button"
           onClick={(e) => handleSubmit(e)}
         >
-          Submit
+          LOGIN
         </button>
+
         <p className="redirect">
           Don't have an account? <Link to="/Register">Register</Link>
         </p>
