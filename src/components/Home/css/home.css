@@ -7,8 +7,8 @@
 
 .sidebar {
   background: #2f3136;
-  min-width: 17%;
-  max-width: 17%;
+  min-width: 230px;
+  max-width: 230px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,27 +146,27 @@
   color: white;
 }
 
-.sidebar section.voice-connection {
+.sidebar section.status {
   background: #292b2f;
   padding: 0.5em 0.5em;
   border-bottom: 2px solid #26282c;
 }
 
-.sidebar section.voice-connection .voice-option {
+.sidebar section.status .container {
   margin-bottom: 0.3em;
   margin-right: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.sidebar section.voice-connection .voice-option .connection-status {
+.sidebar section.status .container .connection-status {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,94 +174,50 @@
   font-weight: 600;
 }
 
-.sidebar section.voice-connection .voice-option .disconnect-icon {
-  cursor: pointer;
-  padding: 0.3em 0.5em;
-  border-radius: 0.2em;
-  color: #72767d;
+.sidebar section.status .container .connection-status p {
+  margin-left: 0.2em;
 }
 
-.sidebar section.voice-connection .voice-option .disconnect-icon:hover {
-  background: #36393f;
-}
-
-.sidebar section.voice-connection .stream-option {
+.sidebar section.status .container .icons {
+  margin-top: 0.5em;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-.sidebar section.voice-connection .stream-option .video,
-.sidebar section.voice-connection .stream-option .screen-share {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0.5em 1.2em;
-  border-radius: 0.2em;
-  background: #36393f;
-  color: white;
-  cursor: pointer;
-}
-
-.sidebar section.voice-connection .stream-option .video:hover,
-.sidebar section.voice-connection .stream-option .screen-share:hover {
-  background: #2d2f34;
-}
-
-.sidebar section.voice-connection .stream-option .video .icon,
-.sidebar section.voice-connection .stream-option .screen-share .icon {
-  margin-right: 0.5em;
-}
-
-.sidebar section.user-status {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  background: #292b2f;
-  padding: 0.5em 0.5em;
-  color: #72767d;
-}
-
-.sidebar section.user-status .user-image {
-  background: red;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.sidebar section.user-status .username {
   color: white;
-  cursor: pointer;
 }
 
-.sidebar section.user-status #mic-icon,
-.sidebar section.user-status #headphone-icon,
-.sidebar section.user-status #settings-icon {
+.sidebar section.status .container .icons #disconnect-icon,
+.sidebar section.status .container .icons #mic-icon,
+.sidebar section.status .container .icons #headphone-icon {
   padding: 0.2em 0.3em;
   margin-top: 0.5em;
   cursor: pointer;
   border-radius: 0.2em;
 }
 
-.sidebar section.user-status #mic-icon:hover,
-.sidebar section.user-status #headphone-icon:hover,
-.sidebar section.user-status #settings-icon:hover {
+.sidebar section.status .container .icons #disconnect-icon:hover,
+.sidebar section.status .container .icons #mic-icon:hover,
+.sidebar section.status .container .icons #headphone-icon:hover {
   background: #36393f;
 }
 
 .chat {
   background: #36393f;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .chat ::-webkit-scrollbar {
@@ -301,11 +257,7 @@
 }
 
 .chat section.messages {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  overflow-y: auto;
-  height: 80%;
+  overflow-y: scroll;
 }
 
 .chat section.messages .message {
@@ -353,32 +305,38 @@
   margin-top: 0.5em;
 }
 
-.chat section.send-message-form {
-  position: fixed;
-  bottom: 0;
+.chat section.send-message-section .send-message-form {
+  margin: 1em 2em;
+  margin-top: 0;
+  background: lightgray;
+  border-top: 1px solid gray;
+  border-radius: 5px;
+}
+
+.chat section.send-message-section .send-message-form form {
   width: 100%;
-}
-
-.chat section.send-message-form form {
-  margin: 2em 2em;
-  width: 95%;
-}
-
-.chat section.send-message-form form .form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.chat section.send-message-form form .form-group input {
-  width: 80%;
+.chat section.send-message-section .send-message-form form input {
   padding: 1em;
+  background: transparent;
+  border: none;
+  width: 100%;
+  outline-width: 0;
+  font-size: large;
 }
 
-.chat section.send-message-form form .form-group button {
+.chat section.send-message-section .send-message-form form button {
+  display: none;
   cursor: pointer;
   margin-left: 1em;
   padding: 0.5em 1em;

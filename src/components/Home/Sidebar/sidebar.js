@@ -22,15 +22,13 @@ const Sidebar = (props) => {
         </div>
       </section>
 
-      <section className="voice-connection">
+      {/*<section className="voice-connection">
+        <User />
+  </section>*/}
+
+      <section className="status">
         <VoiceConnection />
       </section>
-
-      <section className="user-status">
-        <User />
-      </section>
-
-
     </div>
   );
 };

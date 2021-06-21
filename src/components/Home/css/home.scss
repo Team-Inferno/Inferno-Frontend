@@ -10,8 +10,8 @@ $chat-primary-color: #36393f;
 
 .sidebar {
   background: $sidebar-primary-color;
-  min-width: 17%;
-  max-width: 17%;
+  min-width: 230px;
+  max-width: 230px;
 
   display: flex;
   flex-direction: column;
@@ -124,87 +124,45 @@ $chat-primary-color: #36393f;
     }
   }
 
-  section.voice-connection {
+  section.status {
     background: $sidebar-secondary-color;
     padding: 0.5em 0.5em;
     border-bottom: 2px solid #26282c;
 
-    .voice-option {
+    .container {
       margin-bottom: 0.3em;
       margin-right: 0.5em;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      align-items: flex-start;
+      justify-content: center;
       .connection-status {
         display: flex;
         color: #4fdc7c;
         font-weight: 600;
-      }
-      .disconnect-icon {
-        cursor: pointer;
-        padding: 0.3em 0.5em;
-        border-radius: 0.2em;
-        color: $sidebar-third-color;
-
-        &:hover {
-          background: $chat-primary-color;
+        p{
+          margin-left: 0.2em;
         }
       }
-    }
-    .stream-option {
-      display: flex;
-      justify-content: space-evenly;
-
-      .video,
-      .screen-share {
+      .icons {
+        margin-top: 0.5em;
+        width: 100%;
         display: flex;
-        padding: 0.5em 1.2em;
-        border-radius: 0.2em;
-        background: $chat-primary-color;
+        justify-content: space-between;
+        align-items: center;
         color: white;
-        cursor: pointer;
-        &:hover {
-          background: #2d2f34;
+
+        #disconnect-icon,
+        #mic-icon,
+        #headphone-icon{
+          padding: 0.2em 0.3em;
+          margin-top: 0.5em;
+          cursor: pointer;
+          border-radius: 0.2em;
+
+          &:hover {
+            background: $chat-primary-color;
+          }
         }
-
-        .icon {
-          margin-right: 0.5em;
-        }
-      }
-    }
-  }
-
-  section.user-status {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background: $sidebar-secondary-color;
-    padding: 0.5em 0.5em;
-    color: $sidebar-third-color;
-
-    .user-image {
-      background: red;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .username {
-      color: white;
-      cursor: pointer;
-    }
-
-    #mic-icon,
-    #headphone-icon,
-    #settings-icon {
-      padding: 0.2em 0.3em;
-      margin-top: 0.5em;
-      cursor: pointer;
-      border-radius: 0.2em;
-
-      &:hover {
-        background: $chat-primary-color;
       }
     }
   }
@@ -224,9 +182,11 @@ $chat-primary-color: #36393f;
     border-radius: 20em;
     height: 2%;
   }
-
   background: $chat-primary-color;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
   section.chat-header {
     padding: 0.8em 0;
     color: white;
@@ -243,10 +203,10 @@ $chat-primary-color: #36393f;
       }
     }
   }
+
   section.messages {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    height: 80%;
+    //flex: 1 1 auto;
+    overflow-y: scroll;
     .message {
       margin: 2em 2em;
       /* border-top: 1px solid white;
@@ -283,23 +243,31 @@ $chat-primary-color: #36393f;
     }
   }
 
-  section.send-message-form {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    form {
-      margin: 2em 2em;
-      width: 95%;
-      .form-group {
+  section.send-message-section {
+    .send-message-form {
+      margin: 1em 2em;
+      margin-top: 0;
+      background: lightgray;
+      border-top: 1px solid gray;
+      border-radius: 5px;
+
+      form {
+        width: 100%;
         display: flex;
         align-items: center;
-        
+        justify-content: space-between;
+
         input {
-          width: 80%;  
-          padding: 1em; 
+          padding: 1em;
+          background: transparent;
+          border: none;
+          width: 100%;
+          outline-width: 0;
+          font-size: large;
         }
         button {
-            cursor: pointer;
+          display: none;
+          cursor: pointer;
           margin-left: 1em;
           padding: 0.5em 1em;
         }

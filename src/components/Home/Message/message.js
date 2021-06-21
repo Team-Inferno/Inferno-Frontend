@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 const Message = (props) => {
   return (
@@ -9,21 +8,16 @@ const Message = (props) => {
         <div className="owner-name">Backbitter0</div>
         <div className="message-date">17/9/2020</div>
         <div className="message-body">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia
-          ipsam iure, quae recusandae nihil, aliquam corporis autem, sequi
-          similique maxime voluptatibus! Beatae reiciendis voluptates aut in.
-          Eaque, earum repellat? Omnis quaerat consectetur vitae. Nobis fuga
-          veniam labore facere quae nulla assumenda quasi delectus dolorem rerum
-          minus natus recusandae accusantium voluptatem voluptas expedita
-          corrupti, est perferendis ullam harum laboriosam facilis ipsum, nam
-          eaque. Quaerat delectus voluptas dignissimos iste debitis beatae,
-          reiciendis ullam error provident animi soluta quibusdam culpa ab.
-          Atque, repellendus.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae beatae
+          est et assumenda nam dolore, eius quasi fuga perspiciatis reiciendis
+          eum dicta, labore illum enim voluptatum officiis mollitia vel minus
+          nisi ipsa illo? Non laborum minus ad aspernatur magnam sapiente
+          eveniet possimus accusantium. Expedita suscipit soluta debitis
+          voluptatibus, optio quae.
         </div>
       </div>
     </div>
   );
-
- }
+};
 
 export default Message;

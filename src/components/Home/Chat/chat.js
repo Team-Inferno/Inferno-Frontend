@@ -17,7 +17,7 @@ const Chat = (props) => {
         <Message/>
         <Message/>
       </section>
-      <section className="send-message-form">
+      <section className="send-message-section">
           <MessageForm/>
       </section>
     </div>

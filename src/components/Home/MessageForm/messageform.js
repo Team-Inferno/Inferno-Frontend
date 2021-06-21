@@ -3,14 +3,14 @@ import SendIcon from "@material-ui/icons/Send";
 import "../css/home.css"
 const MessageForm = (props) => {
   return (
+    <div className="send-message-form">
       <form>
-        <div className="form-group">
-          <input type="text" placeholder="Message#General" />
-          <button id="message-submit-button" type="button">
-            <SendIcon fontSize="small"/>
-          </button>
-        </div>
+        <input type="text" placeholder="Message#General" />
+        <button id="message-submit-button" type="button">
+          <SendIcon fontSize="small" />
+        </button>
       </form>
+    </div>
   );
 
  }

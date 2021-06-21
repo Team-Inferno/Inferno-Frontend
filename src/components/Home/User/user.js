@@ -14,9 +14,9 @@ const User = (props) => {
       <div id="headphone-icon">
         <HeadsetMicIcon fontSize="small" />
       </div>
-      <div id="settings-icon">
+      {/*<div id="settings-icon">
         <SettingsIcon fontSize="small" />
-      </div>
+  </div>*/}
     </>
   );
 
