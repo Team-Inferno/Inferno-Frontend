@@ -1,6 +1,7 @@
 import React from 'react'
 import SendIcon from "@material-ui/icons/Send";
-import "../css/home.css"
+
+
 const MessageForm = (props) => {
   return (
     <div className="send-message-form">

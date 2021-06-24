@@ -2,13 +2,18 @@ $sidebar-primary-color: rgb(47, 49, 54);
 $sidebar-secondary-color: #292b2f;
 $sidebar-third-color: rgb(114, 118, 125);
 $chat-primary-color: #36393f;
+$add-channel-background-color: #36393f;
+$add-channel-input-background-onfocus: #202225;
+$add-channel-input-background: #2f3136;
+$background-disabled-color: #070708cc;
 
-.home {
+#home {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
-.sidebar {
+.left-sidebar {
   background: $sidebar-primary-color;
   min-width: 230px;
   max-width: 230px;
@@ -33,7 +38,7 @@ $chat-primary-color: #36393f;
   section.top-section {
     padding: 0.8em 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     color: white;
     border-bottom: 2px solid #26282c;
@@ -42,23 +47,66 @@ $chat-primary-color: #36393f;
       background: $chat-primary-color;
     }
 
-    p.server-name {
-      display: inline;
-      margin-left: 1.2em;
-      font-weight: 600;
-    }
+    .server-info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p.server-name {
+        display: inline;
+        margin-left: 1.2em;
+        font-weight: 600;
+      }
 
-    .server-expand-icon {
-      margin-right: 0.6em;
+      .top-sidebar-icon {
+        margin-right: 0.6em;
+      }
     }
   }
 
   section.room-section {
+    position: relative;
     flex: 1 1 auto;
     overflow-y: auto;
     height: 0px;
     &:hover::-webkit-scrollbar-thumb {
       background: rgb(32, 32, 32);
+    }
+    .server-dropdown {
+      .dd-wrapper {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        min-width: 210px;
+        max-width: 210px;
+
+        .dd-list {
+          background: #18191c;
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em 0;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0.3em;
+          button.dd-list-item {
+            width: 95%;
+            padding: 0.8em;
+            margin: 0.2em 0.5em;
+            display: block;
+            background: transparent;
+            border: none;
+            color: #b4b6b9;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0.2em;
+            &:hover {
+              background: rgb(91, 91, 243);
+              color: white;
+            }
+          }
+        }
+      }
     }
     .room-list {
       .room {
@@ -83,7 +131,7 @@ $chat-primary-color: #36393f;
             }
           }
 
-          .add-channel {
+          .add-channel-icon {
             cursor: pointer;
             margin-left: auto;
             margin-right: 0.5em;
@@ -133,13 +181,14 @@ $chat-primary-color: #36393f;
       margin-bottom: 0.3em;
       margin-right: 0.5em;
       display: flex;
+      flex-direction: column;
       align-items: flex-start;
       justify-content: center;
       .connection-status {
         display: flex;
         color: #4fdc7c;
         font-weight: 600;
-        p{
+        p {
           margin-left: 0.2em;
         }
       }
@@ -153,7 +202,7 @@ $chat-primary-color: #36393f;
 
         #disconnect-icon,
         #mic-icon,
-        #headphone-icon{
+        #headphone-icon {
           padding: 0.2em 0.3em;
           margin-top: 0.5em;
           cursor: pointer;
@@ -263,13 +312,137 @@ $chat-primary-color: #36393f;
           border: none;
           width: 100%;
           outline-width: 0;
-          font-size: large;
+          font-size: medium;
         }
         button {
           display: none;
           cursor: pointer;
           margin-left: 1em;
           padding: 0.5em 1em;
+        }
+      }
+    }
+  }
+}
+
+//add-channel-popup
+.add-channel-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $background-disabled-color;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .add-channel-container {
+    min-width: 400px;
+    min-height: 500px;
+    max-width: 400px;
+    max-height: 500px;
+    // position: absolute;
+    background: $add-channel-background-color;
+    border-radius: 0.3em;
+    // top: 15%;
+    //left: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+      margin: 1em 1em 2em 1em;
+      display: block;
+      p.main-p {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+      }
+      p.secondary-p {
+        text-align: center;
+        font-size: small;
+        color: white;
+      }
+    }
+
+    .channel-type-input {
+      margin: 0 1em;
+      color: white;
+      #form-label {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: 600;
+      }
+
+      .MuiFormControl-root {
+        width: 100%;
+        .MuiFormLabel-root {
+          color: white;
+        }
+        .Mui-focused {
+          color: white;
+        }
+
+        .MuiRadio-colorSecondary {
+          color: white;
+        }
+        .Mui-checked {
+          color: rgb(102, 102, 194);
+        }
+      }
+      .channel-radio-button {
+        background: $add-channel-input-background;
+        margin: 0.5em 0;
+        padding: 0.2em 0;
+        width: 100%;
+        border-radius: 0.2em;
+
+        &:hover {
+          background: $add-channel-input-background-onfocus;
+        }
+      }
+    }
+    .channel-name-input {
+      margin: 0 1em;
+      label#channel-name-label {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: 600;
+        color: white;
+      }
+      input#channel-name {
+        display: block;
+        margin-top: 0.5em;
+        width: 100%;
+        border-radius: 0.2em;
+        padding: 0.9em 1em;
+        border: none;
+        background: $add-channel-input-background;
+        color: white;
+      }
+    }
+
+    .footer {
+      margin-bottom: 0;
+      background: rgb(47, 49, 54);
+      display: flex;
+      flex-direction: row-reverse;
+      button {
+        padding: 1em 1.5em;
+        border: none;
+        margin: 2em 0.5em;
+        border-radius: 0.2em;
+        cursor: pointer;
+        background: rgb(102, 102, 194);
+        color: white;
+      }
+      button#add-channel-cancel-button {
+        background: transparent;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }

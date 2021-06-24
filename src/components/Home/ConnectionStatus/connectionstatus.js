@@ -4,7 +4,7 @@ import DisconnectIcon from "@material-ui/icons/PhoneDisabled";
 import MicIcon from "@material-ui/icons/Mic";
 import HeadsetMicIcon from "@material-ui/icons/HeadsetMic";
 
-const VoiceConnection = (props) => {
+const ConnectionStatus = (props) => {
   return (
     <>
       <div className="container">
@@ -28,4 +28,4 @@ const VoiceConnection = (props) => {
   );
 };
 
-export default VoiceConnection;
+export default ConnectionStatus;

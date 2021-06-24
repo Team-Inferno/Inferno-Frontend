@@ -2,12 +2,13 @@ $primary-color: #36393f;
 $input-color: #303338;
 $text-color: #8e9297;
 
-.container {
+.auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   flex-direction: column;
+  background: rgb(47, 49, 54);
 
   //only for login page
   .auth-message {
@@ -29,7 +30,7 @@ $text-color: #8e9297;
     width: 35%;
     border-radius: 0.3em;
     h1 {
-      color: white;
+      color: lightgray;
       margin-bottom: 0.5em;
     }
     .form-group {
@@ -50,7 +51,8 @@ $text-color: #8e9297;
         height: 3em;
         width: 100%;
         padding: 0.5em 0.8em;
-        color: white;
+        color: lightgray;
+        font-size: 0.9em;
       }
       span {
         color: red;
@@ -73,6 +75,8 @@ $text-color: #8e9297;
         background: white;
         color: black;
         font-weight: 500;
+        letter-spacing: 0.1em;
+        padding:0.6em 1.2em;
       }
     }
 
@@ -90,6 +94,7 @@ $text-color: #8e9297;
         &:hover {
           text-decoration: underline;
           color: white;
+          font-size: large;
         }
       }
     }

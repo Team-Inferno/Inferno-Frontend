@@ -53,7 +53,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="auth-container">
       {/*if user gets registered and needs to display verification email message from the props*/}
       {props.location.state ? (
         <div className="auth-message">

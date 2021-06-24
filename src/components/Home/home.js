@@ -1,12 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import "./css/home.css";
-import Sidebar from "./Sidebar/sidebar"
-import Chat from "./Chat/chat"
+import LeftSidebar from "./Sidebar/LeftSidebar/sidebar.left";
+import Chat from "./Chat/chat";
+
 const Home = () => {
+  
+
   return (
-    <div className="home">  
-      <Sidebar/>
-      <Chat/>
+    <div id="home">
+      <LeftSidebar />
+      <Chat />
     </div>
   );
 };

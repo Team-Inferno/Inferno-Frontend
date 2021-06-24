@@ -1,11 +1,12 @@
-.home {
+#home {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
-.sidebar {
+.left-sidebar {
   background: #2f3136;
   min-width: 230px;
   max-width: 230px;
@@ -18,22 +19,43 @@
           flex-direction: column;
 }
 
-.sidebar ::-webkit-scrollbar {
+.left-sidebar ::-webkit-scrollbar {
   width: 6px;
 }
 
-.sidebar ::-webkit-scrollbar-track {
+.left-sidebar ::-webkit-scrollbar-track {
   background: #2f3136;
 }
 
-.sidebar ::-webkit-scrollbar-thumb {
+.left-sidebar ::-webkit-scrollbar-thumb {
   background: #2f3136;
   border-radius: 20em;
   height: 95%;
 }
 
-.sidebar section.top-section {
+.left-sidebar section.top-section {
   padding: 0.8em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  border-bottom: 2px solid #26282c;
+}
+
+.left-sidebar section.top-section:hover {
+  cursor: pointer;
+  background: #36393f;
+}
+
+.left-sidebar section.top-section .server-info {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,26 +65,20 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
-  border-bottom: 2px solid #26282c;
 }
 
-.sidebar section.top-section:hover {
-  cursor: pointer;
-  background: #36393f;
-}
-
-.sidebar section.top-section p.server-name {
+.left-sidebar section.top-section .server-info p.server-name {
   display: inline;
   margin-left: 1.2em;
   font-weight: 600;
 }
 
-.sidebar section.top-section .server-expand-icon {
+.left-sidebar section.top-section .server-info .top-sidebar-icon {
   margin-right: 0.6em;
 }
 
-.sidebar section.room-section {
+.left-sidebar section.room-section {
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -70,23 +86,69 @@
   height: 0px;
 }
 
-.sidebar section.room-section:hover::-webkit-scrollbar-thumb {
+.left-sidebar section.room-section:hover::-webkit-scrollbar-thumb {
   background: #202020;
 }
 
-.sidebar section.room-section .room-list .room {
+.left-sidebar section.room-section .server-dropdown .dd-wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  min-width: 210px;
+  max-width: 210px;
+}
+
+.left-sidebar section.room-section .server-dropdown .dd-wrapper .dd-list {
+  background: #18191c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.5em 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 0.3em;
+}
+
+.left-sidebar section.room-section .server-dropdown .dd-wrapper .dd-list button.dd-list-item {
+  width: 95%;
+  padding: 0.8em;
+  margin: 0.2em 0.5em;
+  display: block;
+  background: transparent;
+  border: none;
+  color: #b4b6b9;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.left-sidebar section.room-section .server-dropdown .dd-wrapper .dd-list button.dd-list-item:hover {
+  background: #5b5bf3;
+  color: white;
+}
+
+.left-sidebar section.room-section .room-list .room {
   margin: 1em 0.1em;
   margin-bottom: 1em;
 }
 
-.sidebar section.room-section .room-list .room .header {
+.left-sidebar section.room-section .room-list .room .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #72767d;
 }
 
-.sidebar section.room-section .room-list .room .header .room-name {
+.left-sidebar section.room-section .room-list .room .header .room-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,29 +158,29 @@
   font-size: medium;
 }
 
-.sidebar section.room-section .room-list .room .header .room-name:hover {
+.left-sidebar section.room-section .room-list .room .header .room-name:hover {
   color: white;
 }
 
-.sidebar section.room-section .room-list .room .header .room-name .expand-icon {
+.left-sidebar section.room-section .room-list .room .header .room-name .expand-icon {
   margin-top: 0.1em;
 }
 
-.sidebar section.room-section .room-list .room .header .add-channel {
+.left-sidebar section.room-section .room-list .room .header .add-channel-icon {
   cursor: pointer;
   margin-left: auto;
   margin-right: 0.5em;
 }
 
-.sidebar section.room-section .room-list .room .header .add-channel:hover {
+.left-sidebar section.room-section .room-list .room .header .add-channel-icon:hover {
   color: white;
 }
 
-.sidebar section.room-section .room-list .room .channel-list {
+.left-sidebar section.room-section .room-list .room .channel-list {
   margin: 0.1em 0;
 }
 
-.sidebar section.room-section .room-list .room .channel-list .channel {
+.left-sidebar section.room-section .room-list .room .channel-list .channel {
   margin: 0.1em 0.2em;
   padding: 0.3em 1em;
   display: -webkit-box;
@@ -129,35 +191,39 @@
   cursor: pointer;
 }
 
-.sidebar section.room-section .room-list .room .channel-list .channel .text-channel-icon {
+.left-sidebar section.room-section .room-list .room .channel-list .channel .text-channel-icon {
   margin-top: 0.15em;
 }
 
-.sidebar section.room-section .room-list .room .channel-list .channel .channel-name {
+.left-sidebar section.room-section .room-list .room .channel-list .channel .channel-name {
   margin-left: 0.5em;
   font-weight: 600;
 }
 
-.sidebar section.room-section .room-list .room .channel-list .channel:hover {
+.left-sidebar section.room-section .room-list .room .channel-list .channel:hover {
   background: #36393f;
 }
 
-.sidebar section.room-section .room-list .room .channel-list .channel:hover .channel-name {
+.left-sidebar section.room-section .room-list .room .channel-list .channel:hover .channel-name {
   color: white;
 }
 
-.sidebar section.status {
+.left-sidebar section.status {
   background: #292b2f;
   padding: 0.5em 0.5em;
   border-bottom: 2px solid #26282c;
 }
 
-.sidebar section.status .container {
+.left-sidebar section.status .container {
   margin-bottom: 0.3em;
   margin-right: 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -166,7 +232,7 @@
           justify-content: center;
 }
 
-.sidebar section.status .container .connection-status {
+.left-sidebar section.status .container .connection-status {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,11 +240,11 @@
   font-weight: 600;
 }
 
-.sidebar section.status .container .connection-status p {
+.left-sidebar section.status .container .connection-status p {
   margin-left: 0.2em;
 }
 
-.sidebar section.status .container .icons {
+.left-sidebar section.status .container .icons {
   margin-top: 0.5em;
   width: 100%;
   display: -webkit-box;
@@ -193,18 +259,18 @@
   color: white;
 }
 
-.sidebar section.status .container .icons #disconnect-icon,
-.sidebar section.status .container .icons #mic-icon,
-.sidebar section.status .container .icons #headphone-icon {
+.left-sidebar section.status .container .icons #disconnect-icon,
+.left-sidebar section.status .container .icons #mic-icon,
+.left-sidebar section.status .container .icons #headphone-icon {
   padding: 0.2em 0.3em;
   margin-top: 0.5em;
   cursor: pointer;
   border-radius: 0.2em;
 }
 
-.sidebar section.status .container .icons #disconnect-icon:hover,
-.sidebar section.status .container .icons #mic-icon:hover,
-.sidebar section.status .container .icons #headphone-icon:hover {
+.left-sidebar section.status .container .icons #disconnect-icon:hover,
+.left-sidebar section.status .container .icons #mic-icon:hover,
+.left-sidebar section.status .container .icons #headphone-icon:hover {
   background: #36393f;
 }
 
@@ -332,7 +398,7 @@
   border: none;
   width: 100%;
   outline-width: 0;
-  font-size: large;
+  font-size: medium;
 }
 
 .chat section.send-message-section .send-message-form form button {
@@ -340,5 +406,156 @@
   cursor: pointer;
   margin-left: 1em;
   padding: 0.5em 1em;
+}
+
+.add-channel-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-channel-body .add-channel-container {
+  min-width: 400px;
+  min-height: 500px;
+  max-width: 400px;
+  max-height: 500px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-channel-body .add-channel-container .header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.add-channel-body .add-channel-container .header p.main-p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .header p.secondary-p {
+  text-align: center;
+  font-size: small;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input {
+  margin: 0 1em;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input #form-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root {
+  width: 100%;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .MuiFormLabel-root {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .Mui-focused {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .MuiRadio-colorSecondary {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .Mui-checked {
+  color: #6666c2;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .channel-radio-button {
+  background: #2f3136;
+  margin: 0.5em 0;
+  padding: 0.2em 0;
+  width: 100%;
+  border-radius: 0.2em;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .channel-radio-button:hover {
+  background: #202225;
+}
+
+.add-channel-body .add-channel-container .channel-name-input {
+  margin: 0 1em;
+}
+
+.add-channel-body .add-channel-container .channel-name-input label#channel-name-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-name-input input#channel-name {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 0.2em;
+  padding: 0.9em 1em;
+  border: none;
+  background: #2f3136;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .footer {
+  margin-bottom: 0;
+  background: #2f3136;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.add-channel-body .add-channel-container .footer button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 2em 0.5em;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .footer button#add-channel-cancel-button {
+  background: transparent;
+}
+
+.add-channel-body .add-channel-container .footer button#add-channel-cancel-button:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=home.css.map */
