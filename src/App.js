@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Routes from "./routes/index.route";
 import setTokenInHeader from "./utils/jwt";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user.slice";
+
 
 function App() {
   var dispatch = useDispatch();
