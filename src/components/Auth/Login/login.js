@@ -1,9 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../../redux/user.slice";
 import { setError } from "../../../redux/error.slice";
 import { useHistory } from "react-router-dom";
+import setTokenInHeader from "../../../utils/jwt";
 import qs from "qs";
 import "../css/auth.css";
 const axios = require("axios");
@@ -11,17 +12,16 @@ const axios = require("axios");
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const error = useSelector((state) => {
     return state.errorReducer.error;
   });
 
-  
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
     dispatch(setError(null));
-    console.log("hiiii");
   }, []);
 
   const handleSubmit = (e) => {
@@ -32,13 +32,17 @@ const Login = (props) => {
     });
 
     axios
-      .post("https://infernolive.azurewebsites.net/api/auth/login", data)
+      .post("http://localhost:8080/api/auth/login", data)
       .then((res) => {
+        console.log(res.data);
         const userData = {
           email: res.data.user.email,
           uid: res.data.user._id,
           username: res.data.user.username,
+          servers: res.data.user.servers,
         };
+        localStorage.setItem("jwtToken", res.data.jwt);
+        setTokenInHeader(res.data.jwt);
         dispatch(setUser(userData));
         dispatch(setError(null));
         if (res.data.success) {

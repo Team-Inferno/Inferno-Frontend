@@ -4,7 +4,7 @@ import Message from "./Message/message";
 import MessageForm from "./MessageForm/messageform";
 const Chat = (props) => {
   return (
-    <div className="chat">
+    <div id="chat">
       <section className="chat-header">
         <div className="chat-channel-name">
           <TextIcon fontSize="default" className="text-channel-icon" />

@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-
+import React from "react";
+import ReactDOM from "react-dom";
 
 const Dropdown = (props) => {
-  return (
+  return ReactDOM.createPortal(
     <>
-      <div className="dd-wrapper">
-        <div role="list" className="dd-list">
-          <button className="dd-list-item">Delete Server</button>
-          <button className="dd-list-item">Rename Server</button>
-          <button className="dd-list-item">Leave Server</button>
-          <button className="dd-list-item">Invite People</button>
+      <div className="server-option-dropdown">
+        <div className="dd-wrapper">
+          <div role="list" className="dd-list">
+            <button className="dd-list-item">Delete Server</button>
+            <button className="dd-list-item">Rename Server</button>
+            <button className="dd-list-item">Leave Server</button>
+            <button className="dd-list-item">Invite People</button>
+          </div>
         </div>
       </div>
-    </>
+    </>,
+    document.getElementById("room-section")
   );
 };
 

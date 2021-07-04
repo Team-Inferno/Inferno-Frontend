@@ -35,8 +35,7 @@ $background-disabled-color: #070708cc;
     height: 95%;
   }
 
-  section.top-section {
-    padding: 0.8em 0;
+  section#server-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,24 +46,34 @@ $background-disabled-color: #070708cc;
       background: $chat-primary-color;
     }
 
-    .server-info {
+    .current-server {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      p.server-name {
-        display: inline;
-        margin-left: 1.2em;
-        font-weight: 600;
-      }
+      height: 50px;
 
-      .top-sidebar-icon {
-        margin-right: 0.6em;
+      .current-server-info {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .current-server-name {
+          height: 100%;
+          display: inline;
+          display: flex;
+          align-items: center;
+          p {
+            margin-left: 1.2em;
+            font-weight: 600;
+          }
+        }
+
+        .top-sidebar-icon {
+          margin-right: 0.6em;
+        }
       }
     }
   }
 
-  section.room-section {
+  section#room-section {
     position: relative;
     flex: 1 1 auto;
     overflow-y: auto;
@@ -72,7 +81,37 @@ $background-disabled-color: #070708cc;
     &:hover::-webkit-scrollbar-thumb {
       background: rgb(32, 32, 32);
     }
-    .server-dropdown {
+    .server-list-dropdown {
+      .server-list-container {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        min-width: 220px;
+        max-width: 220px;
+        background: #18191c;
+        color: #b4b6b9;
+        .server-list {
+          .server-list-item {
+            margin: 1em 0.5em;
+            padding: 0.5em 0.5em;
+            list-style: none;
+            border-radius: 0.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            &:hover {
+              background: rgb(91, 91, 243);
+              color: white;
+            }
+
+            .server-list-item-logo{
+              margin-right: 0.2em;
+            }
+          }
+        }
+      }
+    }
+    .server-option-dropdown {
       .dd-wrapper {
         position: absolute;
         top: 10px;
@@ -172,7 +211,7 @@ $background-disabled-color: #070708cc;
     }
   }
 
-  section.status {
+  section#status {
     background: $sidebar-secondary-color;
     padding: 0.5em 0.5em;
     border-bottom: 2px solid #26282c;
@@ -217,7 +256,7 @@ $background-disabled-color: #070708cc;
   }
 }
 
-.chat {
+#chat {
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -244,7 +283,7 @@ $background-disabled-color: #070708cc;
       display: flex;
       font-weight: 600;
       .text-channel-icon {
-        margin-left: 0.6em;
+        margin-left: 1.2em;
         margin-right: 0.5em;
       }
       p {

@@ -1,64 +1,51 @@
-import React, { useState, createRef, useEffect } from "react";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import CloseIcon from "@material-ui/icons/Close";
-import Room from "../../Room/room";
+import React, { useState, useEffect } from "react";
+import RoomList from "../../RoomList/roomlist";
 import ConnectionStatus from "../../ConnectionStatus/connectionstatus";
-import Dropdown from "../../DropDownMenu/dropdown";
+import CurrentServer from "../../Server/server.current";
+import { useSelector, useDispatch } from "react-redux";
+import { setError } from "../../../../redux/error.slice";
+const axios = require("axios");
 
 const LeftSidebar = (props) => {
-  const [isListOpen, setIsListOpen] = useState(false);
+  const [currentServer, setCurrentServer] = useState(null);
 
-  const dropdown = createRef();
-
-  const handleClickOutside = (e) => {
-    if (isListOpen) {
-      setIsListOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", () => {
-      handleClickOutside();
-    });
-    return () => {
-      document.removeEventListener("mousedown", () => handleClickOutside);
-    };
+  const servers = useSelector((state) => {
+    return state.userReducer.servers;
   });
 
-  const handleClick = (event) => {
-    setIsListOpen(!isListOpen);
-  };
+  var currentServerId;
+  if(servers != null){
+    currentServerId = servers[0];
+  }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/server", {
+        params: { server_id: currentServerId },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          dispatch(setError(error.response.data.error));
+        }
+      });
+  }, []);
 
   return (
     <div className="left-sidebar">
-      <section className="top-section">
-        <div className="server-info" onClick={handleClick}>
-          <p className="server-name">Laugh Tales</p>
-          {isListOpen ? (
-            <CloseIcon className="top-sidebar-icon" />
-          ) : (
-            <ExpandMoreIcon className="top-sidebar-icon" />
-          )}
-        </div>
+      <section id="server-section">
+        <CurrentServer />
       </section>
 
-      <section className="room-section">
-        {isListOpen && (
-          <div className="server-dropdown" ref={dropdown}>
-            <Dropdown openList={isListOpen} />
-          </div>
-        )}
-
-        <div className="room-list">
-          <Room />
-          <Room />
-          <Room />
-          <Room />
-          <Room />
-        </div>
+      <section id="room-section">
+        <RoomList />
       </section>
 
-      <section className="status">
+      <section id="status">
         <ConnectionStatus />
       </section>
     </div>

@@ -3,8 +3,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import ShrinkIcon from "@material-ui/icons/ExpandLess";
 import Channel from "./Channel/channel";
-import AddChannel from "../AddChannelPopUp/addchannel";
-import { Hidden } from "@material-ui/core";
+import AddChannel from "../../AddChannelPopUp/addchannel";
 
 const Room = (props) => {
   const [isChannelExpanded, setIsChannelExpanded] = useState(true);

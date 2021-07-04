@@ -8,6 +8,7 @@ export const userSlice = createSlice({
     uid: null,
     username: null,
     email: null,
+    servers: null
   },
   reducers: {
     setUser: (state, action) => {
@@ -15,6 +16,7 @@ export const userSlice = createSlice({
       state.uid = action.payload.uid;
       state.isLoggedIn = !isEmpty(action.payload);
       state.username = action.payload.username;
+      state.servers = action.payload.servers;
     },
   },
 });

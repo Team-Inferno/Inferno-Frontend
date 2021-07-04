@@ -12,6 +12,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
+
+
   const error = useSelector((state) => {
     return state.errorReducer.error;
   });
@@ -21,7 +23,6 @@ const Register = () => {
 
    useEffect(() => {
      dispatch(setError(null));
-     //console.log("hiiii");
    }, []);
 
 
@@ -39,7 +40,7 @@ const Register = () => {
     });
 
     axios
-      .post("https://infernolive.azurewebsites.net/api/auth/register", data)
+      .post("http://localhost:8080/api/auth/register", data)
       .then((res) => {
         if (res.data.success) {
           //console.log(res.data.message);
@@ -56,7 +57,7 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
+    <div className="auth-container">
       <form className="auth-form">
         <h1>Register</h1>
         <div className="form-group">
