@@ -15,17 +15,17 @@ const Routes = (props) => {
   return (
     <Router>
       <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <PrivateRoute exact path="/" component={Home} />
         <div>
           <Header />
-          <Route path="/" exact component={StreamList} />
+          <Route path="/streams" exact component={StreamList} />
           <Route path="/streams/create" exact component={StreamCreate} />
           <Route path="/streams/edit" exact component={StreamEdit} />
           <Route path="/streams/delete" exact component={StreamDelete} />
           <Route path="/streams/show" exact component={StreamShow} />
         </div>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/" component={Home} />
       </Switch>
     </Router>
   );
