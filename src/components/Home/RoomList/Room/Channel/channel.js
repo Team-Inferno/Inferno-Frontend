@@ -9,9 +9,7 @@ import {
 
 
 
-const Channel = (props) => {
-
-  const 
+const Channel = (props) => { 
   
   const dispatch = useDispatch();
 
