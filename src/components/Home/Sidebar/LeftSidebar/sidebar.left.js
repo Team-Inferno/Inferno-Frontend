@@ -3,37 +3,32 @@ import RoomList from "../../RoomList/roomlist";
 import ConnectionStatus from "../../ConnectionStatus/connectionstatus";
 import CurrentServer from "../../Server/server.current";
 import { useSelector, useDispatch } from "react-redux";
-import { setError } from "../../../../redux/error.slice";
+import { setCurrentServer } from "../../../../redux/server.slice";
+
 const axios = require("axios");
 
 const LeftSidebar = (props) => {
-  const [currentServer, setCurrentServer] = useState(null);
-
-  const servers = useSelector((state) => {
-    return state.userReducer.servers;
+  var serverID = useSelector((state) => {
+    return state.serverReducer.currentServerID;
   });
-
-  var currentServerId;
-  if(servers != null){
-    currentServerId = servers[0];
-  }
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/server", {
-        params: { server_id: currentServerId },
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch(setError(error.response.data.error));
-        }
-      });
-  }, []);
+    if (serverID) {
+      axios
+        .get("http://localhost:8080/api/server", {
+          params: { server_id: serverID },
+        })
+        .then((res) => {
+          dispatch(setCurrentServer(res.data));
+        })
+        .catch((error) => {
+          if (error.response) {
+          }
+        });
+    }
+  }, [serverID, dispatch]);
 
   return (
     <div className="left-sidebar">

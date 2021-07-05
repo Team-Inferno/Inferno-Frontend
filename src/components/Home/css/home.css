@@ -137,6 +137,17 @@
   margin-right: 0.2em;
 }
 
+.left-sidebar section#room-section .server-list-dropdown .server-list-container button {
+  width: 95%;
+  padding: 1em 1.5em;
+  border: none;
+  margin: 0.5em;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
 .left-sidebar section#room-section .server-option-dropdown .dd-wrapper {
   position: absolute;
   top: 10px;
@@ -331,6 +342,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #chat ::-webkit-scrollbar {
@@ -371,6 +385,9 @@
 
 #chat section.messages {
   overflow-y: scroll;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #chat section.messages .message {
@@ -420,7 +437,7 @@
 
 #chat section.send-message-section .send-message-form {
   margin: 1em 2em;
-  margin-top: 0;
+  margin-top: auto;
   background: lightgray;
   border-top: 1px solid gray;
   border-radius: 5px;
@@ -603,6 +620,202 @@
 }
 
 .add-channel-body .add-channel-container .footer button#add-channel-cancel-button:hover {
+  text-decoration: underline;
+}
+
+.add-server-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-server-body .add-server-container {
+  min-width: 400px;
+  max-width: 400px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-server-body .add-server-container .header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.add-server-body .add-server-container .header p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+.add-server-body .add-server-container .server-name-input {
+  margin: 0 1em;
+}
+
+.add-server-body .add-server-container .server-name-input label#server-name-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+.add-server-body .add-server-container .server-name-input input#server-name {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 0.2em;
+  padding: 0.9em 1em;
+  border: none;
+  background: #2f3136;
+  color: white;
+}
+
+.add-server-body .add-server-container .button-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.add-server-body .add-server-container .button-area button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 1em 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
+.add-server-body .add-server-container .button-area button#add-server-cancel-button {
+  background: transparent;
+}
+
+.add-server-body .add-server-container .button-area button#add-server-cancel-button:hover {
+  text-decoration: underline;
+}
+
+.add-room-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-room-body .add-room-container {
+  min-width: 400px;
+  max-width: 400px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-room-body .add-room-container .header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.add-room-body .add-room-container .header p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+.add-room-body .add-room-container .room-name-input {
+  margin: 0 1em;
+}
+
+.add-room-body .add-room-container .room-name-input label#room-name-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+.add-room-body .add-room-container .room-name-input input#room-name {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 0.2em;
+  padding: 0.9em 1em;
+  border: none;
+  background: #2f3136;
+  color: white;
+}
+
+.add-room-body .add-room-container .button-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.add-room-body .add-room-container .button-area button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 1em 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
+.add-room-body .add-room-container .button-area button#add-room-cancel-button {
+  background: transparent;
+}
+
+.add-room-body .add-room-container .button-area button#add-room-cancel-button:hover {
   text-decoration: underline;
 }
 /*# sourceMappingURL=home.css.map */

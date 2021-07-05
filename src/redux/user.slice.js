@@ -5,18 +5,16 @@ export const userSlice = createSlice({
   name: "user",
   initialState: {
     isLoggedIn: false,
-    uid: null,
+    _id: null,
     username: null,
     email: null,
-    servers: null
   },
   reducers: {
     setUser: (state, action) => {
       state.email = action.payload.email;
-      state.uid = action.payload.uid;
+      state._id = action.payload.id;
       state.isLoggedIn = !isEmpty(action.payload);
       state.username = action.payload.username;
-      state.servers = action.payload.servers;
     },
   },
 });

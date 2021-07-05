@@ -3,11 +3,23 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CloseIcon from "@material-ui/icons/Close";
 import Dropdown from "../DropDownMenu/dropdown";
 import ServerList from "../ServerList/serverlist";
+import { useSelector } from "react-redux";
+import AddServer from "../AddServerPopUp/addserver";
+import AddRoom from "../AddRoomPopUp/addroom";
 
 const CurrentServer = (props) => {
   const [isOptionListOpen, setIsOptionListOpen] = useState(false);
   const [isServerListOpen, setIsServerListOpen] = useState(false);
+  const [addServerPopUp, setAddServerPopUp] = useState(false);
+  const [addRoomPopUp, setAddRoomPopUp] = useState(false);
 
+  var serverName = useSelector((state) => {
+    var server = state.serverReducer.currentServer;
+    if (server) {
+      return server.server_name;
+    }
+    return "";
+  });
   useEffect(() => {
     document.addEventListener("contextmenu", (e) => {
       //e.preventDefault();
@@ -38,7 +50,6 @@ const CurrentServer = (props) => {
     if (e.type === "click") {
       setIsServerListOpen(!isServerListOpen);
     }
-    console.log("lol");
     e.stopPropagation();
   };
 
@@ -50,7 +61,7 @@ const CurrentServer = (props) => {
       >
         <div className="current-server-info">
           <div className="current-server-name">
-            <p>Laugh Tales</p>
+            <p>{serverName}</p>
           </div>
           {isServerListOpen ? (
             <CloseIcon
@@ -65,8 +76,10 @@ const CurrentServer = (props) => {
           )}
         </div>
       </div>
-      {isOptionListOpen && <Dropdown />}
-      {isServerListOpen && <ServerList />}
+      {isOptionListOpen && <Dropdown popUp={setAddRoomPopUp}/>}
+      {isServerListOpen && <ServerList popUp={setAddServerPopUp} />}
+      {addServerPopUp && <AddServer popUp={setAddServerPopUp} />}
+      {addRoomPopUp && <AddRoom popUp={setAddRoomPopUp} />}
     </>
   );
 };

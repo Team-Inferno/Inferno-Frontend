@@ -1,26 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-const isEmpty = require("is-empty");
 
 export const serverSlice = createSlice({
   name: "server",
   initialState: {
+    subscribedServers: [],
+    currentServerID: null,
     currentServer: null,
-    subscribedServers: []
   },
   reducers: {
-    setServer: (state, action) => {
-      state.email = action.payload.email;
-      state.uid = action.payload.uid;
-      state.isLoggedIn = !isEmpty(action.payload);
-      state.username = action.payload.username;
-      state.servers = action.payload.servers;
-
-      state.currentServer = action.payload.server;
+    setServerList: (state, action) => {
       state.subscribedServers = action.payload.servers;
+    },
+    setCurrentServerID: (state, action) => {
+      state.currentServerID = action.payload.server_id;
+    },
+    setCurrentServer: (state, action) => {
+      state.currentServer = action.payload;
     },
   },
 });
 
-export const { setServer } = serverSlice.actions;
+export const { setServerList, setCurrentServerID, setCurrentServer } =
+  serverSlice.actions;
 
 export default serverSlice.reducer;

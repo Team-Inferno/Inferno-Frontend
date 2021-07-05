@@ -5,6 +5,7 @@ import { setUser } from "../../../redux/user.slice";
 import { setError } from "../../../redux/error.slice";
 import { useHistory } from "react-router-dom";
 import setTokenInHeader from "../../../utils/jwt";
+import jwt_decode from "jwt-decode";
 import qs from "qs";
 import "../css/auth.css";
 const axios = require("axios");
@@ -34,16 +35,11 @@ const Login = (props) => {
     axios
       .post("http://localhost:8080/api/auth/login", data)
       .then((res) => {
-        console.log(res.data);
-        const userData = {
-          email: res.data.user.email,
-          uid: res.data.user._id,
-          username: res.data.user.username,
-          servers: res.data.user.servers,
-        };
+        const decoded = jwt_decode(res.data.jwt);
+        console.log(decoded);
+        dispatch(setUser(decoded));
         localStorage.setItem("jwtToken", res.data.jwt);
         setTokenInHeader(res.data.jwt);
-        dispatch(setUser(userData));
         dispatch(setError(null));
         if (res.data.success) {
           history.push("/");

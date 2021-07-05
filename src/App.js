@@ -5,7 +5,10 @@ import setTokenInHeader from "./utils/jwt";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user.slice";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
+const queryClient = new QueryClient();
 
 function App() {
   var dispatch = useDispatch();
@@ -24,9 +27,11 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <Routes />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="app">
+        <Routes />
+      </div>
+    </QueryClientProvider>
   );
 }
 

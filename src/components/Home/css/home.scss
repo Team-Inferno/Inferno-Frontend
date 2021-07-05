@@ -104,10 +104,20 @@ $background-disabled-color: #070708cc;
               color: white;
             }
 
-            .server-list-item-logo{
+            .server-list-item-logo {
               margin-right: 0.2em;
             }
           }
+        }
+        button {
+          width: 95%;
+        padding: 1em 1.5em;
+        border: none;
+        margin: 0.5em;
+        border-radius: 0.2em;
+        cursor: pointer;
+        background: rgb(102, 102, 194);
+        color: white;
         }
       }
     }
@@ -274,6 +284,7 @@ $background-disabled-color: #070708cc;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   section.chat-header {
     padding: 0.8em 0;
@@ -295,6 +306,7 @@ $background-disabled-color: #070708cc;
   section.messages {
     //flex: 1 1 auto;
     overflow-y: scroll;
+    flex: 1;
     .message {
       margin: 2em 2em;
       /* border-top: 1px solid white;
@@ -334,7 +346,7 @@ $background-disabled-color: #070708cc;
   section.send-message-section {
     .send-message-form {
       margin: 1em 2em;
-      margin-top: 0;
+      margin-top: auto;
       background: lightgray;
       border-top: 1px solid gray;
       border-radius: 5px;
@@ -479,6 +491,161 @@ $background-disabled-color: #070708cc;
         color: white;
       }
       button#add-channel-cancel-button {
+        background: transparent;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+
+.add-server-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $background-disabled-color;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .add-server-container {
+    min-width: 400px;
+    max-width: 400px;
+    // position: absolute;
+    background: $add-channel-background-color;
+    border-radius: 0.3em;
+    // top: 15%;
+    //left: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+      margin: 1em 1em 2em 1em;
+      display: block;
+      p {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+      }
+    }
+
+    .server-name-input {
+      margin: 0 1em;
+      label#server-name-label {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: 600;
+        color: white;
+      }
+      input#server-name {
+        display: block;
+        margin-top: 0.5em;
+        width: 100%;
+        border-radius: 0.2em;
+        padding: 0.9em 1em;
+        border: none;
+        background: $add-channel-input-background;
+        color: white;
+      }
+    }
+
+    .button-area {
+      display: flex;
+      flex-direction: row;
+      button {
+        padding: 1em 1.5em;
+        border: none;
+        margin: 1em 0;
+        border-radius: 0.2em;
+        cursor: pointer;
+        background: rgb(102, 102, 194);
+        color: white;
+      }
+      button#add-server-cancel-button {
+        background: transparent;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.add-room-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $background-disabled-color;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .add-room-container {
+    min-width: 400px;
+    max-width: 400px;
+    // position: absolute;
+    background: $add-channel-background-color;
+    border-radius: 0.3em;
+    // top: 15%;
+    //left: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+      margin: 1em 1em 2em 1em;
+      display: block;
+      p {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+      }
+    }
+
+    .room-name-input {
+      margin: 0 1em;
+      label#room-name-label {
+        text-transform: uppercase;
+        font-size: small;
+        font-weight: 600;
+        color: white;
+      }
+      input#room-name {
+        display: block;
+        margin-top: 0.5em;
+        width: 100%;
+        border-radius: 0.2em;
+        padding: 0.9em 1em;
+        border: none;
+        background: $add-channel-input-background;
+        color: white;
+      }
+    }
+
+    .button-area {
+      display: flex;
+      flex-direction: row;
+      button {
+        padding: 1em 1.5em;
+        border: none;
+        margin: 1em 0;
+        border-radius: 0.2em;
+        cursor: pointer;
+        background: rgb(102, 102, 194);
+        color: white;
+      }
+      button#add-room-cancel-button {
         background: transparent;
         &:hover {
           text-decoration: underline;

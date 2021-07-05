@@ -4,7 +4,6 @@ import PrivateRoute from './private.route';
 import Login from "../components/Auth/Login/login";
 import Register from "../components/Auth/Register/register";
 import Home from "../components/Home/home";
-import Landing from '../components/Landing/Landing';
 
 const Routes = (props) => {
   return (
@@ -12,7 +11,7 @@ const Routes = (props) => {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/" component={Landing} />
+        <PrivateRoute exact path="/" component={Home} />
       </Switch>
     </Router>
   );

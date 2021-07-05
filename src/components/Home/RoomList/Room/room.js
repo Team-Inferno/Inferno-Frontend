@@ -9,13 +9,11 @@ const Room = (props) => {
   const [isChannelExpanded, setIsChannelExpanded] = useState(true);
   const [addChannelPopUp, setAddChannelPopUp] = useState(false);
 
+  
   const roomExpandHandle = () => {
     setIsChannelExpanded(!isChannelExpanded);
   };
 
-  const showAddChannelPopUp = () => {
-    setAddChannelPopUp(!addChannelPopUp);
-  };
 
   return (
     <div className="room">
@@ -26,20 +24,33 @@ const Room = (props) => {
           ) : (
             <ShrinkIcon className="expand-icon" fontSize="small" />
           )}
-          <p>General</p>
+          <p>{props.props ? props.props.room_name : ""}</p>
         </div>
-        <div className="add-channel-icon" onClick={() => showAddChannelPopUp()}>
+        <div className="add-channel-icon" onClick={() => setAddChannelPopUp(!addChannelPopUp)}>
           <AddIcon fontSize="default" />
         </div>
       </div>
       {isChannelExpanded && (
         <div className="channel-list">
-          <Channel />
-          <Channel />
-          <Channel />
+          <ul>
+            {props.props
+              ? props.props.channels.map((channel) => {
+                  return (
+                    <li key={channel._id}>
+                      <Channel props={channel} />
+                    </li>
+                  );
+                })
+              : null}
+          </ul>
         </div>
       )}
-      {addChannelPopUp && <AddChannel popUp={setAddChannelPopUp} />}
+      {addChannelPopUp && (
+        <AddChannel
+          popUp={setAddChannelPopUp}
+          room={props.props}
+        />
+      )}
     </div>
   );
 };
