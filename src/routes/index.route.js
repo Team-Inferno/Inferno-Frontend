@@ -9,20 +9,23 @@ import StreamEdit from '../components/streams/StreamEdit';
 import StreamDelete from '../components/streams/StreamDelete';
 import StreamList from '../components/streams/StreamList';
 import StreamShow from '../components/streams/StreamShow';
+import Header from '../components/Header';
 
 const Routes = (props) => {
   return (
     <Router>
       <Switch>
+        <div>
+          <Header />
+          <Route path="/" exact component={StreamList} />
+          <Route path="/streams/create" exact component={StreamCreate} />
+          <Route path="/streams/edit" exact component={StreamEdit} />
+          <Route path="/streams/delete" exact component={StreamDelete} />
+          <Route path="/streams/show" exact component={StreamShow} />
+        </div>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/" component={Home} />
-        
-        <Route path="/streams" exact component={StreamList} />
-        <Route path="/streams/delete" exact component={StreamDelete} />
-        <Route path="/streams/show" exact component={StreamShow} />
-        <Route path="/streams/edit" exact component={StreamEdit} />
-        <Route path="/streams/create" exact component={StreamCreate} />
       </Switch>
     </Router>
   );
