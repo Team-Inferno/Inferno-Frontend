@@ -33,20 +33,20 @@ const AddRoom = (props) => {
 
   return ReactDOM.createPortal(
     <>
-      <div className="add-room-body" onClick={() => props.popUp(false)}>
+      <div className="popup-body" onClick={() => props.popUp(false)}>
         <div
-          className="add-room-container"
+          className="popup-container"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="header">
+          <div className="popup-header">
             <p>Create Room</p>
           </div>
-          <div className="room-name-input">
-            <label id="room-name-label" htmlFor="room-name">
+          <div className="popup-input">
+            <label id="popup-label" htmlFor="room-name">
               Room Name
             </label>
             <input
-              id="room-name"
+              id="popup-name"
               type="text"
               value={roomName}
               onChange={(e) => setRoomName(e.target.value)}
@@ -56,7 +56,7 @@ const AddRoom = (props) => {
                 Create Room
               </button>
               <button
-                id="add-room-cancel-button"
+                id="popup-cancel-button"
                 onClick={() => props.popUp(false)}
               >
                 Cancel

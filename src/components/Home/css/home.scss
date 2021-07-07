@@ -36,6 +36,7 @@ $background-disabled-color: #070708cc;
   }
 
   section#server-section {
+    z-index: 2; //dont change this value..
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,34 +47,41 @@ $background-disabled-color: #070708cc;
       background: $chat-primary-color;
     }
 
-    .current-server {
+    .server-details {
       width: 100%;
-      height: 50px;
+      .react-contextmenu-wrapper {
+        width: 100%;
+        .current-server {
+          width: 100%;
+          height: 50px;
 
-      .current-server-info {
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .current-server-name {
-          height: 100%;
-          display: inline;
-          display: flex;
-          align-items: center;
-          p {
-            margin-left: 1.2em;
-            font-weight: 600;
+          .current-server-info {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .current-server-name {
+              height: 100%;
+              display: inline;
+              display: flex;
+              align-items: center;
+              p {
+                margin-left: 1.2em;
+                font-weight: 600;
+              }
+            }
+
+            .top-sidebar-icon {
+              margin-right: 0.6em;
+            }
           }
-        }
-
-        .top-sidebar-icon {
-          margin-right: 0.6em;
         }
       }
     }
   }
 
   section#room-section {
+    z-index: 1;
     position: relative;
     flex: 1 1 auto;
     overflow-y: auto;
@@ -111,49 +119,13 @@ $background-disabled-color: #070708cc;
         }
         button {
           width: 95%;
-        padding: 1em 1.5em;
-        border: none;
-        margin: 0.5em;
-        border-radius: 0.2em;
-        cursor: pointer;
-        background: rgb(102, 102, 194);
-        color: white;
-        }
-      }
-    }
-    .server-option-dropdown {
-      .dd-wrapper {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        min-width: 210px;
-        max-width: 210px;
-
-        .dd-list {
-          background: #18191c;
-          display: flex;
-          flex-direction: column;
-          padding: 0.5em 0;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0.3em;
-          button.dd-list-item {
-            width: 95%;
-            padding: 0.8em;
-            margin: 0.2em 0.5em;
-            display: block;
-            background: transparent;
-            border: none;
-            color: #b4b6b9;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 0.2em;
-            &:hover {
-              background: rgb(91, 91, 243);
-              color: white;
-            }
-          }
+          padding: 1em 1.5em;
+          border: none;
+          margin: 0.5em;
+          border-radius: 0.2em;
+          cursor: pointer;
+          background: rgb(102, 102, 194);
+          color: white;
         }
       }
     }
@@ -266,7 +238,9 @@ $background-disabled-color: #070708cc;
   }
 }
 
+
 #chat {
+  
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -285,6 +259,19 @@ $background-disabled-color: #070708cc;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .no-channel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p{
+      color:rgb(114, 118, 125);
+      font-size: 2em;
+    }
+  }
 
   section.chat-header {
     padding: 0.8em 0;
@@ -501,7 +488,8 @@ $background-disabled-color: #070708cc;
 }
 
 
-.add-server-body {
+
+.popup-body {
   min-width: 100vw;
   min-height: 100vh;
   position: absolute;
@@ -513,7 +501,7 @@ $background-disabled-color: #070708cc;
   align-items: center;
   justify-content: center;
 
-  .add-server-container {
+  .popup-container {
     min-width: 400px;
     max-width: 400px;
     // position: absolute;
@@ -525,7 +513,7 @@ $background-disabled-color: #070708cc;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .header {
+    .popup-header {
       margin: 1em 1em 2em 1em;
       display: block;
       p {
@@ -536,15 +524,15 @@ $background-disabled-color: #070708cc;
       }
     }
 
-    .server-name-input {
+    .popup-input {
       margin: 0 1em;
-      label#server-name-label {
+      label#popup-label {
         text-transform: uppercase;
         font-size: small;
         font-weight: 600;
         color: white;
       }
-      input#server-name {
+      input#popup-name {
         display: block;
         margin-top: 0.5em;
         width: 100%;
@@ -568,7 +556,7 @@ $background-disabled-color: #070708cc;
         background: rgb(102, 102, 194);
         color: white;
       }
-      button#add-server-cancel-button {
+      button#popup-cancel-button {
         background: transparent;
         &:hover {
           text-decoration: underline;
@@ -578,79 +566,48 @@ $background-disabled-color: #070708cc;
   }
 }
 
-.add-room-body {
-  min-width: 100vw;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: $background-disabled-color;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.context {
+  .context-wrapper {
+    position: absolute;
+    min-width: 210px;
+    max-width: 210px;
 
-  .add-room-container {
-    min-width: 400px;
-    max-width: 400px;
-    // position: absolute;
-    background: $add-channel-background-color;
-    border-radius: 0.3em;
-    // top: 15%;
-    //left: 40%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .header {
-      margin: 1em 1em 2em 1em;
-      display: block;
-      p {
-        text-align: center;
-        font-size: 2em;
-        font-weight: bold;
-        color: white;
-      }
-    }
-
-    .room-name-input {
-      margin: 0 1em;
-      label#room-name-label {
-        text-transform: uppercase;
-        font-size: small;
-        font-weight: 600;
-        color: white;
-      }
-      input#room-name {
-        display: block;
-        margin-top: 0.5em;
-        width: 100%;
-        border-radius: 0.2em;
-        padding: 0.9em 1em;
-        border: none;
-        background: $add-channel-input-background;
-        color: white;
-      }
-    }
-
-    .button-area {
+    .context-list {
+      background: #18191c;
       display: flex;
-      flex-direction: row;
-      button {
-        padding: 1em 1.5em;
-        border: none;
-        margin: 1em 0;
-        border-radius: 0.2em;
-        cursor: pointer;
-        background: rgb(102, 102, 194);
-        color: white;
-      }
-      button#add-room-cancel-button {
+      flex-direction: column;
+      padding: 0.5em 0;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.3em;
+      button.context-list-item {
+        width: 95%;
+        padding: 0.8em;
+        margin: 0.2em 0.5em;
+        display: block;
         background: transparent;
+        border: none;
+        color: #b4b6b9;
+        font-size: 0.9em;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 0.2em;
         &:hover {
-          text-decoration: underline;
+          background: rgb(91, 91, 243);
+          color: white;
+        }
+      }
+      button.button-danger {
+        margin-top: 0.5em;
+        &:hover {
+          background: rgb(233, 71, 71);
+          color: white;
         }
       }
     }
   }
+}
+
+.react-contextmenu-item {
+  width: 95%;
 }

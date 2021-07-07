@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-const AddServer = (props) => {
+const ServerRenameForm = (props) => {
   const [serverName, setServerName] = useState("");
 
-  const submitAddServer = (e) => {
+  const server_id = useSelector((state) => {
+    return state.serverReducer.currentServer._id;
+  });
+
+  const submit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/server/new/server", null, {
+      .post("http://localhost:8080/api/server/rename/server", null, {
         params: {
           server_name: serverName,
+          server_id: server_id,
         },
       })
       .then((res) => {
@@ -33,7 +39,7 @@ const AddServer = (props) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="popup-header">
-            <p>Create Server</p>
+            <p>Rename Server</p>
           </div>
           <div className="popup-input">
             <label id="popup-label" htmlFor="server-name">
@@ -46,11 +52,8 @@ const AddServer = (props) => {
               onChange={(e) => setServerName(e.target.value)}
             />
             <div className="button-area">
-              <button
-                onClick={(e) => submitAddServer(e)}
-                id="create-server-button"
-              >
-                Create Server
+              <button onClick={(e) => submit(e)} id="create-server-button">
+                Rename Server
               </button>
               <button
                 id="popup-cancel-button"
@@ -67,4 +70,4 @@ const AddServer = (props) => {
   );
 };
 
-export default AddServer;
+export default ServerRenameForm;

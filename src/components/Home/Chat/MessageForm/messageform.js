@@ -1,15 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
 import SendIcon from "@material-ui/icons/Send";
+const axios = require("axios");
 
 
 const MessageForm = (props) => {
+  const [message, setMessage] = useState("");
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(message);
+  }
+    
+    
+
   return (
     <div className="send-message-form">
-      <form>
-        <input type="text" placeholder="Message#General" />
-        <button id="message-submit-button" type="button">
-          <SendIcon fontSize="small" />
-        </button>
+      <form onSubmit={e=> submitForm(e)}>
+        <input type="text" placeholder="Message#General" value={message} onChange={e=> setMessage(e.target.value)}/>     
       </form>
     </div>
   );

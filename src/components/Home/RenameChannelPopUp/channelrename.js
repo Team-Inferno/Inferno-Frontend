@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-const AddServer = (props) => {
-  const [serverName, setServerName] = useState("");
+const ChannelRenameForm = (props) => {
+  const [channelName, setChannelName] = useState("");
 
-  const submitAddServer = (e) => {
+  const server_id = useSelector((state) => {
+    return state.serverReducer.currentServer._id;
+  });
+
+  const submit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/server/new/server", null, {
+      .post("http://localhost:8080/api/server/rename/channel", null, {
         params: {
-          server_name: serverName,
+          channel_name: channelName,
+          server_id: server_id,
+          room_id: props.roomID,
+          channel_id: props.channelID
         },
       })
       .then((res) => {
@@ -28,29 +36,23 @@ const AddServer = (props) => {
   return ReactDOM.createPortal(
     <>
       <div className="popup-body" onClick={() => props.popUp(false)}>
-        <div
-          className="popup-container"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="popup-container" onClick={(e) => e.stopPropagation()}>
           <div className="popup-header">
-            <p>Create Server</p>
+            <p>Rename Channel</p>
           </div>
           <div className="popup-input">
-            <label id="popup-label" htmlFor="server-name">
-              Server Name
+            <label id="popup-label" htmlFor="room-name">
+              channel-name
             </label>
             <input
               id="popup-name"
               type="text"
-              value={serverName}
-              onChange={(e) => setServerName(e.target.value)}
+              value={channelName}
+              onChange={(e) => setChannelName(e.target.value)}
             />
             <div className="button-area">
-              <button
-                onClick={(e) => submitAddServer(e)}
-                id="create-server-button"
-              >
-                Create Server
+              <button onClick={(e) => submit(e)} id="create-channel-button">
+                Rename Channel
               </button>
               <button
                 id="popup-cancel-button"
@@ -67,4 +69,4 @@ const AddServer = (props) => {
   );
 };
 
-export default AddServer;
+export default ChannelRenameForm;

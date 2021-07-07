@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-const AddServer = (props) => {
-  const [serverName, setServerName] = useState("");
+const RoomRenameForm = (props) => {
+  const [roomName, setRoomName] = useState("");
 
-  const submitAddServer = (e) => {
+  const server_id = useSelector((state) => {
+    return state.serverReducer.currentServer._id;
+  });
+
+  const submit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/server/new/server", null, {
+      .post("http://localhost:8080/api/server/rename/room", null, {
         params: {
-          server_name: serverName,
+          room_name: roomName,
+          server_id: server_id,
+          room_id: props.roomID
         },
       })
       .then((res) => {
-        console.log(res);
         if (!res.data.error) {
           props.popUp(false);
         }
@@ -33,24 +39,21 @@ const AddServer = (props) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="popup-header">
-            <p>Create Server</p>
+            <p>Rename Room</p>
           </div>
           <div className="popup-input">
-            <label id="popup-label" htmlFor="server-name">
-              Server Name
+            <label id="popup-label" htmlFor="room-name">
+              Room Name
             </label>
             <input
               id="popup-name"
               type="text"
-              value={serverName}
-              onChange={(e) => setServerName(e.target.value)}
+              value={roomName}
+              onChange={(e) => setRoomName(e.target.value)}
             />
             <div className="button-area">
-              <button
-                onClick={(e) => submitAddServer(e)}
-                id="create-server-button"
-              >
-                Create Server
+              <button onClick={(e) => submit(e)} id="popup-button">
+                Rename Room
               </button>
               <button
                 id="popup-cancel-button"
@@ -67,4 +70,4 @@ const AddServer = (props) => {
   );
 };
 
-export default AddServer;
+export default RoomRenameForm;

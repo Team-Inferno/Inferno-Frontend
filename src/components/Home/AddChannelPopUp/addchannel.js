@@ -30,7 +30,6 @@ const AddChannel = (props) => {
         },
       })
       .then((res) => {
-        console.log(res);
         if(!res.data.error){
           props.popUp(false);
         }
