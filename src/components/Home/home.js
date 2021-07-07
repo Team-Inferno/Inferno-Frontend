@@ -23,8 +23,9 @@ const Home = () => {
         params: { user_id: user_id },
       })
       .then((res) => {
-        dispatch(setServerList(res.data));
-        dispatch(setCurrentServerID(res.data.servers[0]));
+        console.log(res.data);
+        dispatch(setServerList(res.data.servers));
+        dispatch(setCurrentServerID(res.data.servers[0].server_id));
       })
       .catch((error) => {
         if (error.response) {
@@ -32,18 +33,12 @@ const Home = () => {
         }
       });
 
-    socket.emit("user-update", user_id);
-
     socket.on("connect", () => {
       socket.send("hi from client");
     });
 
-    socket.on("insertServer", (server) => {
-      //console.log(server.members);
-      //const newServer = {server_id: server._id, server_name:server.server_name}
-      //dispatch(setServerList({...serverList,newServer}));
-    });
-  }, [user_id, dispatch]);
+  
+  }, [user_id]);
 
   return (
     <div id="home">

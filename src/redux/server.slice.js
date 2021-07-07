@@ -9,10 +9,10 @@ export const serverSlice = createSlice({
   },
   reducers: {
     setServerList: (state, action) => {
-      state.subscribedServers = action.payload.servers;
+      state.subscribedServers = action.payload;
     },
     setCurrentServerID: (state, action) => {
-      state.currentServerID = action.payload.server_id;
+      state.currentServerID = action.payload;
     },
     setCurrentServer: (state, action) => {
       state.currentServer = action.payload;

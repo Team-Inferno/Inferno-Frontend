@@ -17,7 +17,7 @@ const ServerList = (props) => {
         <div className="server-list-container">
           <div className="server-list">
             <ul>
-              {serverList.map((item) => {
+              {serverList && serverList.map((item) => {
                 return (
                   <li
                     className="server-list-item"

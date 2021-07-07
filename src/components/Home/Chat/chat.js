@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
-import Message from "./Message/message";
 import MessageForm from "./MessageForm/messageform";
 import { useSelector, useDispatch } from "react-redux";
+import io from "socket.io-client";
+import MessageList from "./messageList";
+import Message from "./Message/message";
+const axios = require("axios");
 
 const Chat = (props) => {
   const [messageList, setMessageList] = useState([]);
@@ -11,9 +14,34 @@ const Chat = (props) => {
     return state.channelReducer.currentTextChannel;
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (textChannel) {
+      const socket = io(`http://localhost:9090`);
+      socket.emit("text-message", textChannel._id);
+
+      socket.on("new-conversation", (conversation) => {
+        setMessageList((messageList) => [...messageList, conversation]);
+      });
+
+      axios
+        .get("http://localhost:8080/api/conversation/", {
+          params: {
+            channel_id: textChannel._id,
+          },
+        })
+        .then((res) => {
+          setMessageList([...messageList.concat(res.data)]);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response);
+          }
+        });
+    }
+  }, [textChannel]);
 
   if (textChannel) {
+    console.log(messageList);
     return (
       <div id="chat">
         <section className="chat-header">
@@ -22,15 +50,19 @@ const Chat = (props) => {
             <p>{textChannel.channel_name}</p>
           </div>
         </section>
+
         <section className="messages">
-          {messageList.map((message) => {
-            return (
-              <li key={message._id}>
-                <Message props={message} />
-              </li>
-            );
-          })}
+          <ul>
+            {messageList.map((message) => {
+              return (
+                <li key={message._id}>
+                  <Message message={message} />
+                </li>
+              );
+            })}
+          </ul>
         </section>
+
         <section className="send-message-section">
           <MessageForm />
         </section>

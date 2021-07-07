@@ -4,17 +4,29 @@ import ServerList from "../../ServerList/serverlist";
 import ConnectionStatus from "../../ConnectionStatus/connectionstatus";
 import CurrentServer from "../../Server/server.current";
 import { useSelector, useDispatch } from "react-redux";
-import AddServer from "../../AddServerPopUp/addserver"
-import { setCurrentServer } from "../../../../redux/server.slice";
+import AddServer from "../../AddServerPopUp/addserver";
+import {
+  setCurrentServer,
+  setServerList,
+  setCurrentServerID,
+} from "../../../../redux/server.slice";
 import io from "socket.io-client";
 const axios = require("axios");
 
 const LeftSidebar = (props) => {
   const [isServerListOpen, setIsServerListOpen] = useState(false);
   const [addServerPopUp, setAddServerPopUp] = useState(false);
-  
+
+  const user_id = useSelector((state) => {
+    return state.userReducer._id;
+  });
+
   const currentServerID = useSelector((state) => {
     return state.serverReducer.currentServerID;
+  });
+
+  const subscribedServer = useSelector((state) => {
+    return state.serverReducer.subscribedServers;
   });
 
   const dispatch = useDispatch();
@@ -40,13 +52,26 @@ const LeftSidebar = (props) => {
         console.log(server);
         dispatch(setCurrentServer(server));
       });
+
+      socket.emit("new-server-added", user_id);
+
+      socket.on("server-added", (server) => {
+        console.log([...subscribedServer, server]);
+        dispatch(setServerList([...subscribedServer, server]));
+        dispatch(setCurrentServerID(server.server_id));
+      });
     }
-  }, [currentServerID, dispatch]);
+
+    
+  }, [currentServerID]);
 
   return (
     <div className="left-sidebar">
       <section id="server-section">
-        <CurrentServer openList={isServerListOpen}  setOpenList={setIsServerListOpen} />
+        <CurrentServer
+          openList={isServerListOpen}
+          setOpenList={setIsServerListOpen}
+        />
         {isServerListOpen && <ServerList popUp={setAddServerPopUp} />}
         {addServerPopUp && <AddServer popUp={setAddServerPopUp} />}
       </section>

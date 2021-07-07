@@ -15,13 +15,12 @@ const AddServer = (props) => {
         },
       })
       .then((res) => {
-        console.log(res);
         if (!res.data.error) {
           props.popUp(false);
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error.response);
       });
   };
 
