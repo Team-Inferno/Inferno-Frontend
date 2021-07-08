@@ -159,6 +159,24 @@
   color: white;
 }
 
+.left-sidebar section#room-section .room-list {
+  height: 100%;
+}
+
+.left-sidebar section#room-section .room-list .empty-room-message {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #72767d;
+}
+
 .left-sidebar section#room-section .room-list .room {
   margin: 1em 0.1em;
   margin-bottom: 1em;

@@ -29,7 +29,7 @@ const Chat = (props) => {
           },
         })
         .then((res) => {
-          setMessageList([...messageList.concat(res.data)]);
+          setMessageList([...res.data]);
         })
         .catch((error) => {
           if (error.response) {
@@ -52,7 +52,7 @@ const Chat = (props) => {
 
         <section className="messages">
           <ul>
-            {messageList.map((message) => {
+            {messageList && messageList.map((message) => {
               return (
                 <li key={message._id}>
                   <Message message={message} />

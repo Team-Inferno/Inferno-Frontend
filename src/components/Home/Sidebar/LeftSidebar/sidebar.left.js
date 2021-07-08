@@ -43,8 +43,7 @@ const LeftSidebar = (props) => {
           dispatch(setCurrentServer(res.data));
         })
         .catch((error) => {
-          if (error.response) {
-          }
+          console.log(error.response);
         });
 
       socket.emit("server-update", currentServerID);
@@ -53,17 +52,25 @@ const LeftSidebar = (props) => {
         dispatch(setCurrentServer(server));
       });
 
-      socket.emit("new-server-added", user_id);
-
-      socket.on("server-added", (server) => {
-        console.log([...subscribedServer, server]);
-        dispatch(setServerList([...subscribedServer, server]));
-        dispatch(setCurrentServerID(server.server_id));
+      socket.emit("delete-server", user_id);
+      socket.on("server-deleted", (serverList) => {
+        if (serverList.length > 0) {
+          dispatch(setCurrentServerID(serverList[0].server_id));
+        } else {
+          dispatch(setCurrentServerID(null));
+        }
+        dispatch(setServerList(serverList));
+        dispatch(setCurrentServer(null));
       });
     }
 
-    
-  }, [currentServerID]);
+    socket.emit("new-server-added", user_id);
+    socket.on("server-added", (server) => {
+      console.log([...subscribedServer, server]);
+      dispatch(setServerList([...subscribedServer, server]));
+      dispatch(setCurrentServerID(server.server_id));
+    });
+  }, [currentServerID, subscribedServer]);
 
   return (
     <div className="left-sidebar">
@@ -72,12 +79,17 @@ const LeftSidebar = (props) => {
           openList={isServerListOpen}
           setOpenList={setIsServerListOpen}
         />
-        {isServerListOpen && <ServerList popUp={setAddServerPopUp} listOpen={setIsServerListOpen}/>}
+        {isServerListOpen && (
+          <ServerList
+            popUp={setAddServerPopUp}
+            listOpen={setIsServerListOpen}
+          />
+        )}
         {addServerPopUp && <AddServer popUp={setAddServerPopUp} />}
       </section>
 
       <section id="room-section">
-        <RoomList currentServerID={currentServerID}/>
+        <RoomList currentServerID={currentServerID} />
       </section>
 
       <section id="status">

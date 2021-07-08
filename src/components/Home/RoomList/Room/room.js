@@ -92,6 +92,7 @@ const Room = (props) => {
                         channel={channel}
                         roomID={props.room._id}
                         channelID={props.currentServerID}
+                        currentServerID={props.currentServerID}
                       />
                     </li>
                   );

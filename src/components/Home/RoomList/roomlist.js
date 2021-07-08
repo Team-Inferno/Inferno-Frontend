@@ -15,14 +15,19 @@ const RoomList = (props) => {
     <>
       <div className="room-list">
         <ul>
-          {rooms.map((room) => {
+          {rooms && rooms.map((room) => {
             return (
               <li key={room._id}>
-                <Room room={room} currentServerID={props.currentServerID}/>
+                <Room room={room} currentServerID={props.currentServerID} />
               </li>
             );
           })}
         </ul>
+        {rooms && rooms.length === 0 && (
+          <div className="empty-room-message">
+            <p>Create Room Based on topics</p>
+          </div>
+        )}
       </div>
     </>
   );

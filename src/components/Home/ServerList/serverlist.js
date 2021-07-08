@@ -13,7 +13,7 @@ const ServerList = (props) => {
 
   const selectServer = (e,server) => {
     e.preventDefault();
-    dispatch(setCurrentServerID(server));
+    dispatch(setCurrentServerID(server.server_id));
     props.listOpen(false);
   }
 
