@@ -10,6 +10,7 @@ import {
   setServerList,
   setCurrentServerID,
 } from "../../../../redux/server.slice";
+import {setCurrentTextChannel,setCurrentVoiceChannel} from "../../../../redux/server.slice"
 import io from "socket.io-client";
 const axios = require("axios");
 
@@ -40,7 +41,10 @@ const LeftSidebar = (props) => {
           params: { server_id: currentServerID },
         })
         .then((res) => {
+          console.log("new server loaded");
           dispatch(setCurrentServer(res.data));
+          dispatch(setCurrentTextChannel(null))
+          dispatch(setCurrentVoiceChannel(null))
         })
         .catch((error) => {
           console.log(error.response);
@@ -70,6 +74,10 @@ const LeftSidebar = (props) => {
       dispatch(setServerList([...subscribedServer, server]));
       dispatch(setCurrentServerID(server.server_id));
     });
+
+    return () => {
+      socket.disconnect();
+    };
   }, [currentServerID, subscribedServer]);
 
   return (

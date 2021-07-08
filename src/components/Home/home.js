@@ -37,7 +37,9 @@ const Home = () => {
       socket.send("hi from client");
     });
 
-  
+  return () => {
+    socket.disconnect();
+  };
   }, [user_id]);
 
   return (

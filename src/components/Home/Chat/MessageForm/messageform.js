@@ -31,7 +31,7 @@ const MessageForm = (props) => {
           sender_name: sender_name,
         },
       })
-      .then((res) => {})
+      .then((res) => {console.log(res.data)})
       .catch((error) => {
         if (error.response) {
           console.log(error.response);

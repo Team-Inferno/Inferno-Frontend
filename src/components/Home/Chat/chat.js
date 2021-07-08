@@ -19,6 +19,7 @@ const Chat = (props) => {
       socket.emit("text-message", textChannel._id);
 
       socket.on("new-conversation", (conversation) => {
+        console.log("message arrived");
         setMessageList((messageList) => [...messageList, conversation]);
       });
 
@@ -36,8 +37,14 @@ const Chat = (props) => {
             console.log(error.response);
           }
         });
+
+        return () => {
+          socket.disconnect();
+        }
     }
   }, [textChannel]);
+
+ 
 
   if (textChannel) {
     console.log(messageList);
