@@ -10,7 +10,10 @@ import {
   setServerList,
   setCurrentServerID,
 } from "../../../../redux/server.slice";
-import {setCurrentTextChannel,setCurrentVoiceChannel} from "../../../../redux/server.slice"
+import {
+  setCurrentTextChannel,
+  setCurrentVoiceChannel,
+} from "../../../../redux/channel.slice";
 import io from "socket.io-client";
 const axios = require("axios");
 
