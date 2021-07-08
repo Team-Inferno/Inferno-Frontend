@@ -38,7 +38,7 @@ const CurrentServer = (props) => {
         <div className="current-server">
           <div className="current-server-info">
             <div className="current-server-name">
-              <p>{currentServer.server_name}</p>
+              <p>{currentServer && currentServer.server_name}</p>
             </div>
             {props.openList ? (
               <CloseIcon
@@ -66,7 +66,7 @@ const CurrentServer = (props) => {
                 <button className="context-list-item">Leave Server</button>
               </MenuItem>
 
-              {currentServer.owner === user_id && (
+              {currentServer && currentServer.owner === user_id && (
                 <>
                   <MenuItem data={{ foo: "bar" }}>
                     <button
