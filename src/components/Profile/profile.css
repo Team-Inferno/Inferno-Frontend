@@ -1,0 +1,66 @@
+.profile-body {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #303338;
+}
+
+.profile-body .profile-container {
+  height: 90%;
+  width: 70%;
+  background: #36393f;
+  border-radius: 1em;
+  padding: 4em 4em;
+}
+
+.profile-body .profile-container .profile-header .profile-img {
+  height: 6em;
+  width: 6em;
+  background-color: red;
+  border-radius: 50%;
+  margin-bottom: 1em;
+}
+
+.profile-body .profile-container .profile-header h1 {
+  color: #ece9e9;
+}
+
+.profile-body .profile-container section.profile-details {
+  margin: 1em 0;
+}
+
+.profile-body .profile-container section.profile-details p {
+  font-size: 1.2em;
+  font-weight: 1em;
+  color: rgba(236, 233, 233, 0.938);
+}
+
+.profile-body .profile-container section.profile-details .profile-form {
+  width: 70%;
+  border: 3px solid #303338;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.profile-body .profile-container section.profile-details .profile-form form .input-area {
+  margin: 0.5em;
+  color: white;
+}
+
+.profile-body .profile-container section.profile-details .profile-form form .input-area label {
+  border: 1px solid #303338;
+}
+
+.profile-body .profile-container section.profile-details .profile-form form .input-area input {
+  border: 1px solid #303338;
+  background: none;
+}
+/*# sourceMappingURL=profile.css.map */

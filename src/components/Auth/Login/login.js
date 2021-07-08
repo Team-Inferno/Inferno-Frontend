@@ -42,7 +42,7 @@ const Login = (props) => {
         setTokenInHeader(res.data.jwt);
         dispatch(setError(null));
         if (res.data.success) {
-          history.push("/");
+          history.push("/home");
         }
       })
       .catch((error) => {
