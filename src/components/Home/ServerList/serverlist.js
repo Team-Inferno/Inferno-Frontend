@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,28 +11,34 @@ const ServerList = (props) => {
 
   const dispatch = useDispatch();
 
+  const selectServer = (e,server) => {
+    e.preventDefault();
+    dispatch(setCurrentServerID(server));
+    props.listOpen(false);
+  }
+
   return ReactDOM.createPortal(
     <>
       <div className="server-list-dropdown">
         <div className="server-list-container">
           <div className="server-list">
             <ul>
-              {serverList && serverList.map((item) => {
+              {serverList && serverList.map((server) => {
                 return (
                   <li
                     className="server-list-item"
-                    key={item.server_id}
-                    onClick={(e) => dispatch(setCurrentServerID(item))}
+                    key={server.server_id}
+                    onClick={(e) => selectServer(e,server)}
                   >
                     <div className="server-list-item-logo">
-                      {item.server_logo ? (
-                        item.server_logo
+                      {server.server_logo ? (
+                        server.server_logo
                       ) : (
                         <AccountCircleIcon />
                       )}
                     </div>
                     <div className="server-list-item-name">
-                      {item.server_name}
+                      {server.server_name}
                     </div>
                   </li>
                 );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import ShrinkIcon from "@material-ui/icons/ExpandLess";
@@ -6,15 +6,27 @@ import Channel from "./Channel/channel";
 import AddChannel from "../../AddChannelPopUp/addchannel";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import RoomRenameForm from "../../RenameRoomPopUp/roomrename";
+const axios = require("axios");
 
 const Room = (props) => {
   const [isChannelExpanded, setIsChannelExpanded] = useState(true);
   const [addChannelPopUp, setAddChannelPopUp] = useState(false);
   const [isRoomRenameFormVisible, setIsRoomRenameFormVisible] = useState(false);
 
+  const deleteRoom = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/api/server/delete/room", null, {
+        params: { server_id: props.currentServerID, room_id: props.room._id },
+      })
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.response));
+  };
+
   return (
     <div className="room">
-      <ContextMenuTrigger id={props.props._id}>
+      <ContextMenuTrigger id={props.room._id}>
         <div className="header">
           <div className="room-name">
             {isChannelExpanded ? (
@@ -30,7 +42,7 @@ const Room = (props) => {
                 onClick={(e) => setIsChannelExpanded(true)}
               />
             )}
-            <p>{props.props ? props.props.room_name : ""}</p>
+            <p>{props.room ? props.room.room_name : ""}</p>
           </div>
           <div
             className="add-channel-icon"
@@ -41,7 +53,7 @@ const Room = (props) => {
         </div>
       </ContextMenuTrigger>
 
-      <ContextMenu id={props.props._id}>
+      <ContextMenu id={props.room._id}>
         <div className="context">
           <div className="context-wrapper">
             <div role="list" className="context-list">
@@ -56,7 +68,10 @@ const Room = (props) => {
                 </button>
               </MenuItem>
               <MenuItem data={{ foo: "bar" }}>
-                <button className="context-list-item button-danger">
+                <button
+                  className="context-list-item button-danger"
+                  onClick={(e) => deleteRoom(e)}
+                >
                   Delete Room
                 </button>
               </MenuItem>
@@ -69,11 +84,15 @@ const Room = (props) => {
       {isChannelExpanded && (
         <div className="channel-list">
           <ul>
-            {props.props
-              ? props.props.channels.map((channel) => {
+            {props.room
+              ? props.room.channels.map((channel) => {
                   return (
                     <li key={channel._id}>
-                      <Channel channel={channel} roomID={props.props._id} />
+                      <Channel
+                        channel={channel}
+                        roomID={props.room._id}
+                        channelID={props.currentServerID}
+                      />
                     </li>
                   );
                 })
@@ -82,12 +101,12 @@ const Room = (props) => {
         </div>
       )}
       {addChannelPopUp && (
-        <AddChannel popUp={setAddChannelPopUp} room={props.props} />
+        <AddChannel popUp={setAddChannelPopUp} room={props.room} />
       )}
       {isRoomRenameFormVisible && (
         <RoomRenameForm
           popUp={setIsRoomRenameFormVisible}
-          roomID={props.props._id}
+          roomID={props.room._id}
         />
       )}
     </div>

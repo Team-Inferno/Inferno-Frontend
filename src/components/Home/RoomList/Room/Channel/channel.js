@@ -8,6 +8,7 @@ import {
   setCurrentVoiceChannel,
 } from "../../../../../redux/channel.slice";
 import ChannelRenameForm from "../../../RenameChannelPopUp/channelrename";
+const axios = require("axios");
 
 const Channel = (props) => {
   const dispatch = useDispatch();
@@ -21,6 +22,20 @@ const Channel = (props) => {
     } else if (props.channel.__t === "voice") {
       dispatch(setCurrentVoiceChannel(props.channel));
     }
+  };
+
+  const deleteChannel = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/api/server/delete/channel", null, {
+        params: {
+          server_id: props.currentServerID,
+          room_id: props.roomID,
+          channel_id: props.channel._id,
+        },
+      })
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.response));
   };
 
   if (props.channel) {
@@ -65,7 +80,10 @@ const Channel = (props) => {
                   </button>
                 </MenuItem>
                 <MenuItem data={{ foo: "bar" }}>
-                  <button className="context-list-item button-danger">
+                  <button
+                    className="context-list-item button-danger"
+                    onClick={(e) => deleteChannel(e)}
+                  >
                     Delete Channel
                   </button>
                 </MenuItem>

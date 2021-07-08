@@ -18,7 +18,7 @@ const RoomList = (props) => {
           {rooms.map((room) => {
             return (
               <li key={room._id}>
-                <Room props={room}/>
+                <Room room={room} currentServerID={props.currentServerID}/>
               </li>
             );
           })}

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
 import MessageForm from "./MessageForm/messageform";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import io from "socket.io-client";
-import MessageList from "./messageList";
 import Message from "./Message/message";
 const axios = require("axios");
 

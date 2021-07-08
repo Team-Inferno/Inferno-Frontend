@@ -72,12 +72,12 @@ const LeftSidebar = (props) => {
           openList={isServerListOpen}
           setOpenList={setIsServerListOpen}
         />
-        {isServerListOpen && <ServerList popUp={setAddServerPopUp} />}
+        {isServerListOpen && <ServerList popUp={setAddServerPopUp} listOpen={setIsServerListOpen}/>}
         {addServerPopUp && <AddServer popUp={setAddServerPopUp} />}
       </section>
 
       <section id="room-section">
-        <RoomList />
+        <RoomList currentServerID={currentServerID}/>
       </section>
 
       <section id="status">

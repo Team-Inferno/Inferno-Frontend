@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
-import SendIcon from "@material-ui/icons/Send";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const axios = require("axios");
 
 

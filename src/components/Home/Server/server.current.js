@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CloseIcon from "@material-ui/icons/Close";
-import ServerList from "../ServerList/serverlist";
 import { useSelector } from "react-redux";
-import AddServer from "../AddServerPopUp/addserver";
 import AddRoom from "../AddRoomPopUp/addroom";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 import ServerRenameForm from "../RenameServerPopUp/serverrename";
+const axios = require("axios");
 
 const CurrentServer = (props) => {
 
@@ -17,21 +16,20 @@ const CurrentServer = (props) => {
     return state.userReducer._id;
   });
 
-  const serverOwner = useSelector((state) => {
-    if (state.serverReducer.currentServer) {
-      return state.serverReducer.currentServer.owner;
-    } else {
-      return null;
-    }
+  const currentServer = useSelector((state) => {
+    return state.serverReducer.currentServer;
   });
 
-  var serverName = useSelector((state) => {
-    var server = state.serverReducer.currentServer;
-    if (server) {
-      return server.server_name;
-    }
-    return null;
-  });
+  const deleteServer = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/api/server/delete/room", null, {
+        params: { server_id: currentServer._id },
+      })
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error.response));
+  };
 
 
   return (
@@ -40,7 +38,7 @@ const CurrentServer = (props) => {
         <div className="current-server">
           <div className="current-server-info">
             <div className="current-server-name">
-              <p>{serverName}</p>
+              <p>{currentServer.server_name}</p>
             </div>
             {props.openList ? (
               <CloseIcon
@@ -68,7 +66,7 @@ const CurrentServer = (props) => {
                 <button className="context-list-item">Leave Server</button>
               </MenuItem>
 
-              {serverOwner === user_id && (
+              {currentServer.owner === user_id && (
                 <>
                   <MenuItem data={{ foo: "bar" }}>
                     <button
@@ -90,7 +88,10 @@ const CurrentServer = (props) => {
                     </button>
                   </MenuItem>
                   <MenuItem data={{ foo: "bar" }}>
-                    <button className="context-list-item button-danger">
+                    <button
+                      className="context-list-item button-danger"
+                      onClick={(e) => deleteServer(e)}
+                    >
                       Delete Server
                     </button>
                   </MenuItem>
