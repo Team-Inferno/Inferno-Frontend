@@ -1,4 +1,4 @@
-$primary-color: #36393f;
+$primary-color: #17171b;
 $input-color: #303338;
 $text-color: #8e9297;
 
@@ -8,7 +8,7 @@ $text-color: #8e9297;
   align-items: center;
   height: 100%;
   flex-direction: column;
-  background: rgb(47, 49, 54);
+  background: #101014;
 
   //only for login page
   .auth-message {
@@ -63,7 +63,7 @@ $text-color: #8e9297;
       padding: 0.5em 1.2em;
       margin: 1.5em 0 0.5em 0;
       border: none;
-      background: rgb(226, 226, 226);
+      background: #ff9875;
       border-radius: 0.1em;
       font-size: 1em;
       cursor: pointer;
@@ -71,12 +71,12 @@ $text-color: #8e9297;
       font-size: medium;
       color: $primary-color;
 
-      &:hover{
-        background: white;
+      &:hover {
+        background: #ffac62;
         color: black;
         font-weight: 500;
         letter-spacing: 0.1em;
-        padding:0.6em 1.2em;
+        padding: 0.6em 1.2em;
       }
     }
 
@@ -87,13 +87,13 @@ $text-color: #8e9297;
       margin-bottom: 0.5em;
       a {
         font-size: medium;
-        color: lightgray;
+        color: #ff9875;
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
           text-decoration: underline;
-          color: white;
+          color: #ffac62;
           font-size: large;
         }
       }
