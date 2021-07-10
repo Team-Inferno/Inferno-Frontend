@@ -4,7 +4,7 @@ import PrivateRoute from './private.route';
 import Login from "../components/Auth/Login/login";
 import Register from "../components/Auth/Register/register";
 import Home from "../components/Home/home";
-import Landing from "../components/Home/Landing/landing";
+import Landing from "../components/Landing/landing";
 
 const Routes = (props) => {
   return (
