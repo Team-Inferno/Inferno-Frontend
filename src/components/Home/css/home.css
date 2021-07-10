@@ -8,7 +8,7 @@
 }
 
 .left-sidebar {
-  background: #2f3136;
+  background: #17171b;
   min-width: 230px;
   max-width: 230px;
   display: -webkit-box;
@@ -25,11 +25,11 @@
 }
 
 .left-sidebar ::-webkit-scrollbar-track {
-  background: #2f3136;
+  background: #17171b;
 }
 
 .left-sidebar ::-webkit-scrollbar-thumb {
-  background: #2f3136;
+  background: #17171b;
   border-radius: 20em;
   height: 95%;
 }
@@ -52,7 +52,7 @@
 
 .left-sidebar section#server-section:hover {
   cursor: pointer;
-  background: #36393f;
+  background: #101014;
 }
 
 .left-sidebar section#server-section .server-details {
@@ -155,7 +155,7 @@
   margin: 0.5em;
   border-radius: 0.2em;
   cursor: pointer;
-  background: #6666c2;
+  background: #ffa14f;
   color: white;
 }
 
@@ -174,7 +174,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #72767d;
+  color: #414046;
 }
 
 .left-sidebar section#room-section .room-list .room {
@@ -242,7 +242,7 @@
 }
 
 .left-sidebar section#room-section .room-list .room .channel-list .channel:hover {
-  background: #36393f;
+  background: #101014;
 }
 
 .left-sidebar section#room-section .room-list .room .channel-list .channel:hover .channel-name {
@@ -312,11 +312,11 @@
 .left-sidebar section#status .container .icons #disconnect-icon:hover,
 .left-sidebar section#status .container .icons #mic-icon:hover,
 .left-sidebar section#status .container .icons #headphone-icon:hover {
-  background: #36393f;
+  background: #101014;
 }
 
 #chat {
-  background: #36393f;
+  background: #101014;
   width: 100%;
   max-height: 100vh;
   display: -webkit-box;
@@ -360,7 +360,7 @@
 }
 
 #chat .no-channel p {
-  color: #72767d;
+  color: #414046;
   font-size: 2em;
 }
 
@@ -564,7 +564,7 @@
 }
 
 .add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .Mui-checked {
-  color: #6666c2;
+  color: #ffa14f;
 }
 
 .add-channel-body .add-channel-container .channel-type-input .channel-radio-button {
@@ -619,7 +619,7 @@
   margin: 2em 0.5em;
   border-radius: 0.2em;
   cursor: pointer;
-  background: #6666c2;
+  background: #ffa14f;
   color: white;
 }
 
@@ -653,7 +653,7 @@
 .popup-body .popup-container {
   min-width: 400px;
   max-width: 400px;
-  background: #36393f;
+  background: #17171b;
   border-radius: 0.3em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -717,7 +717,7 @@
   margin: 1em 0;
   border-radius: 0.2em;
   cursor: pointer;
-  background: #6666c2;
+  background: #ffa14f;
   color: white;
 }
 

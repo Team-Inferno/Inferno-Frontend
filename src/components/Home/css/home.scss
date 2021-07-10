@@ -1,7 +1,7 @@
-$sidebar-primary-color: rgb(47, 49, 54);
+$sidebar-primary-color: #17171b;
 $sidebar-secondary-color: #292b2f;
 $sidebar-third-color: rgb(114, 118, 125);
-$chat-primary-color: #36393f;
+$chat-primary-color: #101014;
 $add-channel-background-color: #36393f;
 $add-channel-input-background-onfocus: #202225;
 $add-channel-input-background: #2f3136;
@@ -125,7 +125,7 @@ $background-disabled-color: #070708cc;
           margin: 0.5em;
           border-radius: 0.2em;
           cursor: pointer;
-          background: rgb(102, 102, 194);
+          background: #ffa14f;
           color: white;
         }
       }
@@ -138,7 +138,7 @@ $background-disabled-color: #070708cc;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: rgb(114, 118, 125);
+        color: #414046;
       }
       .room {
         margin: 1em 0.1em;
@@ -278,7 +278,7 @@ $background-disabled-color: #070708cc;
     align-items: center;
 
     p {
-      color: rgb(114, 118, 125);
+      color: #414046;
       font-size: 2em;
     }
   }
@@ -441,7 +441,7 @@ $background-disabled-color: #070708cc;
           color: white;
         }
         .Mui-checked {
-          color: rgb(102, 102, 194);
+          color: #ffa14f;
         }
       }
       .channel-radio-button {
@@ -487,7 +487,7 @@ $background-disabled-color: #070708cc;
         margin: 2em 0.5em;
         border-radius: 0.2em;
         cursor: pointer;
-        background: rgb(102, 102, 194);
+        background: #ffa14f;
         color: white;
       }
       button#add-channel-cancel-button {
@@ -516,7 +516,7 @@ $background-disabled-color: #070708cc;
     min-width: 400px;
     max-width: 400px;
     // position: absolute;
-    background: $add-channel-background-color;
+    background: #17171b;
     border-radius: 0.3em;
     // top: 15%;
     //left: 40%;
@@ -564,7 +564,7 @@ $background-disabled-color: #070708cc;
         margin: 1em 0;
         border-radius: 0.2em;
         cursor: pointer;
-        background: rgb(102, 102, 194);
+        background: #ffa14f;
         color: white;
       }
       button#popup-cancel-button {
