@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 function App() {
   var dispatch = useDispatch();
 
-  if (localStorage.jwtToken) {
+  /*if (localStorage.jwtToken) {
     const token = localStorage.jwtToken;
     setTokenInHeader(token);
 
@@ -24,7 +24,7 @@ function App() {
       //logout dispatch will be called
       window.location.href = "./login";
     }
-  }
+  }*/
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from './private.route';
-import Login from "../components/Auth/Login/login";
-import Register from "../components/Auth/Register/register";
+import {Login} from "../pages/Login";
+import { Register } from "../pages/Register";
 import Home from "../components/Home/home";
 import Profile from "../components/Profile/profile";
 

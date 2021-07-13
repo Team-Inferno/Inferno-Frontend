@@ -1,55 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../../../redux/user.slice";
-import { setError } from "../../../redux/error.slice";
-import { useHistory } from "react-router-dom";
-import setTokenInHeader from "../../../utils/jwt";
+import React, { useState } from "react";
+import { useMutation } from "react-query";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../api/auth.api";
+import { setUser } from "../../redux/user.slice";
 import jwt_decode from "jwt-decode";
 import qs from "qs";
+import Loader from "react-loader-spinner";
 import "../css/auth.css";
-const axios = require("axios");
 
-const Login = (props) => {
+export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const error = useSelector((state) => {
-    return state.errorReducer.error;
-  });
-
-  const dispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setError(null));
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = qs.stringify({
-      email: email,
-      password: password,
-    });
-
-    axios
-      .post("http://localhost:8080/api/auth/login", data)
-      .then((res) => {
+  const { mutate, isLoading, error } = useMutation(
+    (userData) => login(userData),
+    {
+      retry: 3,
+      onSuccess: (res) => {
+        console.log("hellow from react query");
         const decoded = jwt_decode(res.data.jwt);
         console.log(decoded);
         dispatch(setUser(decoded));
-        localStorage.setItem("jwtToken", res.data.jwt);
-        setTokenInHeader(res.data.jwt);
-        dispatch(setError(null));
-        if (res.data.success) {
-          history.push("/home");
-        }
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch(setError(error.response.data.error));
-        }
-      });
+        history.push("/home");
+      },
+    }
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    mutate({
+      email: email,
+      password: password,
+    });
   };
 
   return (
@@ -73,7 +58,7 @@ const Login = (props) => {
             value={email}
           />
           <span className="error">
-            {error === null || error === undefined ? "" : error.email}
+            {error && error.response.data.error.email}
           </span>
         </div>
         <div className="form-group">
@@ -84,7 +69,7 @@ const Login = (props) => {
             value={password}
           />
           <span className="error">
-            {error === null || error === undefined ? "" : error.password}
+            {error && error.response.data.error.password}
           </span>
         </div>
         <p className="forgot-password">
@@ -96,7 +81,17 @@ const Login = (props) => {
           type="button"
           onClick={(e) => handleSubmit(e)}
         >
-          LOGIN
+          {isLoading ? (
+            <Loader
+              type="ThreeDots"
+              color="#00BFFF"
+              height={20}
+              width={20}
+              timeout={3000} //3 secs
+            />
+          ) : (
+            <>LOGIN</>
+          )}
         </button>
 
         <p className="redirect">
@@ -106,5 +101,3 @@ const Login = (props) => {
     </div>
   );
 };
-
-export default Login;
