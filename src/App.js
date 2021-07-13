@@ -7,13 +7,14 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user.slice";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-
+import { SocketContext, socket } from "./context/socket";
+import Child from "components/Child";
 const queryClient = new QueryClient();
 
 function App() {
   var dispatch = useDispatch();
 
-  /*if (localStorage.jwtToken) {
+  if (localStorage.jwtToken) {
     const token = localStorage.jwtToken;
     setTokenInHeader(token);
 
@@ -24,13 +25,16 @@ function App() {
       //logout dispatch will be called
       window.location.href = "./login";
     }
-  }*/
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="app">
-        <Routes />
-      </div>
+      <SocketContext.Provider value={socket}>
+        <div className="app">
+          <Routes />
+        </div>
+      </SocketContext.Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

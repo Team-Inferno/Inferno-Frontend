@@ -5,17 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentServerID } from "../../../redux/server.slice";
 
 const ServerList = (props) => {
-  const serverList = useSelector((state) => {
-    return state.serverReducer.subscribedServers;
-  });
+  const serverList = props.serverList;
 
   const dispatch = useDispatch();
 
-  const selectServer = (e,server) => {
+  const selectServer = (e, server) => {
     e.preventDefault();
     dispatch(setCurrentServerID(server.server_id));
     props.listOpen(false);
-  }
+  };
 
   return ReactDOM.createPortal(
     <>
@@ -23,26 +21,27 @@ const ServerList = (props) => {
         <div className="server-list-container">
           <div className="server-list">
             <ul>
-              {serverList && serverList.map((server) => {
-                return (
-                  <li
-                    className="server-list-item"
-                    key={server.server_id}
-                    onClick={(e) => selectServer(e,server)}
-                  >
-                    <div className="server-list-item-logo">
-                      {server.server_logo ? (
-                        server.server_logo
-                      ) : (
-                        <AccountCircleIcon />
-                      )}
-                    </div>
-                    <div className="server-list-item-name">
-                      {server.server_name}
-                    </div>
-                  </li>
-                );
-              })}
+              {serverList &&
+                serverList.map((server) => {
+                  return (
+                    <li
+                      className="server-list-item"
+                      key={server.server_id}
+                      onClick={(e) => selectServer(e, server)}
+                    >
+                      <div className="server-list-item-logo">
+                        {server.server_logo ? (
+                          server.server_logo
+                        ) : (
+                          <AccountCircleIcon />
+                        )}
+                      </div>
+                      <div className="server-list-item-name">
+                        {server.server_name}
+                      </div>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
           <button onClick={(e) => props.popUp(true)}>Create New Server</button>

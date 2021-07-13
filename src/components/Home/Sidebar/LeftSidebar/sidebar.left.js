@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import RoomList from "../../RoomList/roomlist";
 import ServerList from "../../ServerList/serverlist";
 import ConnectionStatus from "../../ConnectionStatus/connectionstatus";
@@ -14,29 +14,36 @@ import {
   setCurrentTextChannel,
   setCurrentVoiceChannel,
 } from "../../../../redux/channel.slice";
-import io from "socket.io-client";
+import { useQuery } from "react-query";
+import { SocketContext } from "../../../../context/socket";
+import { getCurrentServer } from "../../../../api/server.api";
 const axios = require("axios");
 
 const LeftSidebar = (props) => {
   const [isServerListOpen, setIsServerListOpen] = useState(false);
   const [addServerPopUp, setAddServerPopUp] = useState(false);
 
+  const socket = useContext(SocketContext);
+
   const user_id = useSelector((state) => {
     return state.userReducer._id;
   });
 
-  const currentServerID = useSelector((state) => {
-    return state.serverReducer.currentServerID;
-  });
-
-  const subscribedServer = useSelector((state) => {
-    return state.serverReducer.subscribedServers;
-  });
+  const currentServerID = props.serverList[0].server_id;
 
   const dispatch = useDispatch();
 
+  const { isLoading, isError, error, isSuccess, data } = useQuery(
+    ["currentServer", currentServerID],
+    () => {
+      return getCurrentServer(currentServerID);
+    },
+    { refetchOnWindowFocus: false }
+  );
+
   useEffect(() => {
-    const socket = io(`http://localhost:9090`);
+
+    
 
     if (currentServerID) {
       axios
@@ -80,8 +87,8 @@ const LeftSidebar = (props) => {
 
     return () => {
       socket.disconnect();
-    };
-  }, [currentServerID, subscribedServer]);
+    };*/
+  }, [currentServerID, props.serverList]);
 
   return (
     <div className="left-sidebar">
@@ -89,18 +96,20 @@ const LeftSidebar = (props) => {
         <CurrentServer
           openList={isServerListOpen}
           setOpenList={setIsServerListOpen}
+          currentServer={data}
         />
         {isServerListOpen && (
           <ServerList
             popUp={setAddServerPopUp}
             listOpen={setIsServerListOpen}
+            serverList={props.serverList}
           />
         )}
         {addServerPopUp && <AddServer popUp={setAddServerPopUp} />}
       </section>
 
       <section id="room-section">
-        <RoomList currentServerID={currentServerID} />
+        <RoomList currentServerID={currentServerID} roomList={data.rooms} />
       </section>
 
       <section id="status">

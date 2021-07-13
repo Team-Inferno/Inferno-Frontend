@@ -18,9 +18,7 @@ const CurrentServer = (props) => {
     return state.userReducer._id;
   });
 
-  const currentServer = useSelector((state) => {
-    return state.serverReducer.currentServer;
-  });
+  const currentServer = props.currentServer;
 
   const serverList = useSelector((state) => {
     return state.serverReducer.subscribedServers;

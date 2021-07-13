@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import "./css/home.css";
-import LeftSidebar from "./Sidebar/LeftSidebar/sidebar.left";
-import Chat from "./Chat/chat";
+import "../../components/Home/css/home.css";
+import LeftSidebar from "../../components/Home/Sidebar/LeftSidebar/sidebar.left";
+import Chat from "../../components/Home/Chat/chat";
 import { useSelector, useDispatch } from "react-redux";
 import { setError } from "../../redux/error.slice";
 import { setServerList, setCurrentServerID } from "../../redux/server.slice";
 import io from "socket.io-client";
-import {useQuery} from "react-query";
+import { useQuery } from "react-query";
+import { getServerList } from "../../api/server.api";
+import Loader from "react-loader-spinner";
 const axios = require("axios");
 
 export const Home = () => {
@@ -14,10 +16,8 @@ export const Home = () => {
     return state.userReducer._id;
   });
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    const socket = io(`http://localhost:9090`);
+    /*const socket = io(`http://localhost:9090`);
 
     axios
       .get("http://localhost:8080/api/user/server", {
@@ -40,12 +40,42 @@ export const Home = () => {
 
     return () => {
       socket.disconnect();
-    };
+    };*/
   }, [user_id]);
+
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, error, isSuccess, data } = useQuery(
+    ["serverList", user_id],
+    () => {
+      return getServerList(user_id);
+    },
+    { refetchOnWindowFocus: false }
+  );
+
+  if (isSuccess) {
+    console.log(data);
+  }
+
+  if (isError) {
+    return <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    return (
+      <Loader
+        type="ThreeDots"
+        color="#00BFFF"
+        height={20}
+        width={20}
+        timeout={3000} //3 secs
+      />
+    );
+  }
 
   return (
     <div id="home">
-      <LeftSidebar />
+      <LeftSidebar serverList={data}/>
       <Chat />
     </div>
   );
