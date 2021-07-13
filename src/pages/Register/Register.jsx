@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
 import { register } from "../../api/auth.api";
-import qs from "qs";
 import Loader from "react-loader-spinner";
 import "../css/auth.css";
 

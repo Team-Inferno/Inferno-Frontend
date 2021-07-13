@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { login } from "../../api/auth.api";
 import { setUser } from "../../redux/user.slice";
 import jwt_decode from "jwt-decode";
-import qs from "qs";
 import Loader from "react-loader-spinner";
 import "../css/auth.css";
 
