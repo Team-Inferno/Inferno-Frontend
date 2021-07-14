@@ -13,8 +13,8 @@ const queryClient = new QueryClient();
 function App() {
   var dispatch = useDispatch();
 
-  if (localStorage.jwtToken) {
-    const token = localStorage.jwtToken;
+  if (sessionStorage.jwtToken) {
+    const token = sessionStorage.jwtToken;
     setTokenInHeader(token);
 
     const decoded = jwt_decode(token);

@@ -38,7 +38,7 @@ const Login = (props) => {
         const decoded = jwt_decode(res.data.jwt);
         console.log(decoded);
         dispatch(setUser(decoded));
-        localStorage.setItem("jwtToken", res.data.jwt);
+        sessionStorage.setItem("jwtToken", res.data.jwt);
         setTokenInHeader(res.data.jwt);
         dispatch(setError(null));
         if (res.data.success) {
