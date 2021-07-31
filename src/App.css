@@ -1,4 +1,330 @@
 .app {
   height: 100vh;
   width: 100vw;
+  background: #303338;
+  color: #ece9e9;
+  overflow: hidden;
 }
+
+.add-channel-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-channel-body .add-channel-container {
+  min-width: 400px;
+  min-height: 500px;
+  max-width: 400px;
+  max-height: 500px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-channel-body .add-channel-container .add-channel-header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.add-channel-body .add-channel-container .add-channel-header p.main-p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .add-channel-header p.secondary-p {
+  text-align: center;
+  font-size: small;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input {
+  margin: 0 1em;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input #form-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root {
+  width: 100%;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .MuiFormLabel-root {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .Mui-focused {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .MuiRadio-colorSecondary {
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .MuiFormControl-root .Mui-checked {
+  color: #6666c2;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .channel-radio-button {
+  background: #2f3136;
+  margin: 0.5em 0;
+  padding: 0.2em 0;
+  width: 100%;
+  border-radius: 0.2em;
+}
+
+.add-channel-body .add-channel-container .channel-type-input .channel-radio-button:hover {
+  background: #202225;
+}
+
+.add-channel-body .add-channel-container .channel-name-input {
+  margin: 0 1em;
+}
+
+.add-channel-body .add-channel-container .channel-name-input label#channel-name-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .channel-name-input input#add-channel-name {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 0.2em;
+  padding: 0.9em 1em;
+  border: none;
+  background: #2f3136;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .footer {
+  margin-bottom: 0;
+  background: #2f3136;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.add-channel-body .add-channel-container .footer button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 2em 0.5em;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
+.add-channel-body .add-channel-container .footer button#add-channel-cancel-button {
+  background: transparent;
+}
+
+.add-channel-body .add-channel-container .footer button#add-channel-cancel-button:hover {
+  text-decoration: underline;
+}
+
+.context .context-wrapper {
+  position: absolute;
+  min-width: 210px;
+  max-width: 210px;
+}
+
+.context .context-wrapper .context-list {
+  background: #18191c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.5em 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 0.3em;
+}
+
+.context .context-wrapper .context-list button.context-list-item {
+  width: 95%;
+  padding: 0.8em;
+  margin: 0.2em 0.5em;
+  display: block;
+  background: transparent;
+  border: none;
+  color: #b4b6b9;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.context .context-wrapper .context-list button.context-list-item:hover {
+  background: #5b5bf3;
+  color: white;
+}
+
+.context .context-wrapper .context-list button.button-danger {
+  margin-top: 0.5em;
+}
+
+.context .context-wrapper .context-list button.button-danger:hover {
+  background: #e94747;
+  color: white;
+}
+
+.popup-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.popup-body .popup-container {
+  min-width: 400px;
+  max-width: 400px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.popup-body .popup-container .popup-header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.popup-body .popup-container .popup-header p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+}
+
+.popup-body .popup-container .popup-input {
+  margin: 0 1em;
+}
+
+.popup-body .popup-container .popup-input label#popup-label {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  color: white;
+}
+
+.popup-body .popup-container .popup-input input#popup-name {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+  border-radius: 0.2em;
+  padding: 0.9em 1em;
+  border: none;
+  background: #2f3136;
+  color: white;
+}
+
+.popup-body .popup-container .button-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.popup-body .popup-container .button-area button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 1em 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+}
+
+.popup-body .popup-container .button-area button#popup-cancel-button {
+  background: transparent;
+}
+
+.popup-body .popup-container .button-area button#popup-cancel-button:hover {
+  text-decoration: underline;
+}
+
+.loading-screen {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: gray;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+span.error {
+  color: red;
+  font-size: 0.8em;
+}
+/*# sourceMappingURL=app.css.map */

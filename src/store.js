@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./redux/user.slice";
 import errorReducer from "./redux/error.slice";
+import channelReducer from "./redux/channel.slice";
+import modalReducer from "./redux/modal.slice";
 
 export default configureStore({
   reducer: {
-      userReducer,
-      errorReducer,
+    errorReducer,
+    channelReducer,
+    modalReducer,
   },
 });

@@ -1,22 +1,23 @@
 import React from "react";
-import "./App.css";
-import Home from "./components/Home/home";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/Auth/Login/login";
-import Register from "./components/Auth/Register/register";
+import "./app.css";
+import Routes from "./routes/index.route";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { SocketContext, socket } from "./context/socket";
 
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <Router>
-      <div className="app">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-        </Switch>
-      </div>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <SocketContext.Provider value={socket}>
+        <div className="app">
+          <Routes />
+        </div>
+      </SocketContext.Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
