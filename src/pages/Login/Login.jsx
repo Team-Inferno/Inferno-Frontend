@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { login } from "../../api/auth.api";
-import { setUser } from "../../redux/user.slice";
-import jwt_decode from "jwt-decode";
 import Loader from "react-loader-spinner";
+import useAuthorization from "../../hooks/useAuthorization";
 import "../css/auth.css";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { saveToken } = useAuthorization();
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const { mutate, isLoading, error } = useMutation(
     (userData) => login(userData),
     {
       retry: 3,
       onSuccess: (res) => {
-        console.log("hellow from react query");
-        const decoded = jwt_decode(res.data.jwt);
-        console.log(decoded);
-        dispatch(setUser(decoded));
+        saveToken(res.data.jwt);
         history.push("/home");
       },
     }

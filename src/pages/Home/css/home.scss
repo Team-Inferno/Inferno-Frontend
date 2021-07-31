@@ -1,0 +1,218 @@
+#home {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  
+
+  #home-container {
+    margin: 2em auto;
+    width: 60%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    .profile {
+      padding: 1.5em;
+      width: 80%;
+      background: #36393f;
+      border-radius: 0.6em;
+      display: flex;
+      .profile-description {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        .profile-picture {
+          margin-right: 1em;
+          height: 3em;
+          width: 3em;
+          border-radius: 50%;
+          background: red;
+        }
+        p {
+          margin-top: 0.5em;
+          font-size: smaller;
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+      button {
+        padding: 0.8em 1em;
+        cursor: pointer;
+        border: none;
+        border-radius: 0.3em;
+        font-size: 0.9em;
+        margin: 0.5em;
+        &:hover {
+          color: white;
+          background: rgb(233, 71, 71);
+        }
+      }
+    }
+
+    .list-section {
+      width: 100%;
+      margin-top: 1em;
+      height: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      .servers {
+        width: 35%;
+        height: 100%;
+
+        h3 {
+          margin-bottom: 0.5em;
+        }
+        .server-list {
+          width: 100%;
+          margin-top: 0.5em;
+          border-radius: 0.4em;
+          height: 95%;
+          background: #36393f;
+          display: flex;
+          flex-direction: column;
+
+          ::-webkit-scrollbar {
+            width: 2px;
+          }
+
+          ::-webkit-scrollbar-track {
+            background: rgb(47, 49, 54);
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 20em;
+            height: 95%;
+          }
+
+          ul {
+            flex: 1;
+            padding: 1em 0;
+            list-style: none;
+            height: 600px;
+            overflow: auto;
+
+            li {
+              padding: 1.2em 0;
+              margin: 0.5em 0.8em;
+              text-align: center;
+              p {
+                font-size: larger;
+              }
+
+              &:hover {
+                cursor: pointer;
+                background: rgb(91, 91, 243);
+                border-radius: 0.5em;
+              }
+            }
+          }
+
+          button {
+            margin: 2em;
+            padding: 1em;
+            margin-top: auto;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .streamers {
+        width: 35%;
+        height: 100%;
+        h3 {
+          margin-bottom: 0.5em;
+        }
+        .streamer-list {
+          width: 100%;
+          height: 95%;
+          margin-top: 0.5em;
+          border-radius: 0.4em;
+          background: #36393f;
+        }
+      }
+    }
+  }
+
+  .popup-body {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #070708cc;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .popup-container {
+      min-width: 400px;
+      max-width: 400px;
+      // position: absolute;
+      background: #36393f;
+      border-radius: 0.3em;
+      // top: 15%;
+      //left: 40%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .popup-header {
+        margin: 1em 1em 2em 1em;
+        display: block;
+        p {
+          text-align: center;
+          font-size: 2em;
+          font-weight: bold;
+          color: white;
+        }
+      }
+
+      .popup-input {
+        margin: 0 1em;
+        label#popup-label {
+          text-transform: uppercase;
+          font-size: small;
+          font-weight: 600;
+          color: white;
+        }
+        input#popup-name {
+          display: block;
+          margin-top: 0.5em;
+          width: 100%;
+          border-radius: 0.2em;
+          padding: 0.9em 1em;
+          border: none;
+          background: #202225;
+          color: white;
+        }
+      }
+
+      .button-area {
+        display: flex;
+        flex-direction: row;
+        button {
+          padding: 1em 1.5em;
+          border: none;
+          margin: 1em 0;
+          border-radius: 0.2em;
+          cursor: pointer;
+          background: rgb(102, 102, 194);
+          color: white;
+        }
+        button#popup-cancel-button {
+          background: transparent;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

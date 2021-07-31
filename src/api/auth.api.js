@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import qs from "qs";
 
@@ -20,4 +19,8 @@ const register = (userData) => {
   return axios.post(`http://localhost:8080/api/auth/register`, data);
 };
 
-export {login,register}
+const setUser = (data) => {
+
+}
+
+export {login,register,setUser}

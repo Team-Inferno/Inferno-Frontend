@@ -1,84 +1,103 @@
-import React, { useEffect } from "react";
-import "../../components/Home/css/home.css";
-import LeftSidebar from "../../components/Home/Sidebar/LeftSidebar/sidebar.left";
-import Chat from "../../components/Home/Chat/chat";
-import { useSelector, useDispatch } from "react-redux";
-import { setError } from "../../redux/error.slice";
-import { setServerList, setCurrentServerID } from "../../redux/server.slice";
-import io from "socket.io-client";
+import React from "react";
+import "./css/home.css";
+import ServerList from "../../components/ServerList";
 import { useQuery } from "react-query";
 import { getServerList } from "../../api/server.api";
-import Loader from "react-loader-spinner";
-const axios = require("axios");
+import { useSelector, useDispatch } from "react-redux";
+import useAuthorization from "../../hooks/useAuthorization";
+import AddServerModal from "../../components/AddServerModal";
+import { setAddServerModal } from "../../redux/modal.slice";
+import { useHistory } from "react-router-dom";
+import {getUserName} from "../../api/user.api";
 
 export const Home = () => {
-  const user_id = useSelector((state) => {
-    return state.userReducer._id;
-  });
-
-  useEffect(() => {
-    /*const socket = io(`http://localhost:9090`);
-
-    axios
-      .get("http://localhost:8080/api/user/server", {
-        params: { user_id: user_id },
-      })
-      .then((res) => {
-        console.log(res.data);
-        dispatch(setServerList(res.data.servers));
-        dispatch(setCurrentServerID(res.data.servers[0].server_id));
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch(setError(error.response.data.error));
-        }
-      });
-
-    socket.on("connect", () => {
-      socket.send("hi from client");
-    });
-
-    return () => {
-      socket.disconnect();
-    };*/
-  }, [user_id]);
-
+  const { decodeToken, destroyToken } = useAuthorization();
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const { isLoading, isError, error, isSuccess, data } = useQuery(
-    ["serverList", user_id],
+  
+  const user = decodeToken();
+
+  const userNameQuery = useQuery(
+    ["user-name", user.id],
     () => {
-      return getServerList(user_id);
+      return getUserName(user.id);
     },
     { refetchOnWindowFocus: false }
   );
 
-  if (isSuccess) {
-    console.log(data);
-  }
 
-  if (isError) {
-    return <p>{error}</p>;
-  }
+  const addServerFormVisible = useSelector((state) => {
+    return state.modalReducer.addServerModal;
+  });
 
-  if (isLoading) {
-    return (
-      <Loader
-        type="ThreeDots"
-        color="#00BFFF"
-        height={20}
-        width={20}
-        timeout={3000} //3 secs
-      />
-    );
-  }
+  const serverListQuery = useQuery(
+    "serverList",
+    () => {
+      if (user) {
+        return getServerList(user.id);
+      }
+    },
+    { refetchOnWindowFocus: false }
+  );
+
+  const stramerListQuery = useQuery(
+    ["streamerList"],
+    () => {
+      const user = decodeToken();
+      if (user) {
+        return getServerList(user.id);
+      }
+    },
+    { refetchOnWindowFocus: false }
+  );
+
+  const handleLogout = () => {
+    destroyToken();
+    window.location.href = "./login";
+  };
+
+  const redirectToProfile = () => {
+    history.push({
+      pathname: "/profile"
+    });
+  };
 
   return (
     <div id="home">
-      <LeftSidebar serverList={data}/>
-      <Chat />
+      <div id="home-container">
+        <div className="profile">
+          <div className="profile-description">
+            <div className="profile-picture"></div>
+            <div>
+              <h3>{`${userNameQuery?.data}`}</h3>
+              <p onClick={() => redirectToProfile()}>chnage profile details</p>
+            </div>
+          </div>
+          <div className="logout-button">
+            <button onClick={() => handleLogout()}>LOGOUT</button>
+          </div>
+        </div>
+        <div className="list-section">
+          <div className="servers">
+            <h3>SERVERS</h3>
+            <div className="server-list">
+              {serverListQuery.isLoading && <p>Loading...</p>}
+              {serverListQuery.isSuccess && (
+                <ServerList serverList={serverListQuery.data} />
+              )}
+              <button onClick={() => dispatch(setAddServerModal(true))}>
+                ADD SERVER
+              </button>
+            </div>
+          </div>
+          <div className="streamers">
+            <h3>STREAMERS</h3>
+            <div className="streamer-list"></div>
+          </div>
+        </div>
+        {addServerFormVisible && <AddServerModal />}
+      </div>
     </div>
   );
 };
-
-export default Home;

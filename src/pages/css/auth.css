@@ -69,7 +69,7 @@
   font-size: 0.9em;
 }
 
-.auth-container .auth-form .form-group span {
+.auth-container .auth-form .form-group span.error {
   color: red;
   font-size: 0.8em;
 }
