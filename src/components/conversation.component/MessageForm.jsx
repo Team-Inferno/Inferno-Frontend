@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
-import { sendMessage } from "../api/message.api";
+import { sendMessage } from "../../api/message.api";
 
 const MessageForm = (props) => {
   const [message, setMessage] = useState("");

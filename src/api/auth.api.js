@@ -7,7 +7,10 @@ const login = (userData) => {
     email: userData.email,
     password: userData.password,
   });
-  return axios.post(`http://localhost:8080/api/auth/login`, data);
+  return axios.post(
+    process.env.REACT_APP_SERVER + "auth/login",
+    data
+  );
 };
 
 const register = (userData) => {
@@ -16,7 +19,10 @@ const register = (userData) => {
     username: userData.username,
     password: userData.password,
   });
-  return axios.post(`http://localhost:8080/api/auth/register`, data);
+  return axios.post(
+    process.env.REACT_APP_SERVER + "auth/register",
+    data
+  );
 };
 
 const setUser = (data) => {

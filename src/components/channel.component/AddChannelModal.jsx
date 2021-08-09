@@ -6,9 +6,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useDispatch } from "react-redux";
-import { setAddChannelModal } from "../redux/modal.slice";
+import { setAddChannelModal } from "../../redux/modal.slice";
 import { useMutation } from "react-query";
-import { addChannel } from "../api/channel.api";
+import { addChannel } from "../../api/channel.api";
 import { useQueryClient } from "react-query";
 import Loader from "react-loader-spinner";
 

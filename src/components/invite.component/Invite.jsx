@@ -1,7 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getUserName, acceptInvitation } from "../api/user.api";
-import { getServerName } from "../api/server.api";
+import { declineInvitation, acceptInvitation } from "../../api/invite.api";
+import { getServerName } from "../../api/server.api";
+import { getUserName } from "../../api/user.api";
 import { useMutation } from "react-query";
 import Loader from "react-loader-spinner";
 
@@ -30,7 +31,7 @@ const Invite = (props) => {
     onSuccess: (res) => {},
   });
 
-  const declineMutation = useMutation((data) => acceptInvitation(data), {
+  const declineMutation = useMutation((data) => declineInvitation(data), {
     retry: 3,
     onSuccess: (res) => {},
   });

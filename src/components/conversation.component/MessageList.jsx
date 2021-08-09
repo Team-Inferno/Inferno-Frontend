@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { useQuery } from "react-query";
-import { getConversation } from "../api/message.api";
+import { getConversation } from "../../api/message.api";
 import Message from "./Message";
 import Loader from "react-loader-spinner";
-import {SocketContext} from "../context/socket";
+import {SocketContext} from "../../context/socket";
 
 const MessageList = (props) => {
   const scrollRef = useRef();

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import { ContextMenu, ContextMenuTrigger } from "react-contextmenu";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
 import VoiceIcon from "@material-ui/icons/VolumeUp";
@@ -7,20 +7,45 @@ import { useDispatch } from "react-redux";
 import {
   setCurrentTextChannel,
   setCurrentVoiceChannel,
-} from "../redux/channel.slice";
-
+} from "../../redux/channel.slice";
+import { useMutation } from "react-query";
+import { joinVoiceChannel } from "../../api/channel.api";
+import { SocketContext } from "../../context/socket";
+import SubscriberList from "../subscriber.component/SubscriberList";
 
 const Channel = (props) => {
   const channel = props.channel;
   const dispatch = useDispatch();
+
+  const socket = useContext(SocketContext);
+
+  const { mutate,error } = useMutation(
+    (data) => joinVoiceChannel(data),
+    {
+      retry: 3,
+      onSuccess: (res) => {
+        socket.emit("voice-channel", channel._id);
+      },
+    }
+  );
+
+  console.log(error?.response?.data)
 
   const setChannel = () => {
     if (channel.__t === "text") {
       dispatch(setCurrentTextChannel(channel));
     } else if (channel.__t === "voice") {
       dispatch(setCurrentVoiceChannel(channel));
+      mutate({
+        roomID: props.roomID,
+        serverID: props.serverID,
+        channelID: props.channel._id,
+        userID: props.userID
+      })
     }
   };
+
+
 
   return (
     <>
@@ -32,19 +57,7 @@ const Channel = (props) => {
             <VoiceIcon fontSize="small" className="text-channel-icon" />
           )}
           <p className="channel-name">{channel.channel_name}</p>
-          {channel.__t === "voice" && (
-            <div className="subscribers">
-              {/*<ul>
-                {channel.subscribers.map((subscriber) => {
-                  return (
-                    <li key={subscriber._id}>
-                      <subscriber props={subscriber} />
-                    </li>
-                  );
-                })}
-              </ul>*/}
-            </div>
-          )}
+          {channel.__t === "voice" && <SubscriberList subscriberList={channel.subscribers}/>}
         </div>
       </ContextMenuTrigger>
 

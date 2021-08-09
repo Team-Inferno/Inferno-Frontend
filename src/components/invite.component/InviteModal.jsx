@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
-import { setInviteModal } from "../redux/modal.slice";
-import { sendInvitation } from "../api/user.api";
+import { setInviteModal } from "../../redux/modal.slice";
+import { sendInvitation } from "../../api/invite.api";
 
 const InviteModal = (props) => {
   const [username, setUsername] = useState("");

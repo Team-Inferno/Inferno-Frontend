@@ -1,11 +1,11 @@
 import React from "react";
 import "./css/home.css";
-import ServerList from "../../components/ServerList";
+import ServerList from "../../components/server.component/ServerList";
 import { useQuery } from "react-query";
 import { getServerList } from "../../api/server.api";
 import { useSelector, useDispatch } from "react-redux";
 import useAuthorization from "../../hooks/useAuthorization";
-import AddServerModal from "../../components/AddServerModal";
+import AddServerModal from "../../components/server.component/AddServerModal";
 import { setAddServerModal } from "../../redux/modal.slice";
 import { useHistory } from "react-router-dom";
 import {getUserName} from "../../api/user.api";

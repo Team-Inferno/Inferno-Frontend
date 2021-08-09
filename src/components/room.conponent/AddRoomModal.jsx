@@ -1,57 +1,58 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch } from "react-redux";
-import { setAddServerModal } from "../redux/modal.slice";
+import { setAddRoomModal } from "../../redux/modal.slice";
 import { useMutation } from "react-query";
-import { addServer } from "../api/server.api";
+import { addRoom } from "../../api/room.api";
 import { useQueryClient } from "react-query";
 import Loader from "react-loader-spinner";
 
-const AddServerModal = (props) => {
-  const [serverName, setServerName] = useState("");
+const AddRoomModal = (props) => {
+  const [roomName, setRoomName] = useState("");
+
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading, error } = useMutation(
-    (serverName) => addServer(serverName),
-    {
-      retry: 3,
-      onSuccess: (res) => {
-        queryClient.invalidateQueries("serverList");
-        dispatch(setAddServerModal(false));
-      },
-    }
-  );
+  const { mutate, isLoading, error } = useMutation((data) => addRoom(data), {
+    retry: 3,
+    onSuccess: (res) => {
+      queryClient.invalidateQueries(["server", props.serverID]);
+      dispatch(setAddRoomModal(false));
+    },
+  });
+
+  //console.log(error?.response?.data);
 
   const submitAddServer = (e) => {
     e.preventDefault();
-    mutate(serverName);
-    setServerName("");
+    mutate({
+      roomName: roomName,
+      serverID: props.serverID,
+    });
+    setRoomName("");
   };
 
   return ReactDOM.createPortal(
     <>
       <div
         className="popup-body"
-        onClick={() => dispatch(setAddServerModal(false))}
+        onClick={() => dispatch(setAddRoomModal(false))}
       >
         <div className="popup-container" onClick={(e) => e.stopPropagation()}>
           <div className="popup-header">
-            <p>Create Server</p>
+            <p>Create Room</p>
           </div>
           <div className="popup-input">
             <label id="popup-label" htmlFor="server-name">
-              Server Name
+              Room Name
             </label>
             <input
               id="popup-name"
               type="text"
-              value={serverName}
-              onChange={(e) => setServerName(e.target.value)}
+              value={roomName}
+              onChange={(e) => setRoomName(e.target.value)}
             />
-            <span className="error">
-              {error && error.response.data.error.server_name}
-            </span>
+            <span className="error">{error && error.response.data.error.room_name}</span>
             <div className="button-area">
               <button
                 onClick={(e) => submitAddServer(e)}
@@ -66,12 +67,12 @@ const AddServerModal = (props) => {
                     timeout={3000} //3 secs
                   />
                 ) : (
-                  <>Create Server</>
+                  <>Create Room</>
                 )}
               </button>
               <button
                 id="popup-cancel-button"
-                onClick={() => dispatch(setAddServerModal(false))}
+                onClick={() => dispatch(setAddRoomModal(false))}
               >
                 Cancel
               </button>
@@ -80,8 +81,8 @@ const AddServerModal = (props) => {
         </div>
       </div>
     </>,
-    document.querySelector("#home")
+    document.querySelector("#server")
   );
 };
 
-export default AddServerModal;
+export default AddRoomModal;

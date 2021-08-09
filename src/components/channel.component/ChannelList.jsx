@@ -14,6 +14,7 @@ const ChannelList = (props) => {
                 roomID={props.roomID}
                 serverID={props.serverID}
                 owner={props.owner}
+                userID={props.userID}
               />
             </li>
           );

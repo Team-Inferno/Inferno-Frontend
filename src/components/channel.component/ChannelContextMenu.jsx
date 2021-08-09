@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MenuItem } from "react-contextmenu";
 import ChannelRenameModal from "./ChannelRenameModal";
-import { deleteChannel } from "../api/channel.api";
+import { deleteChannel } from "../../api/channel.api";
 import { useQueryClient } from "react-query";
 import { useMutation } from "react-query";
 import Loader from "react-loader-spinner";
@@ -23,7 +23,7 @@ const ChannelContextMenu = (props) => {
     }
   );
 
-  console.log(error?.response?.data);
+  //console.log(error?.response?.data);
 
   const deleteButtonHandle = (e) => {
     e.preventDefault();

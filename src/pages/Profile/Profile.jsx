@@ -1,9 +1,9 @@
 import React from "react";
-import ProfileForm from "../../components/ProfileForm";
+import ProfileForm from "../../components/profile.component/ProfileForm";
 import { useQuery } from "react-query";
 import { getUserProfile } from "../../api/user.api";
 import useAuthorization from "../../hooks/useAuthorization";
-import InviteList from "../../components/InviteList";
+import InviteList from "../../components/invite.component/InviteList";
 import "./css/profile.css";
 
 export const Profile = (props) => {

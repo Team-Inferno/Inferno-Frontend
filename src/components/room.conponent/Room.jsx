@@ -3,9 +3,9 @@ import { ContextMenuTrigger, ContextMenu } from "react-contextmenu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import ShrinkIcon from "@material-ui/icons/ExpandLess";
-import ChannelList from "./ChannelList";
-import AddChannelModal from "./AddChannelModal";
-import useAuthorization from "../hooks/useAuthorization";
+import ChannelList from "../channel.component/ChannelList";
+import AddChannelModal from "../channel.component/AddChannelModal";
+import useAuthorization from "../../hooks/useAuthorization";
 import RoomContextMenu from "./RoomContextMenu";
 
 const Room = (props) => {
@@ -65,6 +65,7 @@ const Room = (props) => {
             roomID={room._id}
             serverID={serverID}
             owner={user.id === owner? true:false}
+            userID={user.id}
           />
         )}
       </div>

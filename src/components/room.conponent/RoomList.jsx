@@ -1,7 +1,7 @@
 import React from "react";
 import Room from "./Room";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { setAddRoomModal } from "../redux/modal.slice";
+import { setAddRoomModal } from "../../redux/modal.slice";
 import { useSelector, useDispatch } from "react-redux";
 import AddRoomModal from "./AddRoomModal";
 

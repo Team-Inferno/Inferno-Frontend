@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { MenuItem } from "react-contextmenu";
 import Loader from "react-loader-spinner";
 import { useMutation } from "react-query";
-import { deleteRoom } from "../api/room.api";
+import { deleteRoom } from "../../api/room.api";
 import { useQueryClient } from "react-query";
 import RoomRenameModal from "./RoomRenameModal";
 

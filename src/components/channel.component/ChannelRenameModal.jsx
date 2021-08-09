@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useMutation } from "react-query";
-import { renameRoom } from "../api/room.api";
+import { renameChannel } from "../../api/channel.api";
 import { useQueryClient } from "react-query";
 import Loader from "react-loader-spinner";
 
-const RoomRenameModal = (props) => {
-  const [roomName, setRoomName] = useState("");
+const ChannelRenameForm = (props) => {
+  const [channelName, setChannelName] = useState("");
   const queryClient = useQueryClient();
 
-
-  const { mutate, isLoading, error } = useMutation((data) => renameRoom(data), {
+  const { mutate, isLoading, error } = useMutation((data) => renameChannel(data), {
     retry: 3,
     onSuccess: (res) => {
       queryClient.invalidateQueries(["server", props.serverID]);
-      props.visibility(false)
+      props.visibility(false);
     },
   });
-
   const submit = (e) => {
     e.preventDefault();
 
     mutate({
-      roomName: roomName,
       serverID: props.serverID,
       roomID: props.roomID,
+      channelID: props.channelID,
+      channelName: channelName,
     });
   };
 
@@ -33,23 +32,23 @@ const RoomRenameModal = (props) => {
       <div className="popup-body" onClick={() => props.visibility(false)}>
         <div className="popup-container" onClick={(e) => e.stopPropagation()}>
           <div className="popup-header">
-            <p>Rename Room</p>
+            <p>Rename Channel</p>
           </div>
           <div className="popup-input">
             <label id="popup-label" htmlFor="room-name">
-              Room Name
+              channel-name
             </label>
             <input
               id="popup-name"
               type="text"
-              value={roomName}
-              onChange={(e) => setRoomName(e.target.value)}
+              value={channelName}
+              onChange={(e) => setChannelName(e.target.value)}
             />
             <span className="error">
-              {error && error.response.data.error.room_name}
+              {error && error.response.data.error.channel_name}
             </span>
             <div className="button-area">
-              <button onClick={(e) => submit(e)} id="popup-button">
+              <button onClick={(e) => submit(e)} id="create-channel-button">
                 {isLoading ? (
                   <Loader
                     type="ThreeDots"
@@ -77,4 +76,4 @@ const RoomRenameModal = (props) => {
   );
 };
 
-export default RoomRenameModal;
+export default ChannelRenameForm;

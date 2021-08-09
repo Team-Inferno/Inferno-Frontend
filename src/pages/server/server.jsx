@@ -4,12 +4,12 @@ import { useQuery,useQueryClient } from "react-query";
 import { getCurrentServer } from "../../api/server.api";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
-import RoomList from "../../components/RoomList";
-import Chat from "../../components/Chat";
+import RoomList from "../../components/room.conponent/RoomList";
+import Chat from "../../components/conversation.component/Chat";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { setInviteModal } from "../../redux/modal.slice";
-import InviteModal from "../../components/InviteModal";
+import InviteModal from "../../components/invite.component/InviteModal";
 import { SocketContext } from "../../context/socket";
 import "./css/server.css";
 

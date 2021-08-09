@@ -1,5 +1,5 @@
 import React from "react";
-import "./app.css";
+import "./App.css";
 import Routes from "./routes/index.route";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
