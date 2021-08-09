@@ -25,8 +25,8 @@ const Channel = (props) => {
       retry: 3,
       onSuccess: (res) => {
         socket.emit("voice-channel", channel._id);
-      },
-      
+        dispatch(setCurrentVoiceChannel(channel));
+      }, 
     }
   );
 
@@ -36,7 +36,7 @@ const Channel = (props) => {
     if (channel.__t === "text") {
       dispatch(setCurrentTextChannel(channel));
     } else if (channel.__t === "voice") {
-      dispatch(setCurrentVoiceChannel(channel));
+      
       mutate({
         roomID: props.roomID,
         serverID: props.serverID,

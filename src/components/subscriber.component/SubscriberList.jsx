@@ -2,7 +2,7 @@ import React from "react";
 import Subscriber from "./Subscriber";
 
 const SubscriberList = ({ subscriberList }) => {
-  console.log(subscriberList);
+  //console.log(subscriberList);
   return (
     <div className="channel-subscribers">
       <ul>

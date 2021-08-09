@@ -12,6 +12,7 @@ import { setInviteModal } from "../../redux/modal.slice";
 import InviteModal from "../../components/invite.component/InviteModal";
 import { SocketContext } from "../../context/socket";
 import "./css/server.css";
+import ConnectionStatus from "../../components/voice.component/ConnectionStatus";
 
 export const Server = (props) => {
   const dispatch = useDispatch();
@@ -19,11 +20,15 @@ export const Server = (props) => {
   var user = decodeToken();
   const { id } = useParams();
   const queryClient = useQueryClient();
+
   const socket = useContext(SocketContext);
 
   const inviteModalVisibility = useSelector((state) => {
     return state.modalReducer.inviteModal;
   });
+
+  
+
 
   useEffect(() => {
     socket.emit("server-update", id);
@@ -45,7 +50,7 @@ export const Server = (props) => {
     { refetchOnWindowFocus: false }
   );
 
-  if (serverQuery.isLoading || serverQuery.isFetching) {
+  if (serverQuery.isLoading ) {
     return (
       <div className="loading-screen">
         <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
@@ -73,12 +78,7 @@ export const Server = (props) => {
                 <PersonAddIcon />
               </div>
             </div>
-            <div className="user-status">
-              <h3>{user ? user.username : ""}</h3>
-              <div className="user-img">
-                <img src="" alt="" />
-              </div>
-            </div>
+            <ConnectionStatus/>
           </div>
 
           <div className="server-body-section">

@@ -8,6 +8,7 @@ const getServerList = async (user_id) => {
 };
 
 const getCurrentServer = async (server_id) => {
+  console.log("api call")
   const res = await axios.get(process.env.REACT_APP_SERVER + "server", {
     params: { server_id: server_id },
   });

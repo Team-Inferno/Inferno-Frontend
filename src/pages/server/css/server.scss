@@ -23,8 +23,7 @@
           border-radius: 50%;
           background: red;
         }
-        h3 {
-        }
+
         .invite-button {
           margin-top: 0.4em;
           margin-left: 2em;
@@ -35,15 +34,24 @@
           }
         }
       }
-      .user-status {
-        display: flex;
-        align-items: center;
-        .user-img {
-          margin-left: 0.5em;
-          height: 3em;
-          width: 3em;
-          border-radius: 50%;
-          background: red;
+
+      .connection-status {
+        margin-top: 0.5em;
+        span {
+          font-weight: bolder;
+        }
+        .voice-options{
+          display: flex;
+          justify-content: space-around;
+          margin-top: 0.5em;
+          .mute-option, .deafen-option{
+            border-radius: 0.2em;
+            cursor: pointer;
+            padding: 0.2em;
+            &:hover{
+              background:rgb(114, 118, 125);
+            }
+          }
         }
       }
     }
@@ -161,7 +169,7 @@
                       .channel {
                         margin: 0.1em 0.2em;
                         padding: 0.3em 1em;
-                        
+
                         color: rgb(114, 118, 125);
                         border-radius: 0.2em;
                         cursor: pointer;

@@ -51,21 +51,31 @@
   color: yellow;
 }
 
-#server .container .header-section .user-status {
+#server .container .header-section .connection-status {
+  margin-top: 0.5em;
+}
+
+#server .container .header-section .connection-status span {
+  font-weight: bolder;
+}
+
+#server .container .header-section .connection-status .voice-options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 0.5em;
 }
 
-#server .container .header-section .user-status .user-img {
-  margin-left: 0.5em;
-  height: 3em;
-  width: 3em;
-  border-radius: 50%;
-  background: red;
+#server .container .header-section .connection-status .voice-options .mute-option, #server .container .header-section .connection-status .voice-options .deafen-option {
+  border-radius: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+#server .container .header-section .connection-status .voice-options .mute-option:hover, #server .container .header-section .connection-status .voice-options .deafen-option:hover {
+  background: #72767d;
 }
 
 #server .container .server-body-section {
