@@ -6,8 +6,10 @@ import Loader from "react-loader-spinner";
 import {SocketContext} from "../../context/socket";
 
 const MessageList = (props) => {
-  const scrollRef = useRef();
 
+  const [messageList, setMessageList] = useState([]);
+
+  const scrollRef = useRef();
   const socket = useContext(SocketContext);
 
   const conversationQuery = useQuery(
@@ -17,8 +19,6 @@ const MessageList = (props) => {
     },
     { refetchOnWindowFocus: false }
   );
-
-  const [messageList, setMessageList] = useState([]);
 
   const newMessageHandler = (message) => {
     setMessageList((messageList) => [...messageList, message]);

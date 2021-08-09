@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect} from "react";
 import { ContextMenu, ContextMenuTrigger } from "react-contextmenu";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
 import VoiceIcon from "@material-ui/icons/VolumeUp";
@@ -26,6 +26,7 @@ const Channel = (props) => {
       onSuccess: (res) => {
         socket.emit("voice-channel", channel._id);
       },
+      
     }
   );
 
@@ -50,14 +51,18 @@ const Channel = (props) => {
   return (
     <>
       <ContextMenuTrigger id={channel._id}>
-        <div className="channel" onClick={(e) => setChannel()}>
-          {channel.__t === "text" ? (
-            <TextIcon fontSize="small" className="text-channel-icon" />
-          ) : (
-            <VoiceIcon fontSize="small" className="text-channel-icon" />
+        <div className="channel">
+          <div className="channel-info" onClick={(e) => setChannel()}>
+            {channel.__t === "text" ? (
+              <TextIcon fontSize="small" className="text-channel-icon" />
+            ) : (
+              <VoiceIcon fontSize="small" className="text-channel-icon" />
+            )}
+            <p className="channel-name">{channel.channel_name}</p>
+          </div>
+          {channel.__t === "voice" && (
+            <SubscriberList subscriberList={channel.subscribers} />
           )}
-          <p className="channel-name">{channel.channel_name}</p>
-          {channel.__t === "voice" && <SubscriberList subscriberList={channel.subscribers}/>}
         </div>
       </ContextMenuTrigger>
 

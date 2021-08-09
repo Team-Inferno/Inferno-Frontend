@@ -1,12 +1,12 @@
 import React from "react";
 import Subscriber from "./Subscriber";
 
-const SubscriberList = (props) => {
-  console.log(props.subscriberList);
+const SubscriberList = ({ subscriberList }) => {
+  console.log(subscriberList);
   return (
-    <div className="subscribers">
+    <div className="channel-subscribers">
       <ul>
-        {props.subscriberList.map((subscriber) => {
+        {subscriberList.map((subscriber) => {
           return (
             <li key={subscriber}>
               <Subscriber subscriberID={subscriber} />

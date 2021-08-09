@@ -216,21 +216,29 @@
 #server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel {
   margin: 0.1em 0.2em;
   padding: 0.3em 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   color: #72767d;
   border-radius: 0.2em;
   cursor: pointer;
 }
 
-#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .text-channel-icon {
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info .text-channel-icon {
   margin-top: 0.15em;
 }
 
-#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-name {
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info .channel-name {
   margin-left: 0.5em;
   font-weight: 600;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-subscribers p {
+  display: block;
+  margin: 0.6em 0.5em 0 1.6em;
 }
 
 #server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel:hover {

@@ -2,12 +2,11 @@ import React from "react";
 import { useQuery } from "react-query";
 import { getUserName } from "../../api/user.api";
 
-const Subscriber = (props) => {
-  //console.log(props.subscriberID);
+const Subscriber = ({ subscriberID }) => {
   const userNameQuery = useQuery(
-    ["user-name", props.subscriberID],
+    ["user-name", subscriberID],
     () => {
-      return getUserName(props.subscriberID);
+      return getUserName(subscriberID);
     },
     { refetchOnWindowFocus: false }
   );
