@@ -5,7 +5,7 @@ import axios from "axios";
 export default function useAuthorization() {
 
   const getToken = useMemo(() => {
-    const userToken = localStorage.getItem("token");
+    const userToken = sessionStorage.getItem("token");
     if (userToken) {
       const decoded = jwt_decode(userToken);
       const currentTime = Date.now() / 1000;
@@ -20,7 +20,7 @@ export default function useAuthorization() {
   const [token, setToken] = useState(getToken);
 
   const destroyToken = () => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     setToken(null);
   };
 
@@ -36,7 +36,7 @@ export default function useAuthorization() {
   }, [token]);
 
   const saveToken = (t) => {
-    localStorage.setItem("token", t);
+    sessionStorage.setItem("token", t);
     setToken(t);
   };
 

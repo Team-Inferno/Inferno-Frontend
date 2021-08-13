@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Peer from "peerjs";
 import useAuthorization from "../../hooks/useAuthorization";
-import { useQuery,useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getCurrentServer } from "../../api/server.api";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
@@ -10,7 +11,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { setInviteModal } from "../../redux/modal.slice";
 import InviteModal from "../../components/invite.component/InviteModal";
-import { SocketContext } from "../../context/socket";
+import { SocketContext } from "../../context/SocketContext";
 import "./css/server.css";
 import ConnectionStatus from "../../components/voice.component/ConnectionStatus";
 
@@ -19,6 +20,7 @@ export const Server = (props) => {
   const { decodeToken } = useAuthorization();
   var user = decodeToken();
   const { id } = useParams();
+
   const queryClient = useQueryClient();
 
   const socket = useContext(SocketContext);
@@ -26,9 +28,6 @@ export const Server = (props) => {
   const inviteModalVisibility = useSelector((state) => {
     return state.modalReducer.inviteModal;
   });
-
-  
-
 
   useEffect(() => {
     socket.emit("server-update", id);
@@ -40,7 +39,7 @@ export const Server = (props) => {
         queryClient.setQueryData(["server", id], server);
       });
     };
-  }, [id,socket,queryClient]);
+  }, [id, socket, queryClient]);
 
   const serverQuery = useQuery(
     ["server", id],
@@ -50,7 +49,7 @@ export const Server = (props) => {
     { refetchOnWindowFocus: false }
   );
 
-  if (serverQuery.isLoading ) {
+  if (serverQuery.isLoading) {
     return (
       <div className="loading-screen">
         <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
@@ -78,7 +77,7 @@ export const Server = (props) => {
                 <PersonAddIcon />
               </div>
             </div>
-            <ConnectionStatus/>
+            {<ConnectionStatus userID={user.id} />}
           </div>
 
           <div className="server-body-section">

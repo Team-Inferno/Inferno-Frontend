@@ -10,7 +10,7 @@ import {
 } from "../../redux/channel.slice";
 import { useMutation } from "react-query";
 import { joinVoiceChannel } from "../../api/channel.api";
-import { SocketContext } from "../../context/socket";
+import { SocketContext } from "../../context/SocketContext";
 import SubscriberList from "../subscriber.component/SubscriberList";
 
 const Channel = (props) => {
@@ -24,13 +24,12 @@ const Channel = (props) => {
     {
       retry: 3,
       onSuccess: (res) => {
-        socket.emit("voice-channel", channel._id);
         dispatch(setCurrentVoiceChannel(channel));
       }, 
     }
   );
 
-  console.log(error?.response?.data)
+  //console.log(error?.response?.data)
 
   const setChannel = () => {
     if (channel.__t === "text") {
