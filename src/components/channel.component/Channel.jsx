@@ -1,14 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import { SocketContext } from "../../context/SocketContext";
+import React from "react";
 import ChannelHeader from "./ChannelHeader";
 import {
   setCurrentTextChannel,
-  setCurrentVoiceChannel,
 } from "../../redux/channel.slice";
 import { useMutation } from "react-query";
 import { joinVoiceChannel } from "../../api/channel.api";
 import { useDispatch } from "react-redux";
-import { PeerContext } from "../../context/PeerContext";
 import SubscriberList from "../subscriber.component/SubscriberList";
 
 const Channel = (props) => {

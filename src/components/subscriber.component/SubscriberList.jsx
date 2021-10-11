@@ -1,6 +1,5 @@
 import React, { useContext,useEffect } from "react";
 import Subscriber from "./Subscriber";
-import Peer from "peerjs";
 import { SocketContext } from "../../context/SocketContext";
 
 const SubscriberList = ({ active,channelID, subscriberList, userID }) => {

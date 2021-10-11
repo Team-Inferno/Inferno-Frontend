@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import useAuthorization from "../../hooks/useAuthorization";
+import React, {  useEffect, useContext } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import { getCurrentServer } from "../../api/server.api";
 import Loader from "react-loader-spinner";

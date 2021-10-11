@@ -24,7 +24,7 @@ const addServer = (serverName) => {
 };
 
 const getServerName = async (serverID) => {
-  const res = await axios.get(process.env.REACT_APP_SERVER + "server/rename", {
+  const res = await axios.get(process.env.REACT_APP_SERVER + "server/name", {
     params: { server_id: serverID },
   });
   return res.data;

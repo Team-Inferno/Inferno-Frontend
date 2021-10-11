@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import MessageForm from "./MessageForm";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
 import { useSelector } from "react-redux";

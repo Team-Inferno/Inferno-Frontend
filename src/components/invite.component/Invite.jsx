@@ -28,16 +28,18 @@ const Invite = (props) => {
 
   const acceptMutation = useMutation((data) => acceptInvitation(data), {
     retry: 3,
-    onSuccess: (res) => {},
+    onSuccess: (res) => {
+      console.log(res);
+    },
+    onError:(err) => {
+      console.log(err)
+    }
   });
 
   const declineMutation = useMutation((data) => declineInvitation(data), {
     retry: 3,
     onSuccess: (res) => {},
   });
-
-  //console.log(acceptMutation.error?.response?.data);
-  //console.log(declineMutation.error?.response?.data);
 
   const handleAcceptButton = () => {
     acceptMutation.mutate({

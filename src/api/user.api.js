@@ -47,9 +47,14 @@ const getUserName = async (userID) => {
   return res.data;
 }
 
-export {
-  getUserProfile,
-  getUserInvites,
-  getUserName,
-  setPeer
+const setUserName = (data) => {
+  console.log(data);
+  return axios.post(process.env.REACT_APP_SERVER + "user/name", null, {
+    params: {
+      user_name: data.userName,
+      user_id: data.userID,
+    },
+  });
 };
+
+export { getUserProfile, getUserInvites, getUserName, setPeer, setUserName };
