@@ -16,6 +16,8 @@ const ChannelRenameForm = (props) => {
       props.visibility(false);
     },
   });
+
+  
   const submit = (e) => {
     e.preventDefault();
 

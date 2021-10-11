@@ -23,6 +23,8 @@ export const Login = (props) => {
     }
   );
 
+  console.log(error?.message);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate({
@@ -52,7 +54,7 @@ export const Login = (props) => {
             value={email}
           />
           <span className="error">
-            {error && error.response.data.error.email}
+            {error && error.response ? error.response.data.error.email : null}
           </span>
         </div>
         <div className="form-group">
@@ -63,7 +65,9 @@ export const Login = (props) => {
             value={password}
           />
           <span className="error">
-            {error && error.response.data.error.password}
+            {error && error.response
+              ? error.response.data.error.password
+              : null}
           </span>
         </div>
         <p className="forgot-password">
@@ -76,13 +80,12 @@ export const Login = (props) => {
           onClick={(e) => handleSubmit(e)}
         >
           {isLoading ? (
-            <Loader
-              type="ThreeDots"
-              color="#00BFFF"
-              height={20}
-              width={20}
-              timeout={3000} //3 secs
-            />
+            <Loader type="ThreeDots" color="#00BFFF" height={20} width={20} />
+          ) : error ? (
+            <>
+              {" "}
+              {error.message && <span className="error">{error.message}</span>}
+            </>
           ) : (
             <>LOGIN</>
           )}

@@ -26,6 +26,14 @@ const getUserInvites = async (userID) => {
 };
 
 
+const setPeer = (data) => {
+  return axios.post(process.env.REACT_APP_SERVER + "user/peer", null, {
+    params: {
+      user_id: data.userID,
+      peer_id: data.peerID
+    },
+  });
+};
 
 const getUserName = async (userID) => {
   //console.log(userID);
@@ -42,5 +50,6 @@ const getUserName = async (userID) => {
 export {
   getUserProfile,
   getUserInvites,
-  getUserName, 
+  getUserName,
+  setPeer
 };

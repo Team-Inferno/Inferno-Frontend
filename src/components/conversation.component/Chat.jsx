@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import MessageForm from "./MessageForm";
 import TextIcon from "@material-ui/icons/ChatBubbleOutline";
 import { useSelector } from "react-redux";
@@ -7,6 +7,9 @@ import MessageList from "./MessageList";
 
 const Chat = (props) => {
 
+  
+
+  
 
   const textChannel = useSelector((state) => {
     return state.channelReducer.currentTextChannel;

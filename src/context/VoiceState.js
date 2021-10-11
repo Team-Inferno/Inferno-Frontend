@@ -55,7 +55,7 @@ const VideoState = ({ children }) => {
   }, []);
 
 
-  const answerCall = () => {
+  const 657u = () => {
     setCallAccepted(true);
     setOtherUser(call.from);
     const peer = new Peer({ initiator: false, trickle: false, stream });

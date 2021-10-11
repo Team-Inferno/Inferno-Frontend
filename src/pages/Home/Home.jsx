@@ -1,4 +1,4 @@
-import React from "react";
+import React,{createContext,useEffect} from "react";
 import "./css/home.css";
 import ServerList from "../../components/server.component/ServerList";
 import { useQuery } from "react-query";
@@ -10,11 +10,11 @@ import { setAddServerModal } from "../../redux/modal.slice";
 import { useHistory } from "react-router-dom";
 import {getUserName} from "../../api/user.api";
 
+
 export const Home = () => {
   const { decodeToken, destroyToken } = useAuthorization();
   const dispatch = useDispatch();
   const history = useHistory();
-
   
   const user = decodeToken();
 
@@ -79,18 +79,20 @@ export const Home = () => {
           </div>
         </div>
         <div className="list-section">
-          <div className="servers">
-            <h3>SERVERS</h3>
-            <div className="server-list">
-              {serverListQuery.isLoading && <p>Loading...</p>}
-              {serverListQuery.isSuccess && (
-                <ServerList serverList={serverListQuery.data} />
-              )}
-              <button onClick={() => dispatch(setAddServerModal(true))}>
-                ADD SERVER
-              </button>
+          
+            <div className="servers">
+              <h3>SERVERS</h3>
+              <div className="server-list">
+                {serverListQuery.isLoading && <p>Loading...</p>}
+                {serverListQuery.isSuccess && (
+                  <ServerList serverList={serverListQuery.data} />
+                )}
+                <button onClick={() => dispatch(setAddServerModal(true))}>
+                  ADD SERVER
+                </button>
+              </div>
             </div>
-          </div>
+         
           <div className="streamers">
             <h3>STREAMERS</h3>
             <div className="streamer-list"></div>
