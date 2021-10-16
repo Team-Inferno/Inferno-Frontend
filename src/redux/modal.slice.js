@@ -9,6 +9,7 @@ export const modalSlice = createSlice({
     renameChannelModal: false,
     addRoomModal: false,
     inviteModal: false,
+    createStreamModal: false,
   },
   reducers: {
     setAddServerModal: (state, action) => {
@@ -30,6 +31,9 @@ export const modalSlice = createSlice({
     setInviteModal: (state, action) => {
       state.inviteModal = action.payload;
     },
+    setCreateStreamModal: (state, action) => {
+      state.createStreamModal = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   setRenameChannelModal,
   setAddRoomModal,
   setInviteModal,
+  setCreateStreamModal,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;

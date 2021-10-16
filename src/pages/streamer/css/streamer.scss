@@ -1,0 +1,160 @@
+#streamer-page {
+  .head {
+    padding: 1.5em;
+    margin: 2em auto;
+    margin-bottom: 0.5em;
+    width: 60%;
+    background: #36393f;
+    border-radius: 0.6em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .streamer-description {
+      //flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .streamer-profile-picture {
+        //margin-right: 1em;
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+        background: red;
+      }
+      p {
+        margin-top: 0.5em;
+        font-size: large;
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    button {
+      padding: 0.8em 1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 0.3em;
+      font-size: 0.9em;
+      margin: 0.5em;
+      &:hover {
+        color: white;
+        background: rgb(233, 71, 71);
+      }
+    }
+  }
+
+  .streamer-details {
+    padding: 0.5em 1.5em;
+    margin: 0 auto;
+    width: 60%;
+    background: #36393f;
+    border-radius: 0.6em;
+
+    p#about-streamer {
+      font-size: larger;
+      font-weight: bolder;
+      margin-bottom: 1em;
+    }
+
+    p#follower-count {
+      margin-left: 0.5em;
+      span#count {
+        color: yellow;
+      }
+    }
+
+    p#short-description {
+      margin-top: 0.5em;
+      margin-left: 0.5em;
+    }
+  }
+
+  .current-stream {
+    padding: 0.5em 1.5em;
+    margin: 1em auto;
+    width: 60%;
+    background: #36393f;
+    border-radius: 0.6em;
+  }
+}
+
+.popup-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .popup-container {
+    min-width: 400px;
+    max-width: 400px;
+    background: #36393f;
+    border-radius: 0.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      text-align: left;
+      font-size: 1em;
+      font-weight: 200;
+      color: white;
+      margin: 1em;
+    }
+    span {
+      font-weight: bold;
+    }
+    .popup-header {
+      margin: 1em 1em 2em 1em;
+      display: block;
+      p {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+        color: white;
+        margin: 1em;
+      }
+    }
+
+    .streaming-key {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      h5 {
+        width: 80%;
+        border-bottom: 1px solid rgb(158, 154, 154);
+        font-weight: 200;
+        font-size: larger;
+      }
+    }
+
+    .instructions {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      h5 {
+        width: 80%;
+        font-weight: 200;
+        font-size: larger;
+        border-bottom: 1px solid rgb(158, 154, 154);
+      }
+    }
+
+    .popup-ok-button {
+      padding: 1em 1.5em;
+      border: none;
+      margin: 1em 0;
+      border-radius: 0.2em;
+      cursor: pointer;
+      background: rgb(102, 102, 194);
+      color: white;
+      width: 20%;
+      margin-left: 1em;
+    }
+  }
+}

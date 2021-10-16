@@ -81,11 +81,6 @@ export const Login = (props) => {
         >
           {isLoading ? (
             <Loader type="ThreeDots" color="#00BFFF" height={20} width={20} />
-          ) : error ? (
-            <>
-              {" "}
-              {error.message && <span className="error">{error.message}</span>}
-            </>
           ) : (
             <>LOGIN</>
           )}

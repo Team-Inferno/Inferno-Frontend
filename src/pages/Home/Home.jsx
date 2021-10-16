@@ -1,4 +1,4 @@
-import React,{createContext,useEffect} from "react";
+import React, { useState, createContext, useEffect } from "react";
 import "./css/home.css";
 import ServerList from "../../components/server.component/ServerList";
 import { useQuery } from "react-query";
@@ -8,14 +8,14 @@ import useAuthorization from "../../hooks/useAuthorization";
 import AddServerModal from "../../components/server.component/AddServerModal";
 import { setAddServerModal } from "../../redux/modal.slice";
 import { useHistory } from "react-router-dom";
-import {getUserName} from "../../api/user.api";
-
+import { getUserName, isStreamer } from "../../api/user.api";
+import StreamerSearch from "../../components/home.component/StreamerSearch";
 
 export const Home = () => {
   const { decodeToken, destroyToken } = useAuthorization();
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const user = decodeToken();
 
   const userNameQuery = useQuery(
@@ -26,6 +26,13 @@ export const Home = () => {
     { refetchOnWindowFocus: false }
   );
 
+  const streamQuery = useQuery(
+    ["streamer", user.id],
+    () => {
+      return isStreamer(user.id);
+    },
+    { refetchOnWindowFocus: false }
+  );
 
   const addServerFormVisible = useSelector((state) => {
     return state.modalReducer.addServerModal;
@@ -59,8 +66,11 @@ export const Home = () => {
 
   const redirectToProfile = () => {
     history.push({
-      pathname: "/profile"
+      pathname: "/profile",
     });
+  };
+  const redirectToStream = () => {
+    history.push(`/streamer/${user.id}`);
   };
 
   return (
@@ -78,23 +88,40 @@ export const Home = () => {
             <button onClick={() => handleLogout()}>LOGOUT</button>
           </div>
         </div>
+
         <div className="list-section">
-          
-            <div className="servers">
+          <div className="servers">
+            <div className="server-list-head">
               <h3>SERVERS</h3>
-              <div className="server-list">
-                {serverListQuery.isLoading && <p>Loading...</p>}
-                {serverListQuery.isSuccess && (
-                  <ServerList serverList={serverListQuery.data} />
-                )}
-                <button onClick={() => dispatch(setAddServerModal(true))}>
-                  ADD SERVER
-                </button>
-              </div>
+              <button
+                id="create-server-button"
+                onClick={() => dispatch(setAddServerModal(true))}
+              >
+                create server
+              </button>
             </div>
-         
+            <div className="server-list">
+              {serverListQuery.isLoading && <p>Loading...</p>}
+              {serverListQuery.isSuccess && (
+                <ServerList serverList={serverListQuery.data} />
+              )}
+            </div>
+          </div>
+
           <div className="streamers">
-            <h3>STREAMERS</h3>
+            <div className="server-list-head">
+              <h3>STREAMERS</h3>
+              <StreamerSearch/>
+
+              {streamQuery.data && (
+                <button
+                  id="stream-page-button"
+                  onClick={() => redirectToStream()}
+                >
+                  My Stream
+                </button>
+              )}
+            </div>
             <div className="streamer-list"></div>
           </div>
         </div>

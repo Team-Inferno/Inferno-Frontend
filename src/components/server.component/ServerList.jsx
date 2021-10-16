@@ -1,7 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCurrentTextChannel } from "../../redux/channel.slice";
+import { Container, Row, Col } from "react-grid-system";
+import GridList from "react-gridlist";
 
 const ServerList = (props) => {
   const serverList = props.serverList;
@@ -13,27 +15,55 @@ const ServerList = (props) => {
   }
 
   const handleServerSelect = (server) => {
-    dispatch(setCurrentTextChannel(null))
+    dispatch(setCurrentTextChannel(null));
     history.push(`/server/${server.server_id}`);
   };
 
+  function getGridGap(elementWidth, windowHeight) {
+    if (elementWidth > 720 && windowHeight > 480) {
+      return 10;
+    } else {
+      return 5;
+    }
+  }
+
+  function getColumnCount() {
+    return 4;
+  }
+
+
+  function getItemData(server, columnWidth) {
+    return {
+      key: server.server_id
+    };
+  }
+
   return (
-    <ul>
-      {props.serverList?.map((server) => {
+    <GridList
+      items={props.serverList}
+      getGridGap={(getGridGap)}
+      getColumnCount={getColumnCount}
+      getItemData={getItemData}
+      renderItem={(server) => {
         return (
-          <li
-            className="server-list-item"
-            key={server.server_id}
-            onClick={(e) => handleServerSelect(server)}
+          <div
+            className="server-list-col"
+            onClick={() => handleServerSelect(server)}
           >
-            <div className="server-list-item-logo">
-              {server.server_img ? <img src="" alt="server img" /> : <></>}
+            <div className="list-item">
+              <div className="server-list-item-logo">
+                {server.server_img ? (
+                  <img src="" alt="server img" />
+                ) : (
+                  <div className="profile-picture"></div>
+                )}
+              </div>
+              <p>{server.server_name}</p>
             </div>
-            <p>{server.server_name}</p>
-          </li>
+          </div>
         );
-      })}
-    </ul>
+      }}
+    />
   );
 };
 

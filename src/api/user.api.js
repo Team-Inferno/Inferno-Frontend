@@ -48,7 +48,6 @@ const getUserName = async (userID) => {
 }
 
 const setUserName = (data) => {
-  console.log(data);
   return axios.post(process.env.REACT_APP_SERVER + "user/name", null, {
     params: {
       user_name: data.userName,
@@ -57,4 +56,21 @@ const setUserName = (data) => {
   });
 };
 
-export { getUserProfile, getUserInvites, getUserName, setPeer, setUserName };
+const isStreamer = async (userID) => {
+  const res = await axios.get(process.env.REACT_APP_SERVER + "user/streamer", {
+    params: { user_id: userID },
+  });
+
+  return res.data;
+};
+
+
+
+export {
+  getUserProfile,
+  getUserInvites,
+  getUserName,
+  setPeer,
+  setUserName,
+  isStreamer,
+};

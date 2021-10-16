@@ -7,6 +7,7 @@ import { Register } from "../pages/Register";
 import { Home } from "../pages/Home";
 import {Profile} from "../pages/Profile";
 import { Server } from '../pages/server';
+import { Streamer } from '../pages/streamer';
 
 
 
@@ -18,6 +19,7 @@ const Routes = (props) => {
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/home" component={Home} />
         <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/streamer/:id" component={Streamer} />
         <PrivateRoute path="/server/:id" component={Server} />
       </Switch>
     </Router>
