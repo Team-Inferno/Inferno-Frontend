@@ -1,0 +1,197 @@
+#streamer-page .head {
+  padding: 1.5em;
+  margin: 2em auto;
+  margin-bottom: 0.5em;
+  width: 60%;
+  background: #36393f;
+  border-radius: 0.6em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#streamer-page .head .streamer-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#streamer-page .head .streamer-description .streamer-profile-picture {
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background: red;
+}
+
+#streamer-page .head .streamer-description p {
+  margin-top: 0.5em;
+  font-size: large;
+}
+
+#streamer-page .head .streamer-description p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#streamer-page .head button {
+  padding: 0.8em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3em;
+  font-size: 0.9em;
+  margin: 0.5em;
+}
+
+#streamer-page .head button:hover {
+  color: white;
+  background: #e94747;
+}
+
+#streamer-page .streamer-details {
+  padding: 0.5em 1.5em;
+  margin: 0 auto;
+  width: 60%;
+  background: #36393f;
+  border-radius: 0.6em;
+}
+
+#streamer-page .streamer-details p#about-streamer {
+  font-size: larger;
+  font-weight: bolder;
+  margin-bottom: 1em;
+}
+
+#streamer-page .streamer-details p#follower-count {
+  margin-left: 0.5em;
+}
+
+#streamer-page .streamer-details p#follower-count span#count {
+  color: yellow;
+}
+
+#streamer-page .streamer-details p#short-description {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}
+
+#streamer-page .current-stream {
+  padding: 0.5em 1.5em;
+  margin: 1em auto;
+  width: 60%;
+  background: #36393f;
+  border-radius: 0.6em;
+}
+
+.popup-body {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #070708cc;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.popup-body .popup-container {
+  min-width: 400px;
+  max-width: 400px;
+  background: #36393f;
+  border-radius: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.popup-body .popup-container p {
+  text-align: left;
+  font-size: 1em;
+  font-weight: 200;
+  color: white;
+  margin: 1em;
+}
+
+.popup-body .popup-container span {
+  font-weight: bold;
+}
+
+.popup-body .popup-container .popup-header {
+  margin: 1em 1em 2em 1em;
+  display: block;
+}
+
+.popup-body .popup-container .popup-header p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  margin: 1em;
+}
+
+.popup-body .popup-container .streaming-key {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.popup-body .popup-container .streaming-key h5 {
+  width: 80%;
+  border-bottom: 1px solid #9e9a9a;
+  font-weight: 200;
+  font-size: larger;
+}
+
+.popup-body .popup-container .instructions {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.popup-body .popup-container .instructions h5 {
+  width: 80%;
+  font-weight: 200;
+  font-size: larger;
+  border-bottom: 1px solid #9e9a9a;
+}
+
+.popup-body .popup-container .popup-ok-button {
+  padding: 1em 1.5em;
+  border: none;
+  margin: 1em 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background: #6666c2;
+  color: white;
+  width: 20%;
+  margin-left: 1em;
+}
+/*# sourceMappingURL=streamer.css.map */

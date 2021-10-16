@@ -1,0 +1,454 @@
+#server {
+  width: 100%;
+  height: 100%;
+}
+
+#server .container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#server .container .header-section {
+  margin-bottom: 2em;
+  padding: 2em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+#server .container .header-section .server-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#server .container .header-section .server-info .server-img {
+  margin-right: 0.5em;
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background: red;
+}
+
+#server .container .header-section .server-info .invite-button {
+  margin-top: 0.4em;
+  margin-left: 2em;
+}
+
+#server .container .header-section .server-info .invite-button:hover {
+  cursor: pointer;
+  color: yellow;
+}
+
+#server .container .header-section .connection-status {
+  margin-top: 0.5em;
+}
+
+#server .container .header-section .connection-status span {
+  font-weight: bolder;
+}
+
+#server .container .header-section .connection-status .voice-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 0.5em;
+}
+
+#server .container .header-section .connection-status .voice-options .mute-option, #server .container .header-section .connection-status .voice-options .deafen-option {
+  border-radius: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+
+#server .container .header-section .connection-status .voice-options .mute-option:hover, #server .container .header-section .connection-status .voice-options .deafen-option:hover {
+  background: #72767d;
+}
+
+#server .container .server-body-section {
+  width: 100%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#server .container .server-body-section .rooms {
+  height: 100%;
+  min-width: 20%;
+}
+
+#server .container .server-body-section .rooms .room-list-header {
+  padding: 0.5em 0;
+  margin-bottom: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#server .container .server-body-section .rooms .room-list-header h3 {
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+  -webkit-text-decoration-color: blue;
+          text-decoration-color: blue;
+}
+
+#server .container .server-body-section .rooms .room-list-header button#create-room-button {
+  cursor: pointer;
+  background: yellow;
+  padding: 0.2em 0.4em;
+  border-radius: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+}
+
+#server .container .server-body-section .rooms .room-list-header button#create-room-button:hover {
+  border-radius: 0.8em;
+}
+
+#server .container .server-body-section .rooms .room-list-header button#create-room-button p {
+  margin-left: 0.3em;
+}
+
+#server .container .server-body-section .rooms .room-list-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 93%;
+  width: 100%;
+  background: #36393f;
+}
+
+#server .container .server-body-section .rooms .room-list-body p.empty-server-msg {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  vertical-align: middle;
+  width: 60%;
+  height: 696px;
+  text-align: center;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list {
+  border-radius: 0.4em;
+  padding: 0.5em 0 0.5em 0.5em;
+  height: 696px;
+  list-style: none;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list ::-webkit-scrollbar {
+  width: 2px;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list ::-webkit-scrollbar-track {
+  background: #2f3136;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list ::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 20em;
+  height: 95%;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room {
+  margin: 1em 0;
+  margin-bottom: 1em;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #72767d;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header .room-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-size: medium;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header .room-name:hover {
+  color: white;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header .room-name .expand-icon {
+  margin-top: 0.1em;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header .add-channel-icon {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 0.5em;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .room-header .add-channel-icon:hover {
+  color: white;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list {
+  margin: 0.1em 0;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul {
+  list-style: none;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel {
+  margin: 0.1em 0.2em;
+  padding: 0.3em 1em;
+  color: #72767d;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info .text-channel-icon {
+  margin-top: 0.15em;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-info .channel-name {
+  margin-left: 0.5em;
+  font-weight: 600;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel .channel-subscribers p {
+  display: block;
+  margin: 0.6em 0.5em 0 1.6em;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel:hover {
+  background: #36393f;
+}
+
+#server .container .server-body-section .rooms .room-list-body ul.room-list li .room .channel-list ul li .channel:hover .channel-name {
+  color: white;
+}
+
+#server .container .server-body-section #chat {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: 3em;
+  border: 2px solid #26282c6b;
+}
+
+#server .container .server-body-section #chat ::-webkit-scrollbar {
+  width: 6px;
+}
+
+#server .container .server-body-section #chat ::-webkit-scrollbar-track {
+  background: #2e3338;
+}
+
+#server .container .server-body-section #chat ::-webkit-scrollbar-thumb {
+  background: #202225;
+  border-radius: 20em;
+  height: 2%;
+}
+
+#server .container .server-body-section #chat .no-channel {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+#server .container .server-body-section #chat .no-channel p {
+  color: #72767d;
+  font-size: 2em;
+}
+
+#server .container .server-body-section #chat section.chat-header {
+  padding: 0.8em 0 0.5em 0;
+  color: white;
+  border-bottom: 2px solid #26282c6b;
+}
+
+#server .container .server-body-section #chat section.chat-header .chat-channel-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+}
+
+#server .container .server-body-section #chat section.chat-header .chat-channel-name .text-channel-icon {
+  margin-left: 1.2em;
+  margin-right: 0.5em;
+}
+
+#server .container .server-body-section #chat section.chat-header .chat-channel-name p {
+  display: inline;
+}
+
+#server .container .server-body-section #chat section.chat-body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #36393f;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 630px;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul {
+  list-style-type: none;
+  height: 630px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message {
+  margin: 2em 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message .owner-img {
+  background: red;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message .message-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 0.5em;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message .message-details .owner-name {
+  color: white;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message .message-details .message-date {
+  color: white;
+  font-size: smaller;
+}
+
+#server .container .server-body-section #chat section.chat-body .messages ul .message .message-details .message-body {
+  color: white;
+  margin-top: 0.5em;
+}
+
+#server .container .server-body-section #chat section.chat-body .send-message-section {
+  max-height: 67.5px;
+}
+
+#server .container .server-body-section #chat section.chat-body .send-message-section .send-message-form {
+  margin: 1em 2em;
+  margin-top: auto;
+  background: lightgray;
+  border-top: 1px solid gray;
+  border-radius: 5px;
+}
+
+#server .container .server-body-section #chat section.chat-body .send-message-section .send-message-form form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#server .container .server-body-section #chat section.chat-body .send-message-section .send-message-form form input {
+  padding: 1em;
+  background: transparent;
+  border: none;
+  width: 100%;
+  outline-width: 0;
+  font-size: medium;
+}
+
+#server .container .server-body-section #chat section.chat-body .send-message-section .send-message-form form button {
+  display: none;
+  cursor: pointer;
+  margin-left: 1em;
+  padding: 0.5em 1em;
+}
+
+#react-jitsi-container {
+  height: 0;
+  width: 0;
+}
+/*# sourceMappingURL=server.css.map */

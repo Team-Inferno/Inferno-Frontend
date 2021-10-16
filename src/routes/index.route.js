@@ -1,19 +1,26 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from './private.route';
-import Login from "../components/Auth/Login/login";
-import Register from "../components/Auth/Register/register";
-import Home from "../components/Home/home";
-import Landing from "../components/Home/Landing/landing";
+import RestrictedRoute from "./restricted.route";
+import {Login} from "../pages/Login";
+import { Register } from "../pages/Register";
+import { Home } from "../pages/Home";
+import {Profile} from "../pages/Profile";
+import { Server } from '../pages/server';
+import { Streamer } from '../pages/streamer';
+
+
 
 const Routes = (props) => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/landing" component={Landing} />
-        <Route exact path="/login" component={Login} />
+        <RestrictedRoute exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/" component={Home} />
+        <PrivateRoute exact path="/home" component={Home} />
+        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/streamer/:id" component={Streamer} />
+        <PrivateRoute path="/server/:id" component={Server} />
       </Switch>
     </Router>
   );
