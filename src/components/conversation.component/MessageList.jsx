@@ -31,6 +31,7 @@ const MessageList = (props) => {
   useEffect(() => {
     socket.emit("text-message", props.channelID);
     socket.on("new-conversation", (message) => {
+      //console.log(message)
       newMessageHandler(message); 
     });
     return () => {

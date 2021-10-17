@@ -8,8 +8,9 @@ import useAuthorization from "../../hooks/useAuthorization";
 import AddServerModal from "../../components/server.component/AddServerModal";
 import { setAddServerModal } from "../../redux/modal.slice";
 import { useHistory } from "react-router-dom";
-import { getUserName, isStreamer } from "../../api/user.api";
+import { getUserName, isStreamer, getStreamerList } from "../../api/user.api";
 import StreamerSearch from "../../components/home.component/StreamerSearch";
+import StreamerList from "../../components/streamer.component/StreamerList";
 
 export const Home = () => {
   const { decodeToken, destroyToken } = useAuthorization();
@@ -48,16 +49,17 @@ export const Home = () => {
     { refetchOnWindowFocus: false }
   );
 
-  const stramerListQuery = useQuery(
+  const streamerListQuery = useQuery(
     ["streamerList"],
     () => {
-      const user = decodeToken();
       if (user) {
-        return getServerList(user.id);
+        return getStreamerList(user.id);
       }
     },
     { refetchOnWindowFocus: false }
   );
+
+  console.log(streamerListQuery.data);
 
   const handleLogout = () => {
     destroyToken();
@@ -111,7 +113,7 @@ export const Home = () => {
           <div className="streamers">
             <div className="server-list-head">
               <h3>STREAMERS</h3>
-              <StreamerSearch/>
+              <StreamerSearch />
 
               {streamQuery.data && (
                 <button
@@ -122,7 +124,11 @@ export const Home = () => {
                 </button>
               )}
             </div>
-            <div className="streamer-list"></div>
+            <div className="streamer-list">
+              {streamerListQuery.isSuccess && (
+                <StreamerList streamerList={streamerListQuery.data} />
+              )}
+            </div>
           </div>
         </div>
         {addServerFormVisible && <AddServerModal />}

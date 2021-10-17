@@ -238,6 +238,50 @@ $input-color: #303338;
           margin-top: 0.5em;
           border-radius: 0.4em;
           background: #36393f;
+
+          .server-list-col {
+            margin: 1em 0.1em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .list-item {
+              padding: 1em 0;
+
+              text-align: center;
+              width: 50%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+              .server-list-item-logo {
+                .profile-picture {
+                  height: 3em;
+                  width: 3em;
+                  border-radius: 50%;
+                  background: blue;
+                  margin-bottom: 1em;
+                }
+              }
+
+              &:hover {
+                background-color: #202225;
+                border-radius: 0.4em;
+                text-decoration: solid;
+                font-weight: bold;
+                .server-list-item-logo {
+                  .profile-picture {
+                    height: 4em;
+                    width: 4em;
+                    border-radius: 50%;
+                    background: blue;
+                    margin-bottom: 1em;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

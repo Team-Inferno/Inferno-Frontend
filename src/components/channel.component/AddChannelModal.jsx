@@ -39,6 +39,7 @@ const AddChannel = (props) => {
       channelName: channelName,
       channelType: channelType,
     });
+    props.visibility(false);
   };
 
   return ReactDOM.createPortal(

@@ -64,7 +64,13 @@ const isStreamer = async (userID) => {
   return res.data;
 };
 
+const getStreamerList = async (userID) => {
+  const res = await axios.get(process.env.REACT_APP_SERVER + "user/following", {
+    params: { user_id: userID },
+  });
 
+  return res.data;
+};
 
 export {
   getUserProfile,
@@ -73,4 +79,5 @@ export {
   setPeer,
   setUserName,
   isStreamer,
+  getStreamerList,
 };

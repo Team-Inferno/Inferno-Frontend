@@ -67,7 +67,7 @@ const ChannelContextMenu = (props) => {
             </MenuItem>
             <MenuItem data={{ foo: "bar" }}>
               <span className="error">
-                {error && error.response.data}
+                {error && error.response?.data}
               </span>
             </MenuItem>
             <MenuItem divider />

@@ -330,6 +330,63 @@
   background: #36393f;
 }
 
+#home #home-container .list-section .streamers .streamer-list .server-list-col {
+  margin: 1em 0.1em;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home #home-container .list-section .streamers .streamer-list .server-list-col .list-item {
+  padding: 1em 0;
+  text-align: center;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#home #home-container .list-section .streamers .streamer-list .server-list-col .list-item .server-list-item-logo .profile-picture {
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background: blue;
+  margin-bottom: 1em;
+}
+
+#home #home-container .list-section .streamers .streamer-list .server-list-col .list-item:hover {
+  background-color: #202225;
+  border-radius: 0.4em;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+  font-weight: bold;
+}
+
+#home #home-container .list-section .streamers .streamer-list .server-list-col .list-item:hover .server-list-item-logo .profile-picture {
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  background: blue;
+  margin-bottom: 1em;
+}
+
 #home .popup-body {
   min-width: 100vw;
   min-height: 100vh;

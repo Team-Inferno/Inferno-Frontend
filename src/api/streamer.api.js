@@ -17,6 +17,15 @@ const followStreamer = (data) => {
   });
 };
 
+const unfollowStreamer = (data) => {
+  return axios.post(process.env.REACT_APP_SERVER + "stream/unfollow", null, {
+    params: {
+      user_id: data.userID,
+      streamer_id: data.streamerID,
+    },
+  });
+};
+
 const getStreamerProfile = async (streamerID) => {
   const res = await axios.get(
     process.env.REACT_APP_SERVER + "stream/profile",
@@ -93,4 +102,5 @@ export {
   isStreaming,
   setStreamKey,
   stopStreaming,
+  unfollowStreamer,
 };
